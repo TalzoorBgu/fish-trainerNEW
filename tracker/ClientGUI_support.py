@@ -50,7 +50,8 @@ def on1L():
     try:
         print('ClientGUI_support.on1L')
         fish_client = FishClient(w)
-        if chb_Var == 0:
+        print('chb_Var:{}'.format(chb_Var))
+        if chb_Var == '0':
             fish_client.send('test_1L', w.txtStepNum.get())
         else:
             fish_client.send('test_1L_NEW', None, None, None, 1)
