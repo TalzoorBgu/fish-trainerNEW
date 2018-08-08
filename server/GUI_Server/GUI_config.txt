@@ -1,8 +1,8 @@
 [Motor settings]
 steps = 320
 motorB_360_deg=1600
-enable pin 1 = 17
-enable pin 2 = 14
+enable pin 1 = 16
+enable pin 2 = 17
 
 
 [Tank]
