@@ -19,6 +19,7 @@ class Feeder:
             print ('pin:{} '.format(pin), end='')
             print ('')
             if not int(pin) == 0:
+                print("pin:{}".format(pin))
                 GPIO.setup(int(pin), GPIO.OUT)
         self.check_arduino_conn()
 
