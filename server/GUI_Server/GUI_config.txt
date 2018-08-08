@@ -1,7 +1,7 @@
 [Motor settings]
 steps = 320
 motorB_360_deg=1600
-enable pin 1 = 27
+enable pin 1 = 7
 enable pin 2 = 4
 
 
