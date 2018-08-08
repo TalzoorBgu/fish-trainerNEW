@@ -765,7 +765,7 @@ class Fish_traning_GUI___Client:
         temp_run_arg = "{} {} {} {}".format('fish_stat.py', self.LogFolderName, self.Stat_days, self.Stat_arg)
         self.txtStatRunArgs.insert('0.0', temp_run_arg)
         self.chb_NewMotor.setvar(ClientGUI_support.chb_Var, '1')
-        print('self.chb_NewMotor.info:{}'.format(self.chb_NewMotor.info))
+        print('self.chb_NewMotor:{}'.format(self.chb_NewMotor.getboolean()))
 
     def print_and_update_main_log(self, str_to_print, new_line=True):
         global w, top
