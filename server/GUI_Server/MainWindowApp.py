@@ -58,6 +58,7 @@ class MainWindowApp(Tkinter.Tk):
         self.Pin['1R'] = ConfigSectionMap("Tank")['tank 1 right pin']
         self.Pin['2L'] = ConfigSectionMap("Tank")['tank 2 left pin']
         self.Pin['2R'] = ConfigSectionMap("Tank")['tank 2 right pin']
+        sss!
 
         feed = feeder.Feeder({self.Pin_en, self.Pin['1L'], self.Pin['1R'], self.Pin['2L'], self.Pin['2R']})
         if feed.ardu_conn: l.info(_('Arduino connection OK'))
@@ -258,6 +259,7 @@ def handle_client_connection(client_socket):
         pin_num_str = '{}'.format('{}{}'.format(recv_id, (recv_side[0:1]).upper())) #create 1L/1R str
         #print('-->{}'.format(app.Pin[pin_num_str]))
         spin_res = feed.spin(int(app.Pin[pin_num_str]), int(app.step_num), int(app.Pin_en))
+        ssss!
         app.onTxtUpdate('{}.'.format(spin_res), False)
 
 def while_true_func(server):
