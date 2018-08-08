@@ -47,6 +47,7 @@ def Feed():
 
 def on1L():
     global chb_Var
+    chb_Var = w.
     try:
         print('ClientGUI_support.on1L')
         fish_client = FishClient(w)
