@@ -24,6 +24,7 @@ def ConfigSectionMap(section):
             dict1[option] = None
     return dict1
 
+
 _ = gettext.gettext
 exit_var = False
 connected = False
@@ -34,11 +35,9 @@ logging.basicConfig()
 l = logging.getLogger()
 l.setLevel(logging.INFO)
 cl = CumulativeLogger.CumulativeLogger()
+l.info(_('Program started.'))
 Config = ConfigParser.ConfigParser()
-#feed = feeder.Feeder
-
-
-l.info(_('Program started1.'))
+feed = feeder.Feeder
 
 
 class MainWindowApp(Tkinter.Tk):
@@ -51,21 +50,46 @@ class MainWindowApp(Tkinter.Tk):
 
         Config.read('GUI_config.txt')
         self.step_num = ConfigSectionMap("Motor settings")['steps']
-        self.Pin_en = ConfigSectionMap("Motor settings")['enable pin']
+        self.Pin_en = {}
+        self.Pin_en[1] = ConfigSectionMap("Motor settings")['enable pin 1']
+        self.Pin_en[2] = ConfigSectionMap("Motor settings")['enable pin 2']
 
         self.Pin={}
         self.Pin['1L'] = ConfigSectionMap("Tank")['tank 1 left pin']
         self.Pin['1R'] = ConfigSectionMap("Tank")['tank 1 right pin']
         self.Pin['2L'] = ConfigSectionMap("Tank")['tank 2 left pin']
         self.Pin['2R'] = ConfigSectionMap("Tank")['tank 2 right pin']
-        sss!
+        self.Pin['2LD'] = ConfigSectionMap("Tank")['tank 2 left direction pin']
+        self.Pin['2RD'] = ConfigSectionMap("Tank")['tank 2 right direction pin']
 
-        feed = feeder.Feeder({self.Pin_en, self.Pin['1L'], self.Pin['1R'], self.Pin['2L'], self.Pin['2R']})
-        if feed.ardu_conn: l.info(_('Arduino connection OK'))
+        feed = feeder.Feeder({self.Pin_en[1], self.Pin['1L'], self.Pin['1R'], self.Pin_en[2], self.Pin['2L'], self.Pin['2R'], self.Pin['2LD'], self.Pin['2RD']})
+
+        add_step = feed.add_program_step(1, 'left', 360, 100, 1)
+        #add_step = feed.add_program_step(2, 'wait', 8)
+        #add_step = feed.add_program_step(3, 'left', 180, 1, 1)
+
+        #add_step = feed.add_program_step(9, 'wait', 3)
+        #add_step = feed.add_program_step(10, 'left', (2*360-45), 400, 15)
+        #add_step = feed.add_program_step(11, 'wait', 10, 0.2)
+        #add_step = feed.add_program_step(12, 'right', 30, 100, 6)
+        #add_step = feed.add_program_step(13, 'wait', 10, 0.4)
+        #add_step = feed.add_program_step(14, 'left', 20, 100, 6)
+        #add_step = feed.add_program_step(15, 'wait', 10, 0.4)
+        #add_step = feed.add_program_step(16, 'right', 20, 100, 6)
+
+        #add_step = feed.add_program_step(1, 'left', 3200, 200, 5)
+        #add_step = feed.add_program_step(1, 'wait', 0.8)
+        #add_step = feed.add_program_step(2, 'left', 45 + 90 + 60, 100, 5)
+        #add_step = feed.add_program_step(3, 'wait', 0.5)
+        #add_step = feed.add_program_step(4, 'right', 20, 60, 10)
+        #add_step = feed.add_program_step(5, 'wait', 0.2)
+        #add_step = feed.add_program_step(6, 'left', 20, 60, 10)
+        #add_step = feed.add_program_step(7, 'wait', 0.6)
+        #add_step = feed.add_program_step(8, 'right', 180+90, 150, 15)
 
         #self.Pin={'1L':1 , '1R':2 , '2L':3 , '2R':4}
         #print ('[1,left]:{}, [1,right]:{}, [2,left]:{}, [2,right]:{}'.format(self.Pin['1L'], self.Pin['1R'], self.Pin['2L'], self.Pin['2R']))
-        self.i = 0
+        self.i=0
 
     def run(self):
         """ Create and run GUI """
@@ -115,6 +139,7 @@ class MainWindowApp(Tkinter.Tk):
         global exit_var
         global kill_all
         global connected
+
         """ Process 'Exit' command """
         exit_var=True
         kill_all=True
@@ -148,6 +173,7 @@ class MainWindowApp(Tkinter.Tk):
 
 
     def onConnectServer(self):
+
         self.root.after(100, self.ConnectLoop())
         self.root.mainloop()
 
@@ -202,7 +228,7 @@ class MainWindowApp(Tkinter.Tk):
                 self.txt_del_last_char()
             else:
                 if new_line == True:
-                    self.txt.insert(Tkinter.END, '{}{}'.format(str_to_add, "\n"))
+                    self.txt.insert(Tkinter.END, '{}{}'.format("\n",str_to_add))
                 else:
                     self.txt.insert(Tkinter.END, '{}'.format(str_to_add))
         self.txt.see(Tkinter.END)
@@ -246,8 +272,13 @@ def handle_client_connection(client_socket):
     app.onTxtUpdate('{}'.format(str_tmp), False)
     dict_data = ast.literal_eval(request)
     #app.onTxtUpdate('id:{}, side:{}'.format(dict_data['id'], dict_data['side']))
-    recv_id = dict_data['id']
+    recv_id = str(dict_data['id'])
     recv_side = dict_data['side']
+    recv_vel = recv_accl = recv_steps = None
+    if (recv_id == "test_2L") or (recv_id == "test_2R"):
+        recv_vel = int(dict_data['velocity'])
+        recv_accl = int(dict_data['accl'])
+        recv_steps = int(dict_data['steps'])
 
     l.info(str_tmp)
     line_counter = -1
@@ -255,12 +286,58 @@ def handle_client_connection(client_socket):
     if request == 'Close': exit_var=True
 
     client_socket.close()
-    if not recv_id == "test":
-        pin_num_str = '{}'.format('{}{}'.format(recv_id, (recv_side[0:1]).upper())) #create 1L/1R str
+    print ("rec_id:{0}".format(recv_id))
+
+    if recv_id == "1":
+        pin_num_str = '{0}{1}'.format(recv_id, (recv_side[0:1]).upper()) #create 1L/1R str
         #print('-->{}'.format(app.Pin[pin_num_str]))
-        spin_res = feed.spin(int(app.Pin[pin_num_str]), int(app.step_num), int(app.Pin_en))
-        ssss!
-        app.onTxtUpdate('{}.'.format(spin_res), False)
+        spin_res = feed.spin(int(app.Pin[pin_num_str]), int(app.step_num), int(app.Pin_en[1]))
+        app.onTxtUpdate('{0}.'.format(spin_res), False)
+    if recv_id == "2":
+        pin_num_str = '{0}{1}'.format(recv_id, (recv_side[0:1]).upper())
+        pin_dir_str = '{0}{1}'.format(pin_num_str, 'D')  # create 1L/1R str
+        print ("recv_id={0}, side:{1}".format(pin_num_str[0], pin_num_str[1]))
+        spin_res = feed.spin_program(int(app.Pin[pin_num_str]), int(app.Pin[pin_dir_str]), int(app.Pin_en[2]))
+        app.onTxtUpdate('{0}.'.format(spin_res), False)
+    if recv_id == "test_1L":
+        pin_num_str = '1L'
+        step_no = int(recv_side)
+        spin_res = feed.spin(int(app.Pin[pin_num_str]), step_no, int(app.Pin_en[1]))
+        app.onTxtUpdate('{0}.'.format(spin_res), False)
+
+    if recv_id == "test_1R":
+        pin_num_str = '1R'
+        step_no = int(recv_side)
+        spin_res = feed.spin(int(app.Pin[pin_num_str]), step_no, int(app.Pin_en[1]))
+        app.onTxtUpdate('{0}.'.format(spin_res), False)
+
+    if (recv_id == "test_2L") or (recv_id == "test_2R"):
+        if recv_id == "test_2L":
+            pin_num_str = '2L'
+            step_no = int(recv_side)
+            pin_dir_str = '{0}{1}'.format(pin_num_str, 'D')  # create 1L/1R str
+            dir_str = 'L'
+        if recv_id == "test_2R":
+            pin_num_str = '2R'
+            step_no = int(recv_side)
+            pin_dir_str = '{0}{1}'.format(pin_num_str, 'D')  # create 1L/1R str
+            dir_str = 'R'
+        if recv_vel is None:
+            spin_res = feed.spin_program(int(app.Pin[pin_num_str]),
+                                         int(app.Pin[pin_dir_str]),
+                                         int(app.Pin_en[2]),
+                                         step_no)
+        else:
+            spin_res = feed.raw_spin(int(app.Pin[pin_num_str]),
+                                     int(app.Pin[pin_dir_str]),
+                                     int(app.Pin_en[2]),
+                                     recv_steps,
+                                     dir_str,
+                                     recv_vel,
+                                     recv_accl)
+
+        app.onTxtUpdate('{0}.'.format(spin_res), True)
+
 
 def while_true_func(server):
     global exit_var, connected, first_accp_conn, line_counter, line_dir
@@ -280,7 +357,7 @@ def while_true_func(server):
         sys.stdout.flush()
         try:
             client_sock, address = server.accept()
-            str_tmp = '\nAccepted connection from {}:{}'.format(address[0], address[1])
+            str_tmp = '\nAccepted connection from {0}:{1}'.format(address[0], address[1])
 
             if first_accp_conn:
                 app.onTxtUpdate(str_tmp)

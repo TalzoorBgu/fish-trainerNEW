@@ -16,6 +16,7 @@ from tracker.tcp_client import FishClient
 
 
 
+
 try:
     from Tkinter import *
 except ImportError:
@@ -32,8 +33,13 @@ except ImportError:
 def set_Tk_var():
     global FeedVar
     FeedVar = StringVar()
+
     global chb_Var
-    chb_Var = '1'
+    chb_Var = StringVar()
+
+    # chb_Var = '1'
+
+
 
 
 def onLogClear():
@@ -47,12 +53,13 @@ def Feed():
 
 def on1L():
     global chb_Var
+    global FeedVar
 
     try:
         print('ClientGUI_support.on1L')
         fish_client = FishClient(w)
-        print('chb_Var:{}'.format(chb_Var))
-        if chb_Var == '0':
+        print('chb_Var:{}'.format(chb_Var.get()))
+        if chb_Var.get() == '0':
             fish_client.send('test_1L', w.txtStepNum.get())
         else:
             fish_client.send('test_1L_NEW', None, None, None, 1)

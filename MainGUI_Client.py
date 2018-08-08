@@ -740,7 +740,6 @@ class Fish_traning_GUI___Client:
         self.Label15.configure(text='''00:00''')
 
 
-
         self.fillValue()
 
     def fillValue(self):
@@ -764,7 +763,8 @@ class Fish_traning_GUI___Client:
         self.txtStatArgs.insert('0.0', self.Stat_arg)
         temp_run_arg = "{} {} {} {}".format('fish_stat.py', self.LogFolderName, self.Stat_days, self.Stat_arg)
         self.txtStatRunArgs.insert('0.0', temp_run_arg)
-        self.chb_NewMotor.setvar(ClientGUI_support.chb_Var, '1')
+        ClientGUI_support.chb_Var.set('1') # NEW feeder
+        # self.chb_NewMotor.setvar(ClientGUI_support.chb_Var, '1')
         #check = True
         #print('self.chb_NewMotor:{}'.format(self.chb_NewMotor.getboolean(check)))
 
