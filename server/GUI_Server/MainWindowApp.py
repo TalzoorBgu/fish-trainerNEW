@@ -302,6 +302,7 @@ def handle_client_connection(client_socket):
         app.onTxtUpdate('{0}.'.format(spin_res), False)
     if recv_id == "test_1L":
         pin_num_str = '1L'
+        print("recv_side:{}".format(recv_side))
         step_no = int(recv_side)
         spin_res = feed.spin(int(app.Pin[pin_num_str]), step_no, int(app.Pin_en[1]))
         app.onTxtUpdate('{0}.'.format(spin_res), False)
