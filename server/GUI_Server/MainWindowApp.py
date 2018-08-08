@@ -63,6 +63,7 @@ class MainWindowApp(Tkinter.Tk):
         self.Pin['2RD'] = ConfigSectionMap("Tank")['tank 2 right direction pin']
 
         feed = feeder.Feeder({self.Pin_en[1], self.Pin['1L'], self.Pin['1R'], self.Pin_en[2], self.Pin['2L'], self.Pin['2R'], self.Pin['2LD'], self.Pin['2RD']})
+        if feed.ardu_conn: l.info(_('Arduino connection OK'))
 
         #add_step = feed.add_program_step(1, 'left', 360, 100, 1)
         #add_step = feed.add_program_step(2, 'wait', 8)
