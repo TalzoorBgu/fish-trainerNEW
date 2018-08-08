@@ -25,6 +25,10 @@ class FishClient:
 
 
     def send(self, id_num, side, steps=None, velocity=None, accl=None, new_feeder=None):
+        if new_feeder is not None:
+            old_id_num = id_num
+            id_num = old_id_num + 10
+
         if velocity is None:
             data = json.dumps({'id': id_num, 'side': side})
         else:

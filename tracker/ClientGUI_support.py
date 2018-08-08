@@ -46,10 +46,14 @@ def Feed():
     sys.stdout.flush()
 
 def on1L():
+    global chb_Var
     try:
         print('ClientGUI_support.on1L')
         fish_client = FishClient(w)
-        fish_client.send('test_1L', w.txtStepNum.get())
+        if chb_Var == 0:
+            fish_client.send('test_1L', w.txtStepNum.get())
+        else:
+            fish_client.send('test_1L_NEW', None, None, None, 1)
         fish_client.kill()
         sys.stdout.flush()
     except TypeError:
