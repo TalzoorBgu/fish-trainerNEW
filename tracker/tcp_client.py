@@ -24,7 +24,7 @@ class FishClient:
                 self.cb_obj.print_and_update_main_log(str_to_print, True)
 
 
-    def send(self, id_num, side, steps=None, velocity=None, accl=None):
+    def send(self, id_num, side, steps=None, velocity=None, accl=None, new_feeder=None):
         if velocity is None:
             data = json.dumps({'id': id_num, 'side': side})
         else:
