@@ -16,7 +16,7 @@ class Feeder:
         print('feeder init -- ', end='')
         GPIO.setmode(GPIO.BOARD) ## Use board pin numbering
         for pin in pins:
-            print ('pin:{} '.format(pin), end='')
+            # print ('pin:{} '.format(pin), end='')
             print ('')
             if not int(pin) == 0:
                 print("pin:{}".format(pin))
