@@ -32,7 +32,7 @@ class Feeder:
     def spin(self, pin_num, steps, en_pin):
         print ('pin {}-->'.format(str(pin_num)),end='') ## Print current loop
         print ('steps:{}, en:{}'.format(steps, en_pin))
-        GPIO.output(en_pin,True) #pull slp pin to HIGH
+        GPIO.output(en_pin, True) #pull slp pin to HIGH
         time.sleep(time_to_sleep)## slp shutdwon Wait
         for i in range(steps): #53.3 for big pill # 133 for pill device# 1600 for archimeds ### one step is 1.8 degrees
             GPIO.output(pin_num,True)## Switch on pin
@@ -40,7 +40,7 @@ class Feeder:
             GPIO.output(pin_num,False)## Switch off pin
             time.sleep(time_to_sleep)## Wait
         time.sleep(time_to_sleep)
-        GPIO.output(en_pin,Fals) #pull slp pin to HIGH
+        GPIO.output(en_pin, False) #pull slp pin to HIGH
         time.sleep(time_to_sleep)## sleep back Wait
         print ("Done",end='') ## When loop is complete, print "Done"
         return 'Done'
