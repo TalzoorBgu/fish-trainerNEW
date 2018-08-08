@@ -32,6 +32,9 @@ except ImportError:
 def set_Tk_var():
     global FeedVar
     FeedVar = StringVar()
+    global chb_Var
+    chb_Var = '1'
+
 
 def onLogClear():
     sys.stdout.flush()
@@ -43,19 +46,41 @@ def Feed():
     sys.stdout.flush()
 
 def on1L():
-    print('ClientGUI_support.on1L')
-    sys.stdout.flush()
+    try:
+        print('ClientGUI_support.on1L')
+        fish_client = FishClient(w)
+        fish_client.send('test_1L', w.txtStepNum.get())
+        fish_client.kill()
+        sys.stdout.flush()
+    except TypeError:
+        pass
 
 def on1R():
     print('ClientGUI_support.on1R')
+    fish_client = FishClient(w)
+    fish_client.send('test_1R', w.txtStepNum.get())
+    fish_client.kill()
     sys.stdout.flush()
 
 def on2L():
     print('ClientGUI_support.on2L')
+    velocity = w.txtVelocity.get()
+    acceleration = w.txtAccl.get()
+
+    fish_client = FishClient(w)
+    fish_client.send('test_2L', 0, w.txtStepNum.get(), velocity, acceleration)
+    fish_client.kill()
+
     sys.stdout.flush()
 
 def on2R():
     print('ClientGUI_support.on2R')
+    velocity = w.txtVelocity.get()
+    acceleration = w.txtAccl.get()
+
+    fish_client = FishClient(w)
+    fish_client.send('test_2R', 0, w.txtStepNum.get(), velocity, acceleration)
+    fish_client.kill()
     sys.stdout.flush()
 
 def onExit():
