@@ -301,8 +301,10 @@ def handle_client_connection(client_socket):
         print ("recv_id={0}, side:{1}".format(pin_num_str[0], pin_num_str[1]))
         spin_res = feed.spin_program(int(app.Pin[pin_num_str]), int(app.Pin[pin_dir_str]), int(app.Pin_en[2]))
         app.onTxtUpdate('{0}.'.format(spin_res), False)
-    if recv_id == "11":
-        pass
+    if recv_id == "11" or recv_id == "12":
+        spin_res = feed.new_feeder_run(recv_id)
+        app.onTxtUpdate('{0}.'.format(spin_res), False)
+
     if recv_id == "test_1L":
         pin_num_str = '1L'
         print("recv_side:{}".format(recv_side))

@@ -14,14 +14,15 @@ HALF_CYCLE = FULL_CYCLE / 2
 bool_send_default_program = False
 
 class SendCommand:
-    def __init__(self,
-                 stp_pin1,
-                 dir_pin1,
-                 en_pin1,
-                 stp_pin2,
-                 dir_pin2,
-                 en_pin2,
-                 _full_cycle):
+    #def __init__(self,
+    #             stp_pin1,
+    #             dir_pin1,
+    #             en_pin1,
+    #             stp_pin2,
+    #             dir_pin2,
+    #             en_pin2,
+    #             _full_cycle):
+    def __init__(self, _full_cycle):
         self.full_cycle = _full_cycle
         # _str = self.init_seq_motor_1(stp_pin1, dir_pin1, en_pin1)
         # ser.write(_str)
@@ -136,7 +137,9 @@ class MySerial:
 
 
 ser = MySerial("/dev/ttyS0", 9600)
-command = SendCommand(0, 0, 0, 1, 1, 1, FULL_CYCLE)
+# command = SendCommand(0, 0, 0, 1, 1, 1, FULL_CYCLE)
+command = SendCommand(FULL_CYCLE)
+
 
 def check_arduino_connection():
     _bool_flag = False

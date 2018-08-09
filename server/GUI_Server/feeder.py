@@ -21,13 +21,19 @@ class Feeder:
             if not int(pin) == 0:
                 print("pin:{}".format(pin))
                 GPIO.setup(int(pin), GPIO.OUT)
-        self.check_arduino_conn()
+        ardu_res = self.check_arduino_conn()
+        print("ardu_res:{}".format(ardu_res))
         arduino.send_default_program()
 
 
     def check_arduino_conn(self):
-        self.ardu_conn = arduino.check_arduino_connection()
-        print('ardu_conn:{}'.format(self.ardu_conn))
+        ardu_conn = arduino.check_arduino_connection()
+        print('ardu_conn:{}'.format(ardu_conn))
+        return ardu_conn
+
+    def new_feeder_run(self, _motor):
+        #arduino.SendCommand.
+        return 'ok'
 
     ##Define a function named Blink()
     def spin(self, pin_num, steps, en_pin):
