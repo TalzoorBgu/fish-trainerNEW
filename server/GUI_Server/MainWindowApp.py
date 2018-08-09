@@ -302,7 +302,7 @@ def handle_client_connection(client_socket):
         spin_res = feed.spin_program(int(app.Pin[pin_num_str]), int(app.Pin[pin_dir_str]), int(app.Pin_en[2]))
         app.onTxtUpdate('{0}.'.format(spin_res), False)
     if recv_id == "11" or recv_id == "12":
-        if recv_id = "11":
+        if recv_id == "11":
             int_recv_id = 11
         else:
             int_recv_id = 12
