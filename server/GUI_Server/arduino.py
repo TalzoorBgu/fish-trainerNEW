@@ -353,6 +353,10 @@ def prog_run(_prog, _motor):
         result = ser.read()
     if "s_motor" in result:
         print('s_motor:{} --> OK'.format(_motor))
+    sleep(100.0 / 1000.0)
+    while result == '':  # wait for respond before sending next command
+        result = ser.read()
+    print(result)
 
     _str_to_send = command.run_prog(1)
     ser.write(_str_to_send)
