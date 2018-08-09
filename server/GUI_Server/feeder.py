@@ -24,7 +24,7 @@ class Feeder:
         self.check_arduino_conn()
         if self.ardu_conn == True:
             arduino.send_default_program()
-            self.arduino = arduino.SendCommand()
+            self.ardu_comm = arduino.SendCommand()
 
 
     def check_arduino_conn(self):
@@ -33,7 +33,8 @@ class Feeder:
         return self.ardu_conn
 
     def new_feeder_run(self, _motor):
-        #arduino.SendCommand.
+        self.ardu_comm.select_motor(_motor)
+        self.ardu_comm.run_prog(1)
         return 'ok'
 
     ##Define a function named Blink()

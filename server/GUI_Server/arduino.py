@@ -24,7 +24,6 @@ class SendCommand:
     #             _full_cycle):
     def __init__(self, _full_cycle=FULL_CYCLE):
         self.full_cycle = _full_cycle
-        print("SendCom init ok")
         # _str = self.init_seq_motor_1(stp_pin1, dir_pin1, en_pin1)
         # ser.write(_str)
         # _str = self.init_seq_motor_2(stp_pin2, dir_pin2, en_pin2)
@@ -137,9 +136,7 @@ class MySerial:
         return ch_r
 
 
-ser = MySerial("/dev/ttyS0", 9600)
-# command = SendCommand(0, 0, 0, 1, 1, 1, FULL_CYCLE)
-command = SendCommand(FULL_CYCLE)
+
 
 
 def check_arduino_connection():
@@ -161,6 +158,9 @@ def check_arduino_connection():
 
 def main():
     global bool_send_default_program
+    ser = MySerial("/dev/ttyS0", 9600)
+    # command = SendCommand(0, 0, 0, 1, 1, 1, FULL_CYCLE)
+    command = SendCommand(FULL_CYCLE)
     print('--- Main loop ---')
     try:
         i = 0
@@ -278,6 +278,9 @@ def read_key():
 
 
 def send_default_program():
+    ser = MySerial("/dev/ttyS0", 9600)
+    # command = SendCommand(0, 0, 0, 1, 1, 1, FULL_CYCLE)
+    command = SendCommand(FULL_CYCLE)
     PROG_arry = [['prog_start',     0,      0,      0],
                  ['def_v_a',        60,     40,    20],
                  ['moveto',         30,      0,      0],
