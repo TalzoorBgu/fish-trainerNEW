@@ -23,6 +23,8 @@ class Controller:
         time_counter = 0
 
         self.cb_obj = cb_obj
+        self.chb_Var = cb_obj.chb_Var
+        print("chb_Var_cont:{}".format(self.chb_Var.get()))
 
         width = track_fish.init_tracking()
 
@@ -30,7 +32,7 @@ class Controller:
         full_script_path = '{}{}'.format(os.path.dirname(os.path.realpath(__file__)), '/')
         full_root_script_path = full_script_path[:full_script_path.find('tracker')]
         log_folder = '{}data/log/'.format(full_root_script_path)
-        #print('log:{}'.format(log_folder))
+        print('log:{}'.format(log_folder))
         #print_and_update_main_log('log:{}'.format(log_folder))
         self.logger = []
 
@@ -57,7 +59,10 @@ class Controller:
             if self.cb_obj is not None:
                 self.cb_obj.print_and_update_main_log(str_to_print)
             fish_client = FishClient()
-            fish_client.send(fish_id + 1, feed_side)
+            if self.chb_Var.get() == '1':
+                fish_client.send(fish_id + 11, feed_side)
+            else:
+                fish_client.send(fish_id + 1, feed_side)
             fish_client.kill()
 
             #fish_client.send(fish_id, feed_side)

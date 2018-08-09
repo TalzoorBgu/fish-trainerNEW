@@ -29,11 +29,15 @@ class SendCommand:
         # ser.write(_str)
 
     def init_seq_motor_1(self, _pin1, _pin2, _pin3):
-        _str_to_send = 's_motor_1,{},{},{}'.format(_pin1, _pin2, _pin3)
+        _str_to_send = 'in_s_motor_1,{},{},{}'.format(_pin1, _pin2, _pin3)
         return _str_to_send
 
     def init_seq_motor_2(self, _pin1, _pin2, _pin3):
-        _str_to_send = 's_motor_2,{},{},{}'.format(_pin1, _pin2, _pin3)
+        _str_to_send = 'in_s_motor_2,{},{},{}'.format(_pin1, _pin2, _pin3)
+        return _str_to_send
+
+    def select_motor(self, _motor):
+        _str_to_send = 's_motor,{}'.format(_motor)
         return _str_to_send
 
     def move(self, _steps, _dir):
