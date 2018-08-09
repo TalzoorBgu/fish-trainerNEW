@@ -21,15 +21,15 @@ class Feeder:
             if not int(pin) == 0:
                 print("pin:{}".format(pin))
                 GPIO.setup(int(pin), GPIO.OUT)
-        ardu_res = self.check_arduino_conn()
-        print("ardu_res:{}".format(ardu_res))
+        self.check_arduino_conn()
+        print("ardu_res:{}".format(self.ardu_conn))
         arduino.send_default_program()
 
 
     def check_arduino_conn(self):
-        ardu_conn = arduino.check_arduino_connection()
-        print('ardu_conn:{}'.format(ardu_conn))
-        return ardu_conn
+        self.ardu_conn = arduino.check_arduino_connection()
+        print('ardu_conn:{}'.format(self.ardu_conn))
+        return self.ardu_conn
 
     def new_feeder_run(self, _motor):
         #arduino.SendCommand.
