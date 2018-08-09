@@ -325,7 +325,7 @@ def handle_client_connection(client_socket):
     if recv_id == "SetZeroStart":
         feed.set_zero(1)
 
-    if recv_id == "SetZeroStart":
+    if recv_id == "SetZeroEND":
         feed.set_zero(0)
 
     if (recv_id == "test_2L") or (recv_id == "test_2R"):
