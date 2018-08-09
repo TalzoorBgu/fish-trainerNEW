@@ -338,6 +338,34 @@ def send_default_program():
 
     #ser.write(res)
 
+
+def prog_run(_prog, _motor):
+    ser = MySerial("/dev/ttyS0", 9600)
+    command = SendCommand(FULL_CYCLE)
+
+    res = ''
+
+    _str_to_send = command.select_motor(_motor)
+    ser.write(_str_to_send)
+
+    result = ''
+    while result == '':  # wait for respond before sending next command
+        result = ser.read()
+    if "s_motor" in result:
+        print('s_motor:{} --> OK'.format(_motor))
+
+    _str_to_send = command.run_prog(1)
+    ser.write(_str_to_send)
+
+    result = ''
+    while result == '':  # wait for respond before sending next command
+        result = ser.read()
+    if "run_prog" in result:
+        print('run_prog --> OK'.format(_motor))
+        res = 'Program runing on motor {}'.format(_motor)
+
+    return res
+
 if __name__ == '__main__':
     try:
         print('---Start---')
