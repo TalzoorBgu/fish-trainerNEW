@@ -58,11 +58,9 @@ def on1L():
     try:
         print('ClientGUI_support.on1L')
         fish_client = FishClient(w)
-        print('chb_Var:{}'.format(chb_Var.get()))
-        if chb_Var.get() == '0':
-            fish_client.send('test_1L', w.txtStepNum.get())
-        else:
-            fish_client.send('test_1L_NEW', None, None, None, 1)
+        #print('chb_Var:{}'.format(chb_Var.get()))
+
+        fish_client.send('test_1L', w.txtStepNum.get())
         fish_client.kill()
         sys.stdout.flush()
     except TypeError:

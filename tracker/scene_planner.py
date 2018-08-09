@@ -12,6 +12,7 @@ import argparse
 import cv2
 import random
 import os
+import sys
 
 # initialize the list of reference points and boolean indicating
 # whether cropping is being performed or not
@@ -19,6 +20,7 @@ import os
 refPt = []
 fish = []
 cropping = False
+
 
 
 def click_and_crop(event, x, y, flags, param):
@@ -53,7 +55,7 @@ def click_and_crop(event, x, y, flags, param):
         cv2.imshow("image", image)
 
 def SP_Main():
-    global image, fish ,refPt
+    global image, fish, refPt
     refPt = []
     fish = []
     # construct the argument parser and parse the arguments
@@ -116,16 +118,22 @@ def SP_Main():
     # from the image and display it
 
     if len(refPt) == 2:
-        full_script_path = '{}{}'.format(os.path.dirname(os.path.realpath(__file__)), '/')
-        full_root_script_path = full_script_path[:12+full_script_path.find('fish-trainer')]
+        #full_script_path = '{}{}'.format(os.path.dirname(os.path.realpath(__file__)), '/')
+        #full_root_script_path = full_script_path[:12+full_script_path.find('fish-trainer')]
+        full_root_script_path = os.getcwd()
         file_path='{}\\tracker\{}'.format(full_root_script_path,'tank_config.txt')
+
+        print "script: __file__ is", repr(__file__)
+        print "script: cwd is", repr(os.getcwd())
+
         thefile = open(file_path, 'w')
-        print (file_path)
+        print ("file_path:{}".format(file_path))
         for fishy in fish:
             print fishy
             thefile.write("%s\n" % fishy)
         thefile.flush()
         thefile.close()
+        print("tank_config.txt saved!")
 
 
 

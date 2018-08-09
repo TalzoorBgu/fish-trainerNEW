@@ -30,6 +30,9 @@ Config = ConfigParser.ConfigParser()
 exit_var=False
 stop_traning=False
 
+def print_path():
+    pass
+
 def ConfigSectionMap(section):
     dict1 = {}
     options = Config.options(section)
@@ -743,6 +746,7 @@ class Fish_traning_GUI___Client:
         self.fillValue()
 
     def fillValue(self):
+        self.chb_Var = ClientGUI_support.chb_Var
         Config.read('GUI_config.txt')
         self.LogFolderName = ConfigSectionMap("Fish Statistics")['log folder']
         self.Stat_days = ConfigSectionMap("Fish Statistics")['days back']

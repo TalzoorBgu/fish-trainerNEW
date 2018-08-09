@@ -10,6 +10,8 @@ class FishClient:
     def __init__(self, cb_obj=None):
         try:
             self.cb_obj = cb_obj
+            self.chb_Var = cb_obj.chb_Var
+            print("chb_Var:{}".format(self.chb_Var.get()))
             self.TCP_IP = '132.72.91.148' # self.TCP_IP = '132.72.44.66' # self.TCP_IP = '132.73.194.80'
             self.TCP_PORT = 50007
             self.BUFFER_SIZE = 1024
@@ -25,7 +27,8 @@ class FishClient:
 
 
     def send(self, id_num, side, steps=None, velocity=None, accl=None, new_feeder=None):
-        if new_feeder is not None:
+
+        if self.chb_Var.get() == '1':
             old_id_num = id_num
             id_num = old_id_num + 10
 
