@@ -36,7 +36,7 @@ class Feeder:
             _motor = 1
         else:
             _motor = 2
-        res = arduino.prog_run(0, _feeder, _motor)  #back to motor 1 or 2
+        res = arduino.prog_run(0, _motor)  #back to motor 1 or 2
         return res
 
     ##Define a function named Blink()
