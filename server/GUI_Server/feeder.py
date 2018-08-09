@@ -39,6 +39,12 @@ class Feeder:
         res = arduino.prog_run(0, _motor)  #back to motor 1 or 2
         return res
 
+    def set_zero(self, _int_on):
+        if _int_on == 1:
+            arduino.disable_pins(1)
+        else:
+            arduino.disable_pins(0)
+
     ##Define a function named Blink()
     def spin(self, pin_num, steps, en_pin):
         print ('pin {}-->'.format(str(pin_num)),end='') ## Print current loop

@@ -322,6 +322,12 @@ def handle_client_connection(client_socket):
         spin_res = feed.spin(int(app.Pin[pin_num_str]), step_no, int(app.Pin_en[1]))
         app.onTxtUpdate('{0}.'.format(spin_res), False)
 
+    if recv_id == "SetZeroStart":
+        feed.set_zero(1)
+
+    if recv_id == "SetZeroStart":
+        feed.set_zero(0)
+
     if (recv_id == "test_2L") or (recv_id == "test_2R"):
         if recv_id == "test_2L":
             pin_num_str = '2L'

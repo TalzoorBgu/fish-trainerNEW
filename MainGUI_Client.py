@@ -13,15 +13,16 @@ except ImportError:
     py3 = 1
 
 import ConfigParser
-import sys
-import time
-import multiprocessing
-import os
-import cv2
-import numpy as np
-from tracker.fish_tank import Tank
 
-from tools import fishlog
+#import sys
+#import time
+#import multiprocessing
+#import os
+#import cv2
+#import numpy as np
+#from tracker.fish_tank import Tank
+#from tools import fishlog
+
 from tracker import ClientGUI_support
 
 Config = ConfigParser.ConfigParser()
@@ -83,9 +84,7 @@ class Fish_traning_GUI___Client:
         _compcolor = '#d9d9d9' # X11 color: 'gray85'
         _ana1color = '#d9d9d9' # X11 color: 'gray85'
         _ana2color = '#d9d9d9' # X11 color: 'gray85'
-        font10 = "-family {Segoe UI} -size 10 -weight normal -slant "  \
-            "roman -underline 0 -overstrike 0"
-        font9 = "-family {Abadi MT Condensed Extra Bold} -size 20 "  \
+        font10 = "-family {Abadi MT Condensed Extra Bold} -size 10 "  \
             "-weight bold -slant roman -underline 0 -overstrike 0"
 
         top.geometry("891x800+57+75")
@@ -108,7 +107,7 @@ class Fish_traning_GUI___Client:
         self.frmTraining.configure(width=864)
 
         self.btnRunTraining = Button(self.frmTraining)
-        self.btnRunTraining.place(relx=0.78, rely=0.43, height=64, width=89)
+        self.btnRunTraining.place(relx=0.78, rely=0.5, height=50, width=90)
         self.btnRunTraining.configure(activebackground="#d9d9d9")
         self.btnRunTraining.configure(activeforeground="#000000")
         self.btnRunTraining.configure(background="#d9d9d9")
@@ -119,6 +118,7 @@ class Fish_traning_GUI___Client:
         self.btnRunTraining.configure(highlightcolor="black")
         self.btnRunTraining.configure(pady="0")
         self.btnRunTraining.configure(text='''Run traning''')
+        self.btnRunTraining.configure(width=89)
 
         self.Label2 = Label(self.frmTraining)
         self.Label2.place(relx=0.12, rely=0.06, height=24, width=85)
@@ -194,7 +194,7 @@ class Fish_traning_GUI___Client:
         self.Label10.configure(text='''Arguments''')
 
         self.btnStopTraning = Button(self.frmTraining)
-        self.btnStopTraning.place(relx=0.89, rely=0.43, height=62, width=87)
+        self.btnStopTraning.place(relx=0.89, rely=0.5, height=50, width=90)
         self.btnStopTraning.configure(activebackground="#d9d9d9")
         self.btnStopTraning.configure(activeforeground="#000000")
         self.btnStopTraning.configure(background="#d9d9d9")
@@ -205,6 +205,7 @@ class Fish_traning_GUI___Client:
         self.btnStopTraning.configure(highlightcolor="black")
         self.btnStopTraning.configure(pady="0")
         self.btnStopTraning.configure(text='''Stop traning''')
+        self.btnStopTraning.configure(width=87)
 
         self.txtFishNo1 = Text(self.frmTraining)
         self.txtFishNo1.place(relx=0.02, rely=0.24, relheight=0.24, relwidth=0.1)
@@ -528,7 +529,7 @@ class Fish_traning_GUI___Client:
         self.btnComSend.configure(text='''Send test''')
 
         self.Label6 = Label(self.frmCom)
-        self.Label6.place(relx=0.65, rely=0.12, height=21, width=61)
+        self.Label6.place(relx=0.63, rely=0.22, height=21, width=61)
         self.Label6.configure(activebackground="#f9f9f9")
         self.Label6.configure(activeforeground="black")
         self.Label6.configure(background="#d9d9d9")
@@ -539,7 +540,7 @@ class Fish_traning_GUI___Client:
         self.Label6.configure(text='''Motor test''')
 
         self.btnMotor1L = Button(self.frmCom)
-        self.btnMotor1L.place(relx=0.77, rely=0.09, height=38, width=57)
+        self.btnMotor1L.place(relx=0.73, rely=0.11, height=38, width=57)
         self.btnMotor1L.configure(activebackground="#d9d9d9")
         self.btnMotor1L.configure(activeforeground="#000000")
         self.btnMotor1L.configure(background="#d9d9d9")
@@ -550,10 +551,9 @@ class Fish_traning_GUI___Client:
         self.btnMotor1L.configure(highlightcolor="black")
         self.btnMotor1L.configure(pady="0")
         self.btnMotor1L.configure(text='''(1) Left''')
-        self.btnMotor1L.configure(width=57)
 
         self.btnMotor1R = Button(self.frmCom)
-        self.btnMotor1R.place(relx=0.77, rely=0.53, height=38, width=57)
+        self.btnMotor1R.place(relx=0.73, rely=0.55, height=38, width=57)
         self.btnMotor1R.configure(activebackground="#d9d9d9")
         self.btnMotor1R.configure(activeforeground="#000000")
         self.btnMotor1R.configure(background="#d9d9d9")
@@ -564,10 +564,9 @@ class Fish_traning_GUI___Client:
         self.btnMotor1R.configure(highlightcolor="black")
         self.btnMotor1R.configure(pady="0")
         self.btnMotor1R.configure(text='''(1) Right''')
-        self.btnMotor1R.configure(width=57)
 
         self.btnMotor2R = Button(self.frmCom)
-        self.btnMotor2R.place(relx=0.84, rely=0.53, height=38, width=57)
+        self.btnMotor2R.place(relx=0.8, rely=0.55, height=38, width=57)
         self.btnMotor2R.configure(activebackground="#d9d9d9")
         self.btnMotor2R.configure(activeforeground="#000000")
         self.btnMotor2R.configure(background="#d9d9d9")
@@ -578,10 +577,9 @@ class Fish_traning_GUI___Client:
         self.btnMotor2R.configure(highlightcolor="black")
         self.btnMotor2R.configure(pady="0")
         self.btnMotor2R.configure(text='''(2) Right''')
-        self.btnMotor2R.configure(width=57)
 
         self.btnMotor2L = Button(self.frmCom)
-        self.btnMotor2L.place(relx=0.84, rely=0.09, height=38, width=57)
+        self.btnMotor2L.place(relx=0.8, rely=0.11, height=38, width=57)
         self.btnMotor2L.configure(activebackground="#d9d9d9")
         self.btnMotor2L.configure(activeforeground="#000000")
         self.btnMotor2L.configure(background="#d9d9d9")
@@ -592,10 +590,9 @@ class Fish_traning_GUI___Client:
         self.btnMotor2L.configure(highlightcolor="black")
         self.btnMotor2L.configure(pady="0")
         self.btnMotor2L.configure(text='''(2) Left''')
-        self.btnMotor2L.configure(width=57)
 
         self.Label7 = Label(self.frmCom)
-        self.Label7.place(relx=0.65, rely=0.33, height=21, width=79)
+        self.Label7.place(relx=0.64, rely=0.44, height=21, width=79)
         self.Label7.configure(activebackground="#f9f9f9")
         self.Label7.configure(activeforeground="black")
         self.Label7.configure(background="#d9d9d9")
@@ -606,7 +603,7 @@ class Fish_traning_GUI___Client:
         self.Label7.configure(text='''Steps number''')
 
         self.txtStepNum = Entry(self.frmCom)
-        self.txtStepNum.place(relx=0.67, rely=0.62,height=27, relwidth=0.09)
+        self.txtStepNum.place(relx=0.63, rely=0.66,height=27, relwidth=0.09)
         self.txtStepNum.configure(background="white")
         self.txtStepNum.configure(disabledforeground="#a3a3a3")
         self.txtStepNum.configure(font="TkFixedFont")
@@ -631,7 +628,7 @@ class Fish_traning_GUI___Client:
         self.btnTankConf.configure(text='''Tank conf.''')
 
         self.txtVelocity = Entry(self.frmCom)
-        self.txtVelocity.place(relx=0.54, rely=0.31,height=27, relwidth=0.09)
+        self.txtVelocity.place(relx=0.51, rely=0.33,height=27, relwidth=0.09)
         self.txtVelocity.configure(background="white")
         self.txtVelocity.configure(disabledforeground="#a3a3a3")
         self.txtVelocity.configure(font="TkFixedFont")
@@ -643,7 +640,7 @@ class Fish_traning_GUI___Client:
         self.txtVelocity.configure(selectforeground="black")
 
         self.txtAccl = Entry(self.frmCom)
-        self.txtAccl.place(relx=0.54, rely=0.63,height=27, relwidth=0.09)
+        self.txtAccl.place(relx=0.51, rely=0.66,height=27, relwidth=0.09)
         self.txtAccl.configure(background="white")
         self.txtAccl.configure(disabledforeground="#a3a3a3")
         self.txtAccl.configure(font="TkFixedFont")
@@ -655,7 +652,7 @@ class Fish_traning_GUI___Client:
         self.txtAccl.configure(selectforeground="black")
 
         self.chb_NewMotor = Checkbutton(self.frmCom)
-        self.chb_NewMotor.place(relx=0.91, rely=0.22, relheight=0.6
+        self.chb_NewMotor.place(relx=0.89, rely=0.11, relheight=0.38
                 , relwidth=0.08)
         self.chb_NewMotor.configure(activebackground="#d9d9d9")
         self.chb_NewMotor.configure(activeforeground="#000000")
@@ -669,6 +666,45 @@ class Fish_traning_GUI___Client:
         self.chb_NewMotor.configure(variable=ClientGUI_support.chb_Var)
         self.chb_NewMotor.configure(width=71)
         self.chb_NewMotor.configure(wraplength="35")
+
+        self.btnSetZero = Button(self.frmCom)
+        self.btnSetZero.place(relx=0.89, rely=0.55, height=38, width=87)
+        self.btnSetZero.configure(activebackground="#d9d9d9")
+        self.btnSetZero.configure(activeforeground="#000000")
+        self.btnSetZero.configure(background="#d9d9d9")
+        self.btnSetZero.configure(command=ClientGUI_support.onSetZero)
+        self.btnSetZero.configure(disabledforeground="#a3a3a3")
+        self.btnSetZero.configure(foreground="#000000")
+        self.btnSetZero.configure(highlightbackground="#d9d9d9")
+        self.btnSetZero.configure(highlightcolor="black")
+        self.btnSetZero.configure(pady="0")
+        self.btnSetZero.configure(text='''Set ZERO pos.''')
+        self.btnSetZero.configure(width=87)
+
+
+
+        self.Label7_3 = Label(self.frmCom)
+        self.Label7_3.place(relx=0.46, rely=0.38, height=21, width=39)
+        self.Label7_3.configure(activebackground="#f9f9f9")
+        self.Label7_3.configure(activeforeground="black")
+        self.Label7_3.configure(background="#d9d9d9")
+        self.Label7_3.configure(disabledforeground="#a3a3a3")
+        self.Label7_3.configure(foreground="#000000")
+        self.Label7_3.configure(highlightbackground="#d9d9d9")
+        self.Label7_3.configure(highlightcolor="black")
+        self.Label7_3.configure(text='''Vel''')
+        self.Label7_3.configure(width=39)
+
+        self.Label7_4 = Label(self.frmCom)
+        self.Label7_4.place(relx=0.46, rely=0.66, height=21, width=39)
+        self.Label7_4.configure(activebackground="#f9f9f9")
+        self.Label7_4.configure(activeforeground="black")
+        self.Label7_4.configure(background="#d9d9d9")
+        self.Label7_4.configure(disabledforeground="#a3a3a3")
+        self.Label7_4.configure(foreground="#000000")
+        self.Label7_4.configure(highlightbackground="#d9d9d9")
+        self.Label7_4.configure(highlightcolor="black")
+        self.Label7_4.configure(text='''Accl''')
 
         self.frmLog = Frame(top)
         self.frmLog.place(relx=0.02, rely=0.64, relheight=0.29, relwidth=0.97)
@@ -736,7 +772,7 @@ class Fish_traning_GUI___Client:
         self.Label15.configure(activeforeground="black")
         self.Label15.configure(background="#d9d9d9")
         self.Label15.configure(disabledforeground="#a3a3a3")
-        self.Label15.configure(font=font9)
+        self.Label15.configure(font=font10)
         self.Label15.configure(foreground="#0000fe")
         self.Label15.configure(highlightbackground="#d9d9d9")
         self.Label15.configure(highlightcolor="black")
@@ -781,11 +817,23 @@ class Fish_traning_GUI___Client:
         self.txtMainLog.see(END)
 
 
-    def __call__(self):
-        print "RUN Command"
+    def update_time(self, time_str):
+        _str_time_array = str(time_str).split(':')
+        _str_time_array = list(map(int, _str_time_array))
+
+        _str_hr = _str_time_array[0]
+        _str_min = _str_time_array[1]
+        _str_sec = _str_time_array[2]
+        # time_str = '{}:{}:{}'.format(_str_hr, _str_min, _str_sec)
+
+        if _str_min < 20:
+            self.Label15.configure(text=time_str)
+        else:  # >20 --> make it green
+            self.Label15.configure(text=time_str, fg='#5eaf24')
 
 
-
+        def __call__(self):
+            print "RUN Command"
 
 def make_two_digit_num(int_to_check):
     str_temp='{}'.format(int_to_check)

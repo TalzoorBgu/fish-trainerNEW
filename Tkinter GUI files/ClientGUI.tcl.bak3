@@ -24,7 +24,7 @@ set vTcl(active_menu_fg) #000000
 vTcl:font:add_font \
     "-family {Abadi MT Condensed Extra Bold} -size 20 -weight bold -slant roman -underline 0 -overstrike 0" \
     user \
-    vTcl:font9
+    vTcl:font10
 #################################
 #LIBRARY PROCEDURES
 #
@@ -79,7 +79,7 @@ proc vTclWindow.top37 {base} {
         -background {#d9d9d9} -highlightbackground {#d9d9d9} \
         -highlightcolor black 
     wm focusmodel $top passive
-    wm geometry $top 891x800+144+83
+    wm geometry $top 891x800+57+75
     update
     # set in toplevel.wgt.
     global vTcl
@@ -129,11 +129,12 @@ proc vTclWindow.top37 {base} {
         -highlightcolor black -text {Fish no.} 
     vTcl:DefineAlias "$site_3_0.lab50" "Label1" vTcl:WidgetProc "MainGUI" 1
     text $site_3_0.tex79 \
-        -background white -font TkTextFont -foreground black -height 32 \
-        -highlightbackground {#d9d9d9} -highlightcolor black \
-        -insertbackground black -selectbackground {#c4c4c4} \
-        -selectforeground black -undo 1 -width 218 -wrap word 
-    .top37.fra38.tex79 configure -font TkTextFont
+        -background white -font $::vTcl(fonts,vTcl:font10,object) \
+        -foreground black -height 32 -highlightbackground {#d9d9d9} \
+        -highlightcolor black -insertbackground black \
+        -selectbackground {#c4c4c4} -selectforeground black -undo 1 \
+        -width 218 -wrap word 
+    .top37.fra38.tex79 configure -font font10
     .top37.fra38.tex79 insert end text
     vTcl:DefineAlias "$site_3_0.tex79" "txtArgs" vTcl:WidgetProc "MainGUI" 1
     label $site_3_0.lab80 \
@@ -150,39 +151,39 @@ proc vTclWindow.top37 {base} {
         -text {Stop traning} 
     vTcl:DefineAlias "$site_3_0.but38" "btnStopTraning" vTcl:WidgetProc "MainGUI" 1
     text $site_3_0.tex45 \
-        -background white -font $::vTcl(fonts,vTcl:font9,object) \
+        -background white -font $::vTcl(fonts,vTcl:font10,object) \
         -foreground black -height 32 -highlightbackground {#d9d9d9} \
         -highlightcolor black -insertbackground black \
         -selectbackground {#c4c4c4} -selectforeground black -undo 1 -width 90 \
         -wrap word 
-    .top37.fra38.tex45 configure -font font9
+    .top37.fra38.tex45 configure -font font10
     .top37.fra38.tex45 insert end text
     vTcl:DefineAlias "$site_3_0.tex45" "txtFishNo1" vTcl:WidgetProc "MainGUI" 1
     text $site_3_0.tex46 \
-        -background white -font $::vTcl(fonts,vTcl:font9,object) \
+        -background white -font $::vTcl(fonts,vTcl:font10,object) \
         -foreground black -height 32 -highlightbackground {#d9d9d9} \
         -highlightcolor black -insertbackground black \
         -selectbackground {#c4c4c4} -selectforeground black -undo 1 -width 82 \
         -wrap word 
-    .top37.fra38.tex46 configure -font font9
+    .top37.fra38.tex46 configure -font font10
     .top37.fra38.tex46 insert end text
     vTcl:DefineAlias "$site_3_0.tex46" "txtTrainingDay1" vTcl:WidgetProc "MainGUI" 1
     text $site_3_0.tex42 \
-        -background white -font $::vTcl(fonts,vTcl:font9,object) \
+        -background white -font $::vTcl(fonts,vTcl:font10,object) \
         -foreground black -height 32 -highlightbackground {#d9d9d9} \
         -highlightcolor black -insertbackground black \
         -selectbackground {#c4c4c4} -selectforeground black -undo 1 -width 90 \
         -wrap word 
-    .top37.fra38.tex42 configure -font font9
+    .top37.fra38.tex42 configure -font font10
     .top37.fra38.tex42 insert end text
     vTcl:DefineAlias "$site_3_0.tex42" "txtFishNo2" vTcl:WidgetProc "MainGUI" 1
     text $site_3_0.tex43 \
-        -background white -font $::vTcl(fonts,vTcl:font9,object) \
+        -background white -font $::vTcl(fonts,vTcl:font10,object) \
         -foreground black -height 32 -highlightbackground {#d9d9d9} \
         -highlightcolor black -insertbackground black \
         -selectbackground {#c4c4c4} -selectforeground black -undo 1 -width 82 \
         -wrap word 
-    .top37.fra38.tex43 configure -font font9
+    .top37.fra38.tex43 configure -font font10
     .top37.fra38.tex43 insert end text
     vTcl:DefineAlias "$site_3_0.tex43" "txtTrainingDay2" vTcl:WidgetProc "MainGUI" 1
     radiobutton $site_3_0.rad44 \
@@ -293,12 +294,12 @@ proc vTclWindow.top37 {base} {
         -highlightcolor black -text {Days back} 
     vTcl:DefineAlias "$site_3_0.lab39" "Label11" vTcl:WidgetProc "MainGUI" 1
     text $site_3_0.tex40 \
-        -background white -font $::vTcl(fonts,vTcl:font9,object) \
+        -background white -font $::vTcl(fonts,vTcl:font10,object) \
         -foreground black -highlightbackground {#d9d9d9} \
         -highlightcolor black -insertbackground black \
         -selectbackground {#c4c4c4} -selectforeground black -undo 1 -width 66 \
         -wrap word 
-    .top37.fra52.tex40 configure -font font9
+    .top37.fra52.tex40 configure -font font10
     .top37.fra52.tex40 insert end text
     vTcl:DefineAlias "$site_3_0.tex40" "txtStatDaysBack" vTcl:WidgetProc "MainGUI" 1
     label $site_3_0.lab41 \
@@ -308,12 +309,12 @@ proc vTclWindow.top37 {base} {
         -highlightcolor black -text Arg. 
     vTcl:DefineAlias "$site_3_0.lab41" "Label12" vTcl:WidgetProc "MainGUI" 1
     text $site_3_0.tex42 \
-        -background white -font $::vTcl(fonts,vTcl:font9,object) \
+        -background white -font $::vTcl(fonts,vTcl:font10,object) \
         -foreground black -highlightbackground {#d9d9d9} \
         -highlightcolor black -insertbackground black \
         -selectbackground {#c4c4c4} -selectforeground black -undo 1 -width 74 \
         -wrap word 
-    .top37.fra52.tex42 configure -font font9
+    .top37.fra52.tex42 configure -font font10
     .top37.fra52.tex42 insert end text
     vTcl:DefineAlias "$site_3_0.tex42" "txtStatArgs" vTcl:WidgetProc "MainGUI" 1
     label $site_3_0.lab43 \
@@ -323,21 +324,21 @@ proc vTclWindow.top37 {base} {
         -highlightcolor black -text {Run arg.} 
     vTcl:DefineAlias "$site_3_0.lab43" "Label13" vTcl:WidgetProc "MainGUI" 1
     text $site_3_0.tex44 \
-        -background white -font $::vTcl(fonts,vTcl:font9,object) \
+        -background white -font $::vTcl(fonts,vTcl:font10,object) \
         -foreground black -highlightbackground {#d9d9d9} \
         -highlightcolor black -insertbackground black \
         -selectbackground {#c4c4c4} -selectforeground black -undo 1 \
         -width 378 -wrap word 
-    .top37.fra52.tex44 configure -font font9
+    .top37.fra52.tex44 configure -font font10
     .top37.fra52.tex44 insert end text
     vTcl:DefineAlias "$site_3_0.tex44" "txtStatRunArgs" vTcl:WidgetProc "MainGUI" 1
     text $site_3_0.tex46 \
-        -background white -font $::vTcl(fonts,vTcl:font9,object) \
+        -background white -font $::vTcl(fonts,vTcl:font10,object) \
         -foreground black -highlightbackground {#d9d9d9} \
         -highlightcolor black -insertbackground black \
         -selectbackground {#c4c4c4} -selectforeground black -undo 1 \
         -width 442 -wrap word 
-    .top37.fra52.tex46 configure -font font9
+    .top37.fra52.tex46 configure -font font10
     .top37.fra52.tex46 insert end text
     vTcl:DefineAlias "$site_3_0.tex46" "txtLogFolder" vTcl:WidgetProc "MainGUI" 1
     place $site_3_0.lab54 \
@@ -463,6 +464,13 @@ proc vTclWindow.top37 {base} {
         -highlightcolor black -insertbackground black \
         -selectbackground {#c4c4c4} -selectforeground black 
     vTcl:DefineAlias "$site_3_0.ent39" "txtAccl" vTcl:WidgetProc "MainGUI" 1
+    checkbutton $site_3_0.che41 \
+        -activebackground {#d9d9d9} -activeforeground {#000000} \
+        -background {#d9d9d9} -disabledforeground {#a3a3a3} \
+        -foreground {#000000} -highlightbackground {#d9d9d9} \
+        -highlightcolor black -justify left -text {Red Feeder} \
+        -variable chb_Var -wraplength 35 
+    vTcl:DefineAlias "$site_3_0.che41" "chb_NewMotor" vTcl:WidgetProc "MainGUI" 1
     place $site_3_0.lab58 \
         -in $site_3_0 -x 8 -y 8 -anchor nw -bordermode ignore 
     place $site_3_0.ent59 \
@@ -476,16 +484,16 @@ proc vTclWindow.top37 {base} {
         -in $site_3_0 -x 561 -y 11 -width 61 -height 21 -anchor nw \
         -bordermode ignore 
     place $site_3_0.but65 \
-        -in $site_3_0 -x 672 -y 8 -width 87 -relwidth 0 -height 38 \
+        -in $site_3_0 -x 668 -y 8 -width 57 -relwidth 0 -height 38 \
         -relheight 0 -anchor nw -bordermode ignore 
     place $site_3_0.but66 \
-        -in $site_3_0 -x 672 -y 48 -width 87 -relwidth 0 -height 38 \
+        -in $site_3_0 -x 668 -y 48 -width 57 -relwidth 0 -height 38 \
         -relheight 0 -anchor nw -bordermode ignore 
     place $site_3_0.but67 \
-        -in $site_3_0 -x 760 -y 48 -width 87 -relwidth 0 -height 38 \
+        -in $site_3_0 -x 730 -y 48 -width 57 -relwidth 0 -height 38 \
         -relheight 0 -anchor nw -bordermode ignore 
     place $site_3_0.but68 \
-        -in $site_3_0 -x 760 -y 8 -width 87 -relwidth 0 -height 38 \
+        -in $site_3_0 -x 730 -y 8 -width 57 -relwidth 0 -height 38 \
         -relheight 0 -anchor nw -bordermode ignore 
     place $site_3_0.lab69 \
         -in $site_3_0 -x 567 -y 30 -width 79 -height 21 -anchor nw \
@@ -497,11 +505,14 @@ proc vTclWindow.top37 {base} {
         -in $site_3_0 -x 296 -y 16 -width 103 -relwidth 0 -height 62 \
         -relheight 0 -anchor nw -bordermode ignore 
     place $site_3_0.ent38 \
-        -in $site_3_0 -x 470 -y 30 -width 80 -height 27 -anchor nw \
+        -in $site_3_0 -x 470 -y 28 -width 80 -height 27 -anchor nw \
         -bordermode ignore 
     place $site_3_0.ent39 \
-        -in $site_3_0 -x 470 -y 59 -width 80 -height 27 -anchor nw \
+        -in $site_3_0 -x 470 -y 57 -width 80 -height 27 -anchor nw \
         -bordermode ignore 
+    place $site_3_0.che41 \
+        -in $site_3_0 -x 790 -y 20 -width 71 -relwidth 0 -height 55 \
+        -relheight 0 -anchor nw -bordermode ignore 
     frame $top.fra71 \
         -borderwidth 2 -relief groove -background {#d9d9d9} -height 235 \
         -highlightbackground {#d9d9d9} -highlightcolor black -width 861 
@@ -537,7 +548,7 @@ proc vTclWindow.top37 {base} {
     label $site_3_0.lab39 \
         -activebackground {#f9f9f9} -activeforeground black \
         -background {#d9d9d9} -disabledforeground {#a3a3a3} \
-        -font $::vTcl(fonts,vTcl:font9,object) -foreground {#0000fe} \
+        -font $::vTcl(fonts,vTcl:font10,object) -foreground {#0000fe} \
         -highlightbackground {#d9d9d9} -highlightcolor black -text 00:00 
     vTcl:DefineAlias "$site_3_0.lab39" "Label15" vTcl:WidgetProc "MainGUI" 1
     place $site_3_0.lab73 \
@@ -566,7 +577,7 @@ proc vTclWindow.top37 {base} {
         -in $top -x 16 -y 8 -width 864 -relwidth 0 -height 267 -relheight 0 \
         -anchor nw -bordermode ignore 
     place $top.fra57 \
-        -in $top -x 16 -y 280 -width 864 -relwidth 0 -height 91 -relheight 0 \
+        -in $top -x 10 -y 280 -width 864 -relwidth 0 -height 91 -relheight 0 \
         -anchor nw -bordermode ignore 
     place $top.fra71 \
         -in $top -x 16 -y 512 -width 861 -relwidth 0 -height 235 -relheight 0 \

@@ -4,6 +4,8 @@ import track_fish
 from tracker.tcp_client import FishClient
 from tracker.fish_tank import Tank
 from tools import fishlog
+from time_counter import TimeCounter
+
 
 import argparse
 import os
@@ -22,6 +24,7 @@ class Controller:
         total_feed = 0
         time_counter = 0
 
+        self.time_count = TimeCounter()
         self.cb_obj = cb_obj
         self.chb_Var = cb_obj.chb_Var
         print("chb_Var_cont:{}".format(self.chb_Var.get()))
@@ -43,6 +46,17 @@ class Controller:
             self.tank.append(Tank(id, size))
             self.logger.append(fishlog.FishLog(log_folder, "{}.({})".format(name[id], str(id))))
             id = id + 1
+
+
+    def __del__(self):  #Destroy
+        print ('Controller closed')
+
+    def time(self):
+        time_str = self.time_count.get_time_diff()
+        if time_str:
+            #print (time_str)
+            self.cb_obj.update_time(time_str)
+
 
     def do(self, x, y, fish_id):
         global total_feed

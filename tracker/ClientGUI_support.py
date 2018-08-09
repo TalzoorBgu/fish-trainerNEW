@@ -133,11 +133,27 @@ def onStatClear():
     sys.stdout.flush()
     w.txtStatLog.delete('0.0', END)
 
+
 def onTankConfig():
-        print('ClientGUI_support.onTankConfig')
-        sys.stdout.flush()
-        thread_track_fish = threading.Thread(target=scene_planner.SP_Main, args=())
-        thread_track_fish.start()
+    print('ClientGUI_support.onTankConfig')
+    sys.stdout.flush()
+    thread_track_fish = threading.Thread(target=scene_planner.SP_Main, args=())
+    thread_track_fish.start()
+
+
+def onSetZero():
+    print('ClientGUI_support.onSetZero')
+    btn_txt = w.btnSetZero['text']
+    if btn_txt == "Set ZERO pos.":
+        w.btnSetZero.configure(text='END')
+        _str_to_send = 'SetZeroStart'
+    else:
+        w.btnSetZero.configure(text='Set ZERO pos.')
+        _str_to_send = 'SetZeroEND'
+
+    fish_client = FishClient()
+    fish_client.send(_str_to_send, 0)
+    fish_client.kill()
 
 def onStatRun():
     global w

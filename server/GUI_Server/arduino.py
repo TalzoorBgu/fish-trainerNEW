@@ -85,6 +85,9 @@ class SendCommand:
         _str_to_send = 'dis_pins,{}'.format(_num)
         return _str_to_send
 
+    def en_pins(self, _num):
+        _str_to_send = 'en_pins,{}'.format(_num)
+        return _str_to_send
 
 
 
@@ -285,6 +288,7 @@ def send_default_program():
     # command = SendCommand(0, 0, 0, 1, 1, 1, FULL_CYCLE)
     command = SendCommand(FULL_CYCLE)
     PROG_arry = [['prog_start',     0,      0,      0],
+                 ['moveto',         0,      0,      0],
                  ['def_v_a',        60,     40,    20],
                  ['moveto',         30,      0,      0],
                  ['def_v_a',        600,     300,    20],
@@ -306,7 +310,10 @@ def send_default_program():
                  ['delay',          60, 'L', 0],
                  ['move',           25,     'R',    0],
 
-                 ['def_v_a', 100, 80, 30],
+                 ['def_v_a',        40,     20,     30],
+                 ['moveto',         0,      0,      0],
+
+                 ['def_v_a',        100,    80,     30],
                  ['prog_end',       0,      0,      0]
                  ]
 
@@ -337,6 +344,20 @@ def send_default_program():
         # time.sleep(10.0/1000.0)
 
     #ser.write(res)
+def disable_pins(_int_on):
+    ser = MySerial("/dev/ttyS0", 9600)
+    command = SendCommand(FULL_CYCLE)
+
+    if _int_on == 1:
+        _str_to_send = command.disable_pins(0)
+    else:
+        _str_to_send = command.en_pins(0)
+
+    ser.write(_str_to_send)
+
+    result = ''
+    while result == '':  # wait for respond before sending next command
+        result = ser.read()
 
 
 def prog_run(_prog, _motor):
