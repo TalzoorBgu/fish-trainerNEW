@@ -45,6 +45,59 @@ class Feeder:
         print ("Done",end='') ## When loop is complete, print "Done"
         return 'Done'
 
+    def raw_spin(self, pin_num, pin_dir, en_pin, steps, direction, velocity, accl):
+        print("raw_spin")
+        print ("accl:{0}".format(accl))
+        GPIO.output(en_pin, True) #pull slp pin to HIGH
+        GPIO.output(pin_dir, direction == 'L')    #HIGH for 'L', LOW for else
+        print ('steps:{0}, {1}%:{2}'.format(steps, accl, int((accl/100.0)*steps)))
+        i2 = 0
+        for i in range(steps): #53.3 for big pill # 133 for pill device# 1600 for archimeds ### one step is 1.8 degrees
+            velocity_val = self.velocity_calc(velocity, steps, accl, i)
+            if velocity_val < 1: velocity_val = 1
+            wait_val = 1.0/(500000.0*velocity_val)
+            # print('VEL:{}'.format(wait_val))
+            #print ('{0},{1:.2f}-{2:.5f}\t\t'.format(i, velocity_val, 1.0/(velocity_val)), end='')
+            #if i/10 == 0: print (".", end='')
+            GPIO.output(pin_num, True)## Switch on pin
+            time.sleep(wait_val)## Wait
+            GPIO.output(pin_num, False)## Switch off pin
+            time.sleep(wait_val)## Wait
+            i2 += 1
+        print('i2:{}'.format(i2))
+        print ("")
+        GPIO.output(en_pin, False) #pull slp pin to HIGH
+        GPIO.output(pin_dir, False)
+        print("Done")
+        return 'Done'
+
+    def velocity_calc(self, max_velocity, total_steps, percentage, c_step):
+        action_range = total_steps*(percentage/100.0)
+
+        if (c_step <= action_range):
+            accl_pr = self.accl('up', c_step, percentage, total_steps)
+            velocity = (accl_pr/100.0)*max_velocity
+        elif (c_step >= total_steps - action_range):
+            accl_pr = self.accl('down', c_step, percentage, total_steps)
+            velocity = (accl_pr/100.0)*max_velocity
+        else:
+            velocity = max_velocity
+        return velocity
+
+    def accl(self, direction, i, percentage, total_steps):
+        func = 100
+        try:
+            if direction == 'up':
+                func = math.exp((20.0 * 100.0 * i) / (2.0 * percentage * total_steps))
+            if direction == 'down':
+                func = math.exp((20.0 * 100.0 * (total_steps - i) ) / (2.0 * percentage * total_steps))
+            accl = func
+            if accl > 100.0: accl = 100
+        except ZeroDivisionError as error:
+            print ("Error: ZeroDivisionError")
+            accl = func
+        return accl
+
     def destruct():
         GPIO.cleanup()
         return
