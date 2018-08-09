@@ -22,8 +22,9 @@ class Feeder:
                 print("pin:{}".format(pin))
                 GPIO.setup(int(pin), GPIO.OUT)
         self.check_arduino_conn()
-        print("ardu_res:{}".format(self.ardu_conn))
-        arduino.send_default_program()
+        if self.ardu_conn == True:
+            arduino.send_default_program()
+            self.arduino = arduino.SendCommand()
 
 
     def check_arduino_conn(self):

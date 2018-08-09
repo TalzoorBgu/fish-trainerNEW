@@ -22,8 +22,9 @@ class SendCommand:
     #             dir_pin2,
     #             en_pin2,
     #             _full_cycle):
-    def __init__(self, _full_cycle):
+    def __init__(self, _full_cycle=FULL_CYCLE):
         self.full_cycle = _full_cycle
+        print("SendCom init ok")
         # _str = self.init_seq_motor_1(stp_pin1, dir_pin1, en_pin1)
         # ser.write(_str)
         # _str = self.init_seq_motor_2(stp_pin2, dir_pin2, en_pin2)
