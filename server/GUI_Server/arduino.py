@@ -358,7 +358,7 @@ def prog_run(_prog, _motor):
         result = ser.read()
     print(result)
 
-    _str_to_send = command.run_prog(0)
+    _str_to_send = command.run_prog(_prog)
     ser.write(_str_to_send)
 
     result = ''

@@ -303,10 +303,10 @@ def handle_client_connection(client_socket):
         app.onTxtUpdate('{0}.'.format(spin_res), False)
     if recv_id == "11" or recv_id == "12":
         if recv_id == "11":
-            int_recv_id = 11
+            int_feeder_id = 1
         else:
-            int_recv_id = 12
-        spin_res = feed.new_feeder_run(int_recv_id)
+            int_feeder_id = 2
+        spin_res = feed.new_feeder_run(int_feeder_id, recv_side)
         app.onTxtUpdate('{0}.'.format(spin_res), False)
 
     if recv_id == "test_1L":

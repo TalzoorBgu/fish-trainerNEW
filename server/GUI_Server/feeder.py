@@ -31,8 +31,12 @@ class Feeder:
         print('ardu_conn:{}'.format(self.ardu_conn))
         return self.ardu_conn
 
-    def new_feeder_run(self, _motor):
-        res = arduino.prog_run(1, _motor - 10)  #back to motor 1 or 2
+    def new_feeder_run(self, _feeder, _side):
+        if _side == 'left':
+            _motor = 1
+        else:
+            _motor = 2
+        res = arduino.prog_run(0, _feeder, _motor)  #back to motor 1 or 2
         return res
 
     ##Define a function named Blink()
