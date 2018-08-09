@@ -140,6 +140,8 @@ class MySerial:
 
 
 def check_arduino_connection():
+    ser = MySerial("/dev/ttyS0", 9600)
+
     _bool_flag = False
     _str_to_send = 'First_Conn_Check'
     ser.write(_str_to_send)
@@ -154,6 +156,7 @@ def check_arduino_connection():
     if result == _str_to_send: _bool_flag = True
     if _bool_flag==False and result != '': print('res:{}'.format(result))
 
+    ser.serial.close()
     return _bool_flag
 
 def main():
