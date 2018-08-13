@@ -126,7 +126,7 @@ def SP_Main():
         #print "script: __file__ is", repr(__file__)
         #print "script: cwd is", repr(os.getcwd())
 
-        thefile = open(file_path, 'w')
+        thefile = open(file_path, 'Fish_traningGUI')
         print ("file_path:{}".format(file_path))
         for fishy in fish:
             print fishy

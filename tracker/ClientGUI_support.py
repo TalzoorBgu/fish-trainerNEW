@@ -44,7 +44,7 @@ def set_Tk_var():
 
 def onLogClear():
     sys.stdout.flush()
-    w.txtMainLog.delete('0.0',END)
+    Fish_traningGUI.txtMainLog.delete('0.0', END)
 
 
 def Feed():
@@ -57,10 +57,10 @@ def on1L():
 
     try:
         print('ClientGUI_support.on1L')
-        fish_client = FishClient(w)
+        fish_client = FishClient(Fish_traningGUI)
         #print('chb_Var:{}'.format(chb_Var.get()))
 
-        fish_client.send('test_1L', w.txtStepNum.get())
+        fish_client.send('test_1L', Fish_traningGUI.txtStepNum.get())
         fish_client.kill()
         sys.stdout.flush()
     except TypeError:
@@ -68,29 +68,29 @@ def on1L():
 
 def on1R():
     print('ClientGUI_support.on1R')
-    fish_client = FishClient(w)
-    fish_client.send('test_1R', w.txtStepNum.get())
+    fish_client = FishClient(Fish_traningGUI)
+    fish_client.send('test_1R', Fish_traningGUI.txtStepNum.get())
     fish_client.kill()
     sys.stdout.flush()
 
 def on2L():
     print('ClientGUI_support.on2L')
-    velocity = w.txtVelocity.get()
-    acceleration = w.txtAccl.get()
+    velocity = Fish_traningGUI.txtVelocity.get()
+    acceleration = Fish_traningGUI.txtAccl.get()
 
-    fish_client = FishClient(w)
-    fish_client.send('test_2L', 0, w.txtStepNum.get(), velocity, acceleration)
+    fish_client = FishClient(Fish_traningGUI)
+    fish_client.send('test_2L', 0, Fish_traningGUI.txtStepNum.get(), velocity, acceleration)
     fish_client.kill()
 
     sys.stdout.flush()
 
 def on2R():
     print('ClientGUI_support.on2R')
-    velocity = w.txtVelocity.get()
-    acceleration = w.txtAccl.get()
+    velocity = Fish_traningGUI.txtVelocity.get()
+    acceleration = Fish_traningGUI.txtAccl.get()
 
-    fish_client = FishClient(w)
-    fish_client.send('test_2R', 0, w.txtStepNum.get(), velocity, acceleration)
+    fish_client = FishClient(Fish_traningGUI)
+    fish_client.send('test_2R', 0, Fish_traningGUI.txtStepNum.get(), velocity, acceleration)
     fish_client.kill()
     sys.stdout.flush()
 
@@ -108,19 +108,19 @@ def onRunTraining():
 
     stop_traning = False
     log_name = []
-    log_name.append('F{}DAY{}'.format(w.txtFishNo1.get('0.0', 'end-1c'), w.txtTrainingDay1.get('0.0', 'end-1c')))
+    log_name.append('F{}DAY{}'.format(Fish_traningGUI.txtFishNo1.get('0.0', 'end-1c'), Fish_traningGUI.txtTrainingDay1.get('0.0', 'end-1c')))
 
-    controller = Controller(w, log_name)
+    controller = Controller(Fish_traningGUI, log_name)
     thread_track_fish = threading.Thread(target=track_fish.track_loop, args=(controller,))
 
     thread_track_fish.daemon = True
     thread_track_fish.start()
 
 def onStopTraining():
-    global stop_traning, w
+    global stop_traning, Fish_traningGUI
     sys.stdout.flush()
-    w.stop_traning = True
-    w.print_and_update_main_log("Stopped!")
+    Fish_traningGUI.stop_traning = True
+    Fish_traningGUI.print_and_update_main_log("Stopped!")
 
 def onSendtest():
     print('ClientGUI_support.onSendtest')
@@ -131,7 +131,7 @@ def onSendtest():
 
 def onStatClear():
     sys.stdout.flush()
-    w.txtStatLog.delete('0.0', END)
+    Fish_traningGUI.txtStatLog.delete('0.0', END)
 
 
 def onTankConfig():
@@ -143,12 +143,12 @@ def onTankConfig():
 
 def onSetZero():
     print('ClientGUI_support.onSetZero')
-    btn_txt = w.btnSetZero['text']
+    btn_txt = Fish_traningGUI.btnSetZero['text']
     if btn_txt == "Set ZERO pos.":
-        w.btnSetZero.configure(text='END')
+        Fish_traningGUI.btnSetZero.configure(text='END')
         _str_to_send = 'SetZeroStart'
     else:
-        w.btnSetZero.configure(text='Set ZERO pos.')
+        Fish_traningGUI.btnSetZero.configure(text='Set ZERO pos.')
         _str_to_send = 'SetZeroEND'
 
     fish_client = FishClient()
@@ -156,17 +156,19 @@ def onSetZero():
     fish_client.kill()
 
 def onStatRun():
-    global w
+    global Fish_traningGUI
     sys.stdout.flush()
-    _StatInfo = ThreadingProcess('fish_stat.py', w.LogFolderName, w.txtStatDaysBack.get('0.0', END),
-    w.txtStatArgs.get('0.0', END)).run()
-    w.txtStatLog.insert(END, _StatInfo)
-    w.txtStatLog.see(END)
+    _StatInfo = ThreadingProcess('fish_stat.py',
+                                 Fish_traningGUI.LogFolderName,
+                                 Fish_traningGUI.txtStatDaysBack.get('0.0', END),
+                                 Fish_traningGUI.txtStatArgs.get('0.0', END)).run()
+    Fish_traningGUI.txtStatLog.insert(END, _StatInfo)
+    Fish_traningGUI.txtStatLog.see(END)
     # print "HERE:{}".format(StatInfo)
 
 def init(top, gui, *args, **kwargs):
-    global w, top_level, root
-    w = gui
+    global Fish_traningGUI, top_level, root
+    Fish_traningGUI = gui
     top_level = top
     root = top
 

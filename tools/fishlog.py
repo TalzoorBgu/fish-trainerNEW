@@ -16,7 +16,7 @@ class FishLog:
         filename='{}{}{}{}'.format(log_folder, strftime("%Y-%m-%d %H%M%S", gmtime()), '_'+fish_name, ".txt") # time+name
         print ('log file:{}'.format(filename))
 
-        self.fo = open(filename, 'w')
+        self.fo = open(filename, 'Fish_traningGUI')
         
     def add_tracked_point(self,x,y):
         self.fo.write(str(self.line_number)+' ') #
