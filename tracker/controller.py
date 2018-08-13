@@ -59,7 +59,8 @@ class Controller:
 
 
     def check_traning(self):
-        return self.cb_obj.stop_training
+        print self.cb_obj.stop_traning
+        return "1" # self.cb_obj.stop_training
 
 
     def do(self, x, y, fish_id):
