@@ -110,8 +110,15 @@ def onRunTraining():
     log_name = []
     log_name.append('F{}DAY{}'.format(Fish_traningGUI.txtFishNo1.get('0.0', 'end-1c'), Fish_traningGUI.txtTrainingDay1.get('0.0', 'end-1c')))
 
-    _tmp1 = type(controller)
+    try:
+        _tmp1 = type(controller)
+        controller.__del__()
+    except UnboundLocalError:
+        print("there is not Controller instance")
+
     controller = Controller(Fish_traningGUI, log_name)
+    _tmp1 = type(controller)
+    print("type:{}".format(_tmp1))
     thread_track_fish = threading.Thread(target=track_fish.track_loop, args=(controller,))
 
     thread_track_fish.daemon = True
