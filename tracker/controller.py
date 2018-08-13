@@ -59,8 +59,8 @@ class Controller:
 
 
     def check_traning(self):
-        print self.cb_obj.stop_traning
-        return 0    # self.cb_obj.stop_training
+        _int_tmp = self.cb_obj.stop_traning
+        return _int_tmp
 
 
     def do(self, x, y, fish_id):
