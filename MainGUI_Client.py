@@ -60,7 +60,7 @@ def create_Fish_traning_GUI___Client(root, *args, **kwargs):
     '''Starting point when module is imported by another program.'''
     global Fish_traningGUI, w_win, rt
     rt = root
-    w = Toplevel (root)
+    Fish_traningGUI = Toplevel (root)
     ClientGUI_support.set_Tk_var()
     top = Fish_traning_GUI___Client (w)
     ClientGUI_support.init(w, top, *args, **kwargs)
@@ -68,14 +68,12 @@ def create_Fish_traning_GUI___Client(root, *args, **kwargs):
 
 def destroy_Fish_traning_GUI___Client():
     global Fish_traningGUI
-    w.destroy()
-    w = None
-
-
+    Fish_traningGUI.destroy()
+    Fish_traningGUI = None
 
 
 class Fish_traning_GUI___Client:
-    def __init__(self, top=None):
+    def __init__(self, top = None):
         self.stop_traning = False
         '''This class configures and populates the toplevel window.
            top is the toplevel containing window.'''
@@ -652,8 +650,10 @@ class Fish_traning_GUI___Client:
         self.txtAccl.configure(selectforeground="black")
 
         self.chb_NewMotor = Checkbutton(self.frmCom)
-        self.chb_NewMotor.place(relx=0.89, rely=0.11, relheight=0.38
-                , relwidth=0.08)
+        self.chb_NewMotor.place(relx=0.89,
+                                rely=0.11,
+                                relheight=0.38,
+                                relwidth=0.08)
         self.chb_NewMotor.configure(activebackground="#d9d9d9")
         self.chb_NewMotor.configure(activeforeground="#000000")
         self.chb_NewMotor.configure(background="#d9d9d9")
@@ -680,8 +680,6 @@ class Fish_traning_GUI___Client:
         self.btnSetZero.configure(pady="0")
         self.btnSetZero.configure(text='''Set ZERO pos.''')
         self.btnSetZero.configure(width=87)
-
-
 
         self.Label7_3 = Label(self.frmCom)
         self.Label7_3.place(relx=0.46, rely=0.38, height=21, width=39)
