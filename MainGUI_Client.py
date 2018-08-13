@@ -28,8 +28,8 @@ from tracker import ClientGUI_support
 Config = ConfigParser.ConfigParser()
 
 #Global vars
-exit_var=False
-stop_traning=False
+exit_var = False
+stop_traning = False
 
 def print_path():
     pass
@@ -778,7 +778,6 @@ class Fish_traning_GUI___Client:
         self.Label15.configure(highlightcolor="black")
         self.Label15.configure(text='''00:00''')
 
-
         self.fillValue()
 
     def fillValue(self):
@@ -833,11 +832,13 @@ class Fish_traning_GUI___Client:
 
 
         def __call__(self):
-            print "RUN Command"
+            print("RUN Command")
+
 
 def make_two_digit_num(int_to_check):
-    str_temp='{}'.format(int_to_check)
-    if int_to_check<10: str_temp='0{}'.format(int_to_check)
+    str_temp = '{}'.format(int_to_check)
+    if int_to_check < 10:
+        str_temp = '0{}'.format(int_to_check)
     return str_temp
 
 if __name__ == '__main__':

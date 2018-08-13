@@ -44,6 +44,8 @@ def track_loop(cb): #cb is an object that has a do() function in the calling scr
     global stop_training
 
     while stop_training == False:
+        stop_training = cb.stop_training
+
         cb.time()
         # Capture frame-by-frame
         ret, frame = video_capture.read()

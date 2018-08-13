@@ -58,6 +58,10 @@ class Controller:
             self.cb_obj.update_time(time_str)
 
 
+    def check_traning(self):
+        return self.cb_obj.stop_training
+
+
     def do(self, x, y, fish_id):
         global total_feed
 

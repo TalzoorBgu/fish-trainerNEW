@@ -119,7 +119,7 @@ def onRunTraining():
 def onStopTraining():
     global stop_traning, w
     sys.stdout.flush()
-    stop_traning=True
+    w.stop_traning = True
     w.print_and_update_main_log("Stopped!")
 
 def onSendtest():
