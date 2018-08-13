@@ -15,7 +15,7 @@ from tracker import track_fish
 from tracker.tcp_client import FishClient
 
 
-
+stop_traning = False
 
 try:
     from Tkinter import *
