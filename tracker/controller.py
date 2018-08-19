@@ -67,12 +67,15 @@ class Controller:
 
     def do(self, x, y, fish_id):
         global total_feed
-
-        self.logger[fish_id].add_tracked_point(x, y)
-        feed_side = self.tank[fish_id].decide(x)
         time_now = int(round(time.time()))
 
-        if (feed_side is not None) and (time_now - self.time_last_feed > FEED_EVERY):
+        self.logger[fish_id].add_tracked_point(x, y)
+        if time_now - self.time_last_feed > FEED_EVERY:     # feed every..
+            feed_side = self.tank[fish_id].decide(x)
+        else:
+            feed_side = None
+
+        if feed_side is not None:
             total_feed += 1
             str_to_print = '{}\t,{}\t - \tTotal:{}'.format(fish_id, feed_side, total_feed)
             self.time_last_feed = time_now
