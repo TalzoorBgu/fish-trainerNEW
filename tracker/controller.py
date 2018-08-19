@@ -5,10 +5,11 @@ from tracker.tcp_client import FishClient
 from tracker.fish_tank import Tank
 from tools import fishlog
 from time_counter import TimeCounter
-
-
 import argparse
 import os
+import time
+
+FEED_EVERY = 3          # feed every 3 sec
 
 
 # TODO:
@@ -28,6 +29,7 @@ class Controller:
         self.cb_obj = cb_obj
         self.chb_Var = cb_obj.chb_Var
         print("chb_Var_cont:{}".format(self.chb_Var.get()))
+        self.time_last_feed = int(round(time.time()))
 
         width = track_fish.init_tracking()
 
@@ -68,12 +70,14 @@ class Controller:
 
         self.logger[fish_id].add_tracked_point(x, y)
         feed_side = self.tank[fish_id].decide(x)
+        time_now = int(round(time.time()))
 
         #self.time_count()
 
-        if feed_side is not None:
+        if (feed_side is not None) and (time_now - self.time_last_feed > FEED_EVERY):
             total_feed += 1
             str_to_print = '{}\t,{}\t - \tTotal:{}'.format(fish_id, feed_side, total_feed)
+            self.time_last_feed = time_now
 
             if self.cb_obj is not None:
                 self.cb_obj.print_and_update_main_log(str_to_print)
