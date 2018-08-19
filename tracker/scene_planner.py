@@ -123,8 +123,8 @@ def SP_Main():
         full_root_script_path = os.getcwd()
         file_path='{}\\tracker\{}'.format(full_root_script_path,'tank_config.txt')
 
-        #print "script: __file__ is", repr(__file__)
-        #print "script: cwd is", repr(os.getcwd())
+        print ("script: __file__ is {}".format(repr(__file__)))
+        print ("script: cwd is {}".format(repr(os.getcwd())))
 
         thefile = open(file_path, 'Fish_traningGUI')
         print ("file_path:{}".format(file_path))

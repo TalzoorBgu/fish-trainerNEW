@@ -9,7 +9,7 @@ import argparse
 import os
 import time
 
-FEED_EVERY = 3          # feed every 3 sec
+FEED_EVERY = 10          # feed every 10 sec
 
 
 # TODO:
