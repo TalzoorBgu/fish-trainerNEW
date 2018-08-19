@@ -72,8 +72,6 @@ class Controller:
         feed_side = self.tank[fish_id].decide(x)
         time_now = int(round(time.time()))
 
-        #self.time_count()
-
         if (feed_side is not None) and (time_now - self.time_last_feed > FEED_EVERY):
             total_feed += 1
             str_to_print = '{}\t,{}\t - \tTotal:{}'.format(fish_id, feed_side, total_feed)
