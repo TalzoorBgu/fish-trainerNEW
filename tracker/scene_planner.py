@@ -131,7 +131,7 @@ def SP_Main():
         print ("file_path:{}".format(file_path))
 
         for fishy in fish:
-            print fishy
+            print(fishy)
             thefile.write("%s\n" % fishy)
         thefile.flush()
         thefile.close()
