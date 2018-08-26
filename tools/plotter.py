@@ -7,25 +7,27 @@ class ReadFile:
 
     def __init__(self, _file_name):
         try:
-            self.data = []
+            self.data_x = []
+            self.data_y = []
 
-            file = open(_file_name, 'r')
+            file_h = open(_file_name, 'r')
 
-            text_string = file.read().split('\n')
+            text_string = file_h.read().split('\n')
             for word in text_string:
                 data = self.extract_x_y(word)
                 if data[0] is True:
                     self.add(data[1])
-            #print("all_data:{}".format(self.data))
+            #print("all_data: x={}, y={}".format(self.data_x, self.data_y))
 
         except:
             print("Error")
             raise
         finally:
-            file.close()
+            file_h.close()
 
     def add(self, _data):
-        self.data.append(_data)
+        self.data_x.append(_data[0])
+        self.data_y.append(_data[1])
         pass
 
     @staticmethod
@@ -50,9 +52,9 @@ class PlotTraj:
 
     def __init__(self, _data):
         self.data = _data
-        self.ax = plt.figure()
-        hte = np.array([100, 11, 12, 13, 15, 20, 21, 22, 25, 30])
-        hre = np.array([10, 2, 3, 4, 5, 6, 7, 8, 9, 100])
+        self.ax = plt.figure(figsize=(6, 6))
+        hte = np.array(_data[0])
+        hre = np.array(_data[1])
         self.line, = plt.plot(hte, hre, linewidth=2, color='r')
         plt.xlabel('X - Title')
         plt.ylabel('Y - title')
@@ -60,7 +62,7 @@ class PlotTraj:
         plt.grid(True)
         plt.draw()
         plt.show()
-        self.ax.savefig('testfig.png')
+        self.ax.savefig('testfig_600dpi.png', dpi=600)
         #plt.savefig('testfig.png')
 
         pass
@@ -70,11 +72,8 @@ class PlotTraj:
 
 
 if __name__ == '__main__':
-    from screeninfo import get_monitors
-
-    for m in get_monitors():
-        print(str(m))
-
+    #1280x1024
     read_f = ReadFile(
         "/Users/talzoor/git_projects/BGU_Fish_lab/fish-trainerNEW/data/log/2018-08-19 113234_F145DAY6.(0).txt")
-    PlotTraj([0, 0])
+    #data = read_f.data
+    PlotTraj([read_f.data_x, read_f.data_y])
