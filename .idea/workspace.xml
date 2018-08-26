@@ -2,16 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="57c019b1-69fa-4283-a363-6b02e650be8f" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/tools/plotter.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tools/serial_ports.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/fish-trainerNEW.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/fish-trainerNEW.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/log/2018-08-19 115959_FDAY.(0).txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/log/2018-08-19 120330_FDAY.(0).txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/log/2018-08-19 122911_FDAY.(0).txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/log/2018-08-19 123056_FDAY.(0).txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tracker/tank_config.txt" beforeDir="false" afterPath="$PROJECT_DIR$/tracker/tank_config.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/plotter.py" beforeDir="false" afterPath="$PROJECT_DIR$/tools/plotter.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -21,29 +13,56 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/fish_trainerNEW$plotter.coverage" NAME="plotter Coverage Results" MODIFIED="1535294470714" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tools" />
     <SUITE FILE_PATH="coverage/fish_trainerNEW$MainGUI_Client.coverage" NAME="MainGUI_Client Coverage Results" MODIFIED="1534164259845" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="scene_planner.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tracker/scene_planner.py">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="ClientGUI_support.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tracker/ClientGUI_support.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="301">
-              <caret line="130" column="48" selection-start-line="130" selection-start-column="48" selection-end-line="130" selection-end-column="48" />
+            <state relative-caret-position="2862">
+              <caret line="112" column="8" selection-start-line="112" selection-start-column="8" selection-end-line="112" selection-end-column="8" />
               <folding>
-                <element signature="e#205#220#0" expanded="true" />
+                <element signature="e#173#183#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="serial_ports.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tools/serial_ports.py">
+      <file leaf-file-name="controller.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tracker/controller.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="275">
-              <caret line="14" column="55" selection-start-line="14" selection-start-column="55" selection-end-line="14" selection-end-column="55" />
+            <state relative-caret-position="135">
+              <caret line="12" selection-start-line="12" selection-end-line="12" />
               <folding>
-                <element signature="e#0#10#0" expanded="true" />
+                <element signature="e#23#40#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="fish_tank.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tracker/fish_tank.py">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file leaf-file-name="track_fish.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tracker/track_fish.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2457">
+              <caret line="91" column="25" selection-start-line="91" selection-start-column="23" selection-end-line="91" selection-end-column="25" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="scene_planner.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tracker/scene_planner.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="228">
+              <caret line="122" column="19" selection-start-line="122" selection-start-column="19" selection-end-line="122" selection-end-column="19" />
+              <folding>
+                <element signature="e#205#220#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -52,22 +71,40 @@
       <file leaf-file-name="plotter.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/tools/plotter.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="100">
-              <caret line="34" column="40" selection-start-line="34" selection-start-column="40" selection-end-line="34" selection-end-column="40" />
+            <state relative-caret-position="286">
+              <caret line="61" column="18" selection-start-line="61" selection-start-column="18" selection-end-line="61" selection-end-column="18" />
+              <folding>
+                <element signature="e#1#18#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="2018-08-26 125922_F555DAY4.(0).txt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/data/log/2018-08-26 125922_F555DAY4.(0).txt">
-          <provider selected="true" editor-type-id="text-editor" />
+      <file leaf-file-name="2018-08-19 113234_F145DAY6.(0).txt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/data/log/2018-08-19 113234_F145DAY6.(0).txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-6786" />
+          </provider>
         </entry>
       </file>
-      <file leaf-file-name="fish_stat.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tools/fish_stat.py">
+      <file leaf-file-name="CumulativeLogger.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/server/GUI_Server/CumulativeLogger.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="26">
-              <caret line="127" column="44" selection-start-line="127" selection-start-column="20" selection-end-line="127" selection-end-column="44" />
+            <state>
+              <folding>
+                <element signature="e#97#111#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MainWindowApp.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/server/GUI_Server/MainWindowApp.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <folding>
+                <element signature="e#61#75#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -135,7 +172,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -163,6 +199,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -216,6 +253,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tools/plotter.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
@@ -234,6 +272,7 @@
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tools/serial_ports.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
@@ -446,7 +485,14 @@
       <option name="project" value="LOCAL" />
       <updated>1534685789403</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="&quot;scene planner fix&quot;">
+      <created>1535293718050</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1535293718050</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TodoView">
@@ -459,57 +505,72 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1300" height="991" extended-state="0" />
+    <frame x="0" y="23" width="1440" height="793" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.0" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32948717" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.5880923" />
-      <window_info anchor="bottom" id="Version Control" order="7" weight="0.22957747" />
+      <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.36925286" />
+      <window_info anchor="bottom" id="Version Control" order="7" weight="0.13649425" />
       <window_info anchor="bottom" id="Python Console" order="7" weight="0.32948717" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.32948717" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.399757" />
+      <window_info anchor="right" id="Remote Host" order="3" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.34191704" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="right" id="Database" order="3" />
+      <window_info anchor="right" id="SciView" order="3" visible="true" weight="0.25679544" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Remote Host" order="3" />
-      <window_info anchor="bottom" id="File Transfer" order="8" weight="0.32948717" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.0" />
+      <window_info anchor="right" id="SciView" order="3" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32948717" />
+      <window_info anchor="bottom" id="Version Control" order="7" weight="0.22957747" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.5880923" />
+      <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="right" id="SciView" order="3" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.399757" />
+      <window_info anchor="bottom" id="File Transfer" order="8" weight="0.32948717" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32948717" />
+      <window_info anchor="bottom" id="Terminal" order="7" weight="0.32948717" />
+      <window_info anchor="bottom" id="Python Console" order="7" weight="0.32948717" />
     </layout>
     <layout-to-restore>
+      <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32928312" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" id="Remote Host" order="3" />
+      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19203188" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32948717" />
-      <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32948717" />
-      <window_info anchor="bottom" id="Python Console" order="9" weight="0.32948717" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="right" id="Database" order="4" />
       <window_info anchor="bottom" id="Terminal" order="10" weight="0.32948717" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="12" weight="0.22957747" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="File Transfer" order="13" weight="0.32948717" />
-      <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="right" id="SciView" order="5" />
-      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="File Transfer" order="13" weight="0.32948717" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32948717" />
+      <window_info anchor="bottom" id="Python Console" order="9" weight="0.32948717" />
     </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -559,13 +620,37 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/tracker/controller.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="12" selection-start-line="12" selection-end-line="12" />
+          <folding>
+            <element signature="e#23#40#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="81">
+          <caret line="3" selection-start-line="3" selection-end-line="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tracker/scene_planner.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="349">
+          <caret line="133" column="23" lean-forward="true" selection-start-line="133" selection-start-column="23" selection-end-line="133" selection-end-column="23" />
+          <folding>
+            <element signature="e#205#220#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/MainGUI_Client.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="16725">
           <caret line="680" column="23" selection-start-line="680" selection-start-column="23" selection-end-line="680" selection-end-column="59" />
-          <folding>
-            <element signature="e#197#216#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -607,9 +692,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="22059">
           <caret line="828" column="49" selection-start-line="828" selection-start-column="49" selection-end-line="828" selection-end-column="49" />
-          <folding>
-            <element signature="e#197#216#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -640,9 +722,7 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tracker/fish_tank.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-32" />
-      </provider>
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/tracker/controller.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -699,9 +779,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="22059">
           <caret line="828" column="49" selection-start-line="828" selection-start-column="49" selection-end-line="828" selection-end-column="49" />
-          <folding>
-            <element signature="e#197#216#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -851,8 +928,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/tracker/controller.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="11" column="14" selection-start-line="11" selection-start-column="14" selection-end-line="11" selection-end-column="14" />
+        <state relative-caret-position="135">
+          <caret line="12" selection-start-line="12" selection-end-line="12" />
+          <folding>
+            <element signature="e#23#40#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -867,16 +947,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="275">
           <caret line="14" column="55" selection-start-line="14" selection-start-column="55" selection-end-line="14" selection-end-column="55" />
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tracker/ClientGUI_support.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="108" column="24" selection-start-line="108" selection-start-column="24" selection-end-line="108" selection-end-column="24" />
+        <state relative-caret-position="2862">
+          <caret line="112" column="8" selection-start-line="112" selection-start-column="8" selection-end-line="112" selection-end-column="8" />
           <folding>
             <element signature="e#173#183#0" expanded="true" />
           </folding>
@@ -887,16 +964,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="442">
           <caret line="680" column="23" selection-start-line="680" selection-start-column="23" selection-end-line="680" selection-end-column="59" />
-          <folding>
-            <element signature="e#197#216#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tracker/scene_planner.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="301">
-          <caret line="130" column="48" selection-start-line="130" selection-start-column="48" selection-end-line="130" selection-end-column="48" />
+        <state relative-caret-position="228">
+          <caret line="122" column="19" selection-start-line="122" selection-start-column="19" selection-end-line="122" selection-end-column="19" />
           <folding>
             <element signature="e#205#220#0" expanded="true" />
           </folding>
@@ -910,13 +984,29 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/data/log/2018-08-26 125922_F555DAY4.(0).txt">
-      <provider selected="true" editor-type-id="text-editor" />
+    <entry file="file://$PROJECT_DIR$/data/log/2018-08-26 125922_F555DAY4.(0).txt" />
+    <entry file="file://$PROJECT_DIR$/data/log/2018-08-19 113234_F145DAY6.(0).txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-6786" />
+      </provider>
+    </entry>
+    <entry file="file:///System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/matplotlib/axes.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="9238" selection-start-line="9238" selection-end-line="9238" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tools/testfig.png">
+      <provider selected="true" editor-type-id="images" />
     </entry>
     <entry file="file://$PROJECT_DIR$/tools/plotter.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="34" column="40" selection-start-line="34" selection-start-column="40" selection-end-line="34" selection-end-column="40" />
+        <state relative-caret-position="286">
+          <caret line="61" column="18" selection-start-line="61" selection-start-column="18" selection-end-line="61" selection-end-column="18" />
+          <folding>
+            <element signature="e#1#18#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

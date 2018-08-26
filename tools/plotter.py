@@ -1,7 +1,7 @@
 
 import matplotlib
-from pylab import *
-
+import matplotlib.pylab as plt
+import numpy as np
 
 class ReadFile:
 
@@ -50,14 +50,19 @@ class PlotTraj:
 
     def __init__(self, _data):
         self.data = _data
-        self.ax = subplot(111)
-        self.line, = plot(1, 2, linewidth=2, color='r')
-        xlabel('X - Title')
-        ylabel('Y - title')
-        title('$Our Chart$')
-        grid(True)
-        draw()
-        show()
+        self.ax = plt.figure()
+        hte = np.array([100, 11, 12, 13, 15, 20, 21, 22, 25, 30])
+        hre = np.array([10, 2, 3, 4, 5, 6, 7, 8, 9, 100])
+        self.line, = plt.plot(hte, hre, linewidth=2, color='r')
+        plt.xlabel('X - Title')
+        plt.ylabel('Y - title')
+        plt.title('$Our Chart$')
+        plt.grid(True)
+        plt.draw()
+        plt.show()
+        self.ax.savefig('testfig.png')
+        #plt.savefig('testfig.png')
+
         pass
 
     def plot_it(self):
@@ -65,6 +70,11 @@ class PlotTraj:
 
 
 if __name__ == '__main__':
+    from screeninfo import get_monitors
+
+    for m in get_monitors():
+        print(str(m))
+
     read_f = ReadFile(
         "/Users/talzoor/git_projects/BGU_Fish_lab/fish-trainerNEW/data/log/2018-08-19 113234_F145DAY6.(0).txt")
     PlotTraj([0, 0])
