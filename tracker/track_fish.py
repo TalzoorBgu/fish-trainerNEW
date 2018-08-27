@@ -97,8 +97,10 @@ def track_loop(cb): #cb is an object that has a do() function in the calling scr
         # if cv2.waitKey(1) & 0xFF == ord('q'): break #Exit when Q is pressed
 
     # exit while loop:
-    print("here")
-    cb.end_training(id)
+    id = 0
+    for fishy in fish:
+        cb.end_training(id)
+        id += 1
 
 
 def paint_lines(_cv_obj, _tank_width, _tank_height, _frame):
