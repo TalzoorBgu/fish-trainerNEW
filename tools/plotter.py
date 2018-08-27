@@ -7,8 +7,13 @@ class ReadFile:
 
     def __init__(self, _file_name):
         try:
+            self.fish_no = -1
+            self.date = -1
+            self.ttl_time = -1
+
             self.data_x = []
             self.data_y = []
+
 
             file_h = open(_file_name, 'r')
 
@@ -47,27 +52,34 @@ class ReadFile:
 
         return data_ok, [x, y]
 
+    def file_data(self):
+        return [self.data_x, self.data_y]
+
 
 class PlotTraj:
 
-    def __init__(self, _data):
-        self.data = _data
-        self.ax = plt.figure(figsize=(6, 6))
-        hte = np.array(_data[0])
-        hre = np.array(_data[1])
-        self.line, = plt.plot(hte, hre, linewidth=2, color='r')
-        plt.xlabel('X - Title')
-        plt.ylabel('Y - title')
-        plt.title('$Our Chart$')
-        plt.grid(True)
-        plt.draw()
-        plt.show()
-        self.ax.savefig('testfig_600dpi.png', dpi=600)
-        #plt.savefig('testfig.png')
+    def __init__(self, _xlabel='X', _ylabel='Y'):
 
+        self.plt = plt
+        self.ax = self.plt.figure(figsize=(6, 6))
+        self.data = []
+        self.line = []
+
+        self.plt.xlabel(_xlabel)
+        self.plt.ylabel(_ylabel)
+
+        self.plt.grid(True)
         pass
 
-    def plot_it(self):
+    def plot_it(self, _data):
+        self.data = _data
+        hte = np.array(_data[0])
+        hre = np.array(_data[1])
+        self.line, = plt.plot(hte, hre, linewidth=0.5, color='black')
+        plt.title('$Fish-{}$ \nDate:{}, Total time:{}'.format(0, 1, 2))
+        self.plt.draw()
+        self.plt.show()
+        self.ax.savefig('testfig_600dpi.png', dpi=600)
         pass
 
 
@@ -75,5 +87,6 @@ if __name__ == '__main__':
     #1280x1024
     read_f = ReadFile(
         "/Users/talzoor/git_projects/BGU_Fish_lab/fish-trainerNEW/data/log/2018-08-19 113234_F145DAY6.(0).txt")
-    #data = read_f.data
-    PlotTraj([read_f.data_x, read_f.data_y])
+
+    plot_fig = PlotTraj()
+    plot_fig.plot_it(read_f.file_data())

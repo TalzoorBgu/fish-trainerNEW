@@ -13,7 +13,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/fish_trainerNEW$plotter.coverage" NAME="plotter Coverage Results" MODIFIED="1535295682720" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tools" />
+    <SUITE FILE_PATH="coverage/fish_trainerNEW$plotter.coverage" NAME="plotter Coverage Results" MODIFIED="1535366502746" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tools" />
     <SUITE FILE_PATH="coverage/fish_trainerNEW$MainGUI_Client.coverage" NAME="MainGUI_Client Coverage Results" MODIFIED="1534164259845" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="FileEditorManager">
@@ -71,8 +71,8 @@
       <file leaf-file-name="plotter.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/tools/plotter.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="237">
-              <caret line="56" column="31" selection-start-line="56" selection-start-column="31" selection-end-line="56" selection-end-column="31" />
+            <state relative-caret-position="221">
+              <caret line="16" column="12" lean-forward="true" selection-start-line="16" selection-start-column="12" selection-end-line="16" selection-end-column="12" />
               <folding>
                 <element signature="e#1#18#0" expanded="true" />
               </folding>
@@ -131,6 +131,7 @@
       <find>do</find>
       <find>open</find>
       <find>feed</find>
+      <find>y</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -510,7 +511,14 @@
       <option name="project" value="LOCAL" />
       <updated>1535294609462</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="&quot;plotter&quot;">
+      <created>1535295713132</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1535295713133</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TodoView">
@@ -524,6 +532,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="797" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32948717" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
@@ -532,11 +541,11 @@
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.22957747" />
       <window_info anchor="bottom" id="Python Console" order="7" weight="0.32948717" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.32948717" />
-      <window_info anchor="right" id="Remote Host" order="3" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.14091559" />
+      <window_info anchor="right" id="Remote Host" order="3" weight="0.3297568" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.11158799" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="3" />
-      <window_info active="true" anchor="right" id="SciView" order="3" visible="true" weight="0.0" />
+      <window_info active="true" anchor="right" id="SciView" order="3" visible="true" weight="0.37410587" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.399757" />
       <window_info id="Favorites" order="2" side_tool="true" />
@@ -614,7 +623,8 @@
     <MESSAGE value="&quot;added feed every 3 sec&quot;" />
     <MESSAGE value="&quot;added feed every 10 sec&quot;" />
     <MESSAGE value="&quot;scene planner fix&quot;" />
-    <option name="LAST_COMMIT_MESSAGE" value="&quot;scene planner fix&quot;" />
+    <MESSAGE value="&quot;plotter&quot;" />
+    <option name="LAST_COMMIT_MESSAGE" value="&quot;plotter&quot;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -698,7 +708,13 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/setup.py">
-      <provider selected="true" editor-type-id="text-editor" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tracker/ClientGUI_support.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -907,7 +923,13 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/setup.py">
-      <provider selected="true" editor-type-id="text-editor" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tracker/track_fish.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -990,8 +1012,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/tools/plotter.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="237">
-          <caret line="56" column="31" selection-start-line="56" selection-start-column="31" selection-end-line="56" selection-end-column="31" />
+        <state relative-caret-position="221">
+          <caret line="16" column="12" lean-forward="true" selection-start-line="16" selection-start-column="12" selection-end-line="16" selection-end-column="12" />
           <folding>
             <element signature="e#1#18#0" expanded="true" />
           </folding>
