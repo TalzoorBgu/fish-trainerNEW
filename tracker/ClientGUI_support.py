@@ -13,7 +13,7 @@ from tracker import scene_planner
 from tracker.controller import Controller
 from tracker import track_fish
 from tracker.tcp_client import FishClient
-
+from time import sleep
 
 stop_traning = False
 
@@ -100,6 +100,7 @@ def onExit():
     sys.stdout.flush()
 
     exit_var = True
+    sleep(1)
     sys.exit(1)
 
 def onRunTraining():

@@ -96,6 +96,9 @@ def track_loop(cb): #cb is an object that has a do() function in the calling scr
         # TBD - inclear where to put
         # if cv2.waitKey(1) & 0xFF == ord('q'): break #Exit when Q is pressed
 
+    # exit while loop:
+    cb.end_training(id)
+
 
 def paint_lines(_cv_obj, _tank_width, _tank_height, _frame):
     _cv_obj.line(_frame, (30, 30), (30, _tank_width - 30), (255, 255, 255), 1)

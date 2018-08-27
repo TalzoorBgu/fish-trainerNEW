@@ -8,6 +8,8 @@ from time_counter import TimeCounter
 import argparse
 import os
 import time
+from tools import plotter
+
 
 FEED_EVERY = 3          # feed every 3 sec
 
@@ -53,6 +55,7 @@ class Controller:
     def __del__(self):  #Destroy
         print ('Controller closed')
 
+
     def time(self):
         time_str = self.time_count.get_time_diff()
         if time_str:
@@ -64,6 +67,8 @@ class Controller:
         _int_tmp = self.cb_obj.stop_traning
         return _int_tmp
 
+    def end_training(self, fish_id):
+        plotter.run(self.logger[fish_id].filename)
 
     def do(self, x, y, fish_id):
         global total_feed

@@ -13,10 +13,10 @@ class FishLog:
         print 'start logging data'
         # Open a file
 
-        filename='{}{}{}{}'.format(log_folder, strftime("%Y-%m-%d %H%M%S", gmtime()), '_'+fish_name, ".txt") # time+name
+        self.filename='{}{}{}{}'.format(log_folder, strftime("%Y-%m-%d %H%M%S", gmtime()), '_'+fish_name, ".txt") # time+name
         print ('log file:{}'.format(filename))
 
-        self.fo = open(filename, 'w')
+        self.fo = open(self.filename, 'w')
         
     def add_tracked_point(self,x,y):
         self.fo.write(str(self.line_number)+' ') #
