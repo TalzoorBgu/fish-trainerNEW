@@ -95,11 +95,13 @@ def on2R():
     sys.stdout.flush()
 
 def onExit():
-    global exit_var
+    global exit_var, stop_traning
     print('ClientGUI_support.onExit')
     sys.stdout.flush()
 
     exit_var = True
+    stop_traning = True
+
     sleep(1)
     sys.exit(1)
 
