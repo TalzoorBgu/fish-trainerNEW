@@ -14,7 +14,7 @@ class FishLog:
         # Open a file
 
         self.filename='{}{}{}{}'.format(log_folder, strftime("%Y-%m-%d %H%M%S", gmtime()), '_'+fish_name, ".txt") # time+name
-        print ('log file:{}'.format(filename))
+        print ('log file:{}'.format(self.filename))
 
         self.fo = open(self.filename, 'w')
         
