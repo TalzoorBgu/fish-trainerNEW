@@ -100,7 +100,7 @@ def onExit():
     sys.stdout.flush()
 
     exit_var = True
-    stop_traning = True
+    Fish_traningGUI.stop_traning = True
 
     sleep(1)
     #sys.exit(1)
@@ -109,7 +109,7 @@ def onRunTraining():
     global stop_traning
     sys.stdout.flush()
 
-    stop_traning = False
+    Fish_traningGUI.stop_traning = False
     log_name = []
     log_name.append('F{}DAY{}'.format(Fish_traningGUI.txtFishNo1.get('0.0', 'end-1c'), Fish_traningGUI.txtTrainingDay1.get('0.0', 'end-1c')))
 
