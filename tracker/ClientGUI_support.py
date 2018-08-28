@@ -103,7 +103,7 @@ def onExit():
     Fish_traningGUI.stop_traning = True
 
     sleep(1)
-    #sys.exit(1)
+    sys.exit(1)
 
 def onRunTraining():
     global stop_traning

@@ -1,12 +1,12 @@
 
 import matplotlib.pylab
-import numpy as np
+import numpy
 from pathlib import Path
 from datetime import datetime
 import os
-from time import sleep
 import pp
 import sys
+import webbrowser
 
 
 def find_nth_overlapping(haystack, needle, n):
@@ -38,7 +38,6 @@ class ReadFile:
                 training_end = training_start = self.extract_time(text_lines[0], self.t_date)
 
                 for num, word in enumerate(text_lines):
-                    print("line {}:{}".format(num, word))
                     data = self.extract_x_y(word)
                     timeformat_time = self.extract_time(word, self.t_date)
                     if type(timeformat_time) == type(training_end):
@@ -49,7 +48,6 @@ class ReadFile:
                     if data[0] is True:
                         self.add(data[1])
 
-                print("num end:{}".format(num))
                 if num > 10:
                     ttl_training_time = training_end - training_start
                     self.traning_start_str = str(training_start)
@@ -122,6 +120,32 @@ class ReadFile:
         return [self.data_x, self.data_y]
 
 
+def save_plot(_info, _ax, _project_wd=''):
+    if not _project_wd:
+        runing_dw = os.getcwd()
+        fish_trainerNEW_end_place = runing_dw.find("fish-trainerNEW") + len("fish-trainerNEW")
+        project_wd = runing_dw[:fish_trainerNEW_end_place]
+
+    info = _info
+    folder_name = os.path.join(project_wd, "data\log-img", info[0])
+
+    dir_ex = os.path.exists(folder_name)
+    print("folder_name:{}, exists:{}".format(folder_name, dir_ex))
+
+    if dir_ex:
+        pass
+    else:
+        os.makedirs(folder_name)
+
+    time_info = str(info[2]).replace(':', '')
+    file_name_to_save = "{}.png".format(time_info)
+    full_name = os.path.join(folder_name, file_name_to_save)
+    print("full fig name:{}".format(full_name))
+
+    _ax.savefig(full_name, dpi=600)
+    webbrowser.open(full_name)
+
+
 class PlotTraj:
 
     def __init__(self, properties, _xlabel='X', _ylabel='Y'):
@@ -139,9 +163,10 @@ class PlotTraj:
         pass
 
     def plot_it(self, _data):
+        plt = matplotlib.pylab
         self.data = _data
-        hte = np.array(_data[0])
-        hre = np.array(_data[1])
+        hte = numpy.array(_data[0])
+        hre = numpy.array(_data[1])
         self.line, = plt.plot(hte, hre, linewidth=0.5, color='black')
         info = self.info
         plt.title('$Fish-{}$ \nTraining day:{}\nDate:{}, Total time:{}'.
@@ -157,12 +182,12 @@ class PlotTraj:
             job_server = pp.Server(ppservers=ppservers)
 
         print "Starting Parallel Python v2 with", job_server.get_ncpus(), "workers"
-        job = job_server.submit(self.save, (), (), "matplotlib.pylab")
+        job = job_server.submit(save_plot, (self.info, self.ax), (), ("webbrowser", "matplotlib.pylab"))
         job()
         job_server.print_stats()
-        print("fin")
 
     def save(self, project_wd=''):
+        #NOT USED ANYMORE
         if not project_wd:
             runing_dw = os.getcwd()
             fish_trainerNEW_end_place = runing_dw.find("fish-trainerNEW") + len("fish-trainerNEW")
@@ -189,6 +214,9 @@ class PlotTraj:
 
 
 def run(_file_to_plot):
+    #Check line:
+    #_file_to_plot = r"C:\Users\Owner\PycharmProjects\fish-trainerNEW\data\log\2018-08-28 082806_F444DAY15.(0).txt"
+
     print("Checking file-{}".format(_file_to_plot))
     read_f = ReadFile(_file_to_plot)
 

@@ -103,7 +103,7 @@ def track_loop(cb): #cb is an object that has a do() function in the calling scr
         print("fish_id:{}".format(id_out))
         cb.end_training(id_out)
         id_out += 1
-        sleep(5)
+        sleep(0.5)
 
 
 def paint_lines(_cv_obj, _tank_width, _tank_height, _frame):

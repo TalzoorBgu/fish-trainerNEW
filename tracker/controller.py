@@ -79,7 +79,7 @@ class Controller:
         sleep(0.2)  # 200mS wait
         print("fish_id:{}, filename:{}".format(fish_id, log_filename))
         plotter.run(log_filename)
-        sleep(1)
+        sleep(0.5)
 
     def do(self, x, y, fish_id):
         global total_feed
