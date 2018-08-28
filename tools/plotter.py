@@ -144,7 +144,7 @@ class PlotTraj:
         plt.title('$Fish-{}$ \nTraining day:{}\nDate:{}, Total time:{}'.
                   format(info[0], info[1], info[2], info[3]))
         self.plt.draw()
-        self.plt.show()
+        # self.plt.show()
         self.save()
 
     def save(self, project_wd=''):
@@ -169,6 +169,7 @@ class PlotTraj:
         full_name = os.path.join(folder_name, file_name_to_save)
         print("full_name:{}".format(full_name))
         self.ax.savefig(full_name, dpi=600)
+
 
 
 def run(_file_to_plot):
