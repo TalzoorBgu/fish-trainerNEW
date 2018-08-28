@@ -17,9 +17,14 @@ class Tank:
             elif x > self.width*3/4 and not self.side == 'right':
                 self.side = 'right'
                 tmp_return = 'right'
-        elif _ver is 'mid':
 
-            self.side = 'mid'
-            tmp_return = 'mid'
+        elif _ver is 'mid':
+            if (x > self.width * 3/8 and x < self.width * 5/8) and (y > self.width * 3/8 and y < self.width * 5/8):
+                if self.side is 'out_mid':
+                    self.side = 'mid'
+                    tmp_return = 'mid'
+            else:
+                self.side = 'out_mid'
+                tmp_return = 'out_mid'
 
         return tmp_return
