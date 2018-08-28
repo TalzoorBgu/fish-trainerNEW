@@ -4,6 +4,7 @@ import numpy as np
 from pathlib import Path
 from datetime import datetime
 import os
+from time import sleep
 
 
 def find_nth_overlapping(haystack, needle, n):
@@ -146,6 +147,7 @@ class PlotTraj:
         self.plt.draw()
         # self.plt.show()
         self.save()
+        sleep(1)
 
     def save(self, project_wd=''):
         if not project_wd:
