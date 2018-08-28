@@ -115,8 +115,9 @@ def paint_lines(_cv_obj, _tank_width, _tank_height, _frame, _ver):
         low_boundry = float(3 / 8)
         hige_boundry = float(5 / 8)
 
-    left_up = int(_tank_height * low_boundry)
+    left_up = int(float(_tank_height) * low_boundry)
     left_down = int(_tank_height * hige_boundry)
+    print("left_up:{}, left_down:{}".format(left_up, left_down))
 
     _cv_obj.line(_frame, (left_down, 40), (left_up, 40), (255, 255, 255), 2)
     _cv_obj.line(_frame, (_tank_height - 30, 30), (_tank_height - 30, _tank_width - 30), (255, 255, 255), 1)
