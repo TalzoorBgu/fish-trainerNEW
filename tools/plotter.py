@@ -147,7 +147,6 @@ class PlotTraj:
         self.plt.draw()
         # self.plt.show()
         self.save()
-        sleep(1)
 
     def save(self, project_wd=''):
         if not project_wd:
