@@ -67,7 +67,7 @@ def track_loop(cb, _version='reg'): #cb is an object that has a do() function in
             # print("tank_dim:{}/{}".format(tank_width, tank_height))
 
 
-            # paint_lines(cv2, tank_width, tank_height, frame_cut)
+            paint_lines(cv2, tank_width, tank_height, frame_cut)
 
             cv2.imshow("image" + str(id), frame_cut)
             cv2.imshow("mask" + str(id), fgmask)
