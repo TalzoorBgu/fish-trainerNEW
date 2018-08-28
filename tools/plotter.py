@@ -35,6 +35,7 @@ class ReadFile:
                 training_end = training_start = self.extract_time(text_lines[0], self.t_date)
 
                 for word in text_lines:
+                    print("line:{}".format(word))
                     data = self.extract_x_y(word)
                     timeformat_time = self.extract_time(word, self.t_date)
                     if type(timeformat_time) == type(training_end):
