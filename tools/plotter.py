@@ -34,8 +34,8 @@ class ReadFile:
                 self.fish_no, self.t_date, self.train_day = self.file_prop(_file_name)
                 training_end = training_start = self.extract_time(text_lines[0], self.t_date)
 
-                for word in text_lines:
-                    print("line:{}".format(word))
+                for num, word in enumerate(text_lines):
+                    print("line {}:{}".format(num, word))
                     data = self.extract_x_y(word)
                     timeformat_time = self.extract_time(word, self.t_date)
                     if type(timeformat_time) == type(training_end):
@@ -46,7 +46,7 @@ class ReadFile:
                     if data[0] is True:
                         self.add(data[1])
 
-
+                print("num end:{}".format(num))
                 ttl_training_time = training_end - training_start
                 self.traning_start_str = str(training_start)
                 self.total_training_time = ttl_training_time
