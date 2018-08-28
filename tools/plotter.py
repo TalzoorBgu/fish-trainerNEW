@@ -47,9 +47,12 @@ class ReadFile:
                         self.add(data[1])
 
                 print("num end:{}".format(num))
-                ttl_training_time = training_end - training_start
-                self.traning_start_str = str(training_start)
-                self.total_training_time = ttl_training_time
+                if num > 10:
+                    ttl_training_time = training_end - training_start
+                    self.traning_start_str = str(training_start)
+                    self.total_training_time = ttl_training_time
+                else:
+                    print("File is empty")
 
             elif not file_ex:
                 print("File does not exist!")
