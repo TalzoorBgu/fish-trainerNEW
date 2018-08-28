@@ -91,6 +91,8 @@ class Controller:
         else:
             feed_side = None
 
+        if feed_side is 'mid':
+            feed_side = 'left'
         if feed_side is 'out_mid':
             feed_side = None
 
