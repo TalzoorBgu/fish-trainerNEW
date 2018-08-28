@@ -40,8 +40,8 @@ class Controller:
         #   full_root_script_path = full_script_path[:full_script_path.find('tracker')]
         #   log_folder = '{}data/log/'.format(full_root_script_path)
         full_script_path = os.path.dirname(os.path.realpath(__file__))
-        full_root_script_path = full_script_path[:full_script_path.find(r'\tracker')]
-        log_folder = os.path.join(full_root_script_path, r"data\log", r"\"")
+        full_root_script_path = full_script_path[:full_script_path.find(r"\tracker")]
+        log_folder = os.path.join(full_root_script_path, r"data\log")
         print("full_script_path:{}\nfull_root_script_path:{}\nlog_folder:{}".
               format(full_script_path, full_root_script_path, log_folder))
 
