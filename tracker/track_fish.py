@@ -41,7 +41,7 @@ def init_tracking(tank_config='tracker/tank_config.txt',video=None):
     return width
 
 
-def track_loop(cb, _version): #cb is an object that has a do() function in the calling script
+def track_loop(cb, _version='reg'): #cb is an object that has a do() function in the calling script
     global stop_training
 
     print("_version:{}".format(_version))
@@ -91,7 +91,7 @@ def track_loop(cb, _version): #cb is an object that has a do() function in the c
                 cv2.waitKey(1)
 
                 if cb is not None:
-                    cb.do(x, y, id)
+                    cb.do(x, y, id, _version)
 
 
             id = id + 1

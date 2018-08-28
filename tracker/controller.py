@@ -46,7 +46,6 @@ class Controller:
         print("full_script_path:{}\nfull_root_script_path:{}\nlog_folder:{}".
               format(full_script_path, full_root_script_path, log_folder))
 
-        print('log:{}'.format(log_folder))
         #print_and_update_main_log('log:{}'.format(log_folder))
         self.logger = []
 
