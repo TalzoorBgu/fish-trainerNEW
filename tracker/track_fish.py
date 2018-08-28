@@ -108,20 +108,28 @@ def track_loop(cb, _version='reg'): #cb is an object that has a do() function in
 
 
 def paint_lines(_cv_obj, _tank_width, _tank_height, _frame, _ver):
+    _ver = 'mid'
     if _ver is 'reg':
-        low_boundry = float(1/4)
-        hige_boundry = float(3/4)
+        low_boundry = 1.0/4.0
+        hige_boundry = 3.0/4.0
     elif _ver is 'mid':
-        low_boundry = float(3/8)
-        hige_boundry = float(5/8)
+        low_boundry = 3.0/8.0
+        hige_boundry = 5.0/8.0
 
-    left_up = float(_tank_height) * low_boundry
-    left_down = int(_tank_height * hige_boundry)
-    print("left_up:{}, left_down:{}".format(left_up, left_down))
+    down = int(_tank_width * low_boundry)
+    up = int(_tank_width * hige_boundry)
+    right = int(_tank_height * low_boundry)
+    left = int(_tank_height * hige_boundry)
 
-    _cv_obj.line(_frame, (left_down, 40), (left_up, 40), (255, 255, 255), 2)
-    _cv_obj.line(_frame, (_tank_height - 30, 30), (_tank_height - 30, _tank_width - 30), (255, 255, 255), 1)
+    #print("_ver:{}, _tank_height:{}, left_up:{}, left_down:{}".
+    #      format(_ver, _tank_height, left_up, left_down))
+    #print("low_boundry:{}".format(low_boundry))
 
+    if _ver is 'reg':
+        _cv_obj.line(_frame, (0, up), (_tank_height, up), (255, 255, 255), 1)
+        _cv_obj.line(_frame, (0, down), (_tank_height, down), (255, 255, 255), 1)
+    elif _ver is 'mid':
+        _cv_obj.rectangle(_frame, (left, down), (right, up), (255, 255, 255), 1)
 
 def paint_single_line(_cv_obj, (x0, y0), (x1, y1), _frame, gap = 0):
     if gap == 0:
