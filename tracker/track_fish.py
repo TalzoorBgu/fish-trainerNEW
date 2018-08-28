@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 import cv2
+from time import sleep
 
 width = []
 height = []
@@ -43,7 +44,7 @@ def init_tracking(tank_config='tracker/tank_config.txt',video=None):
 def track_loop(cb): #cb is an object that has a do() function in the calling script
     global stop_training
 
-    while stop_training == False:
+    while stop_training is False:
         stop_training = cb.check_traning()
 
         cb.time()
@@ -102,6 +103,7 @@ def track_loop(cb): #cb is an object that has a do() function in the calling scr
         print("fish_id:{}".format(id_out))
         cb.end_training(id_out)
         id_out += 1
+        sleep(5)
 
 
 def paint_lines(_cv_obj, _tank_width, _tank_height, _frame):
