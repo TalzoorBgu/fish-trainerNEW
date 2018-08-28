@@ -9,6 +9,7 @@ import argparse
 import os
 import time
 from tools import plotter
+from time import sleep
 
 
 FEED_EVERY = 3          # feed every 3 sec
@@ -74,6 +75,8 @@ class Controller:
 
     def end_training(self, fish_id):
         log_filename = self.logger[fish_id].filename
+        self.logger[fish_id].fo.close()
+        sleep(0.2)  # 200mS wait
         print("fish_id:{}, filename:{}".format(fish_id, log_filename))
         plotter.run(log_filename)
 
