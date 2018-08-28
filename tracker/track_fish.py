@@ -108,7 +108,7 @@ def track_loop(cb, _version='reg'): #cb is an object that has a do() function in
 
 
 def paint_lines(_cv_obj, _tank_width, _tank_height, _frame, _ver):
-    _ver = 'mid'
+
     if _ver is 'reg':
         low_boundry = 1.0/4.0
         hige_boundry = 3.0/4.0
