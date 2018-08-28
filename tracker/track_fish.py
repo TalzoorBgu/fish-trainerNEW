@@ -41,9 +41,10 @@ def init_tracking(tank_config='tracker/tank_config.txt',video=None):
     return width
 
 
-def track_loop(cb): #cb is an object that has a do() function in the calling script
+def track_loop(cb, _version): #cb is an object that has a do() function in the calling script
     global stop_training
 
+    print("_version:{}".format(_version))
     while stop_training is False:
         stop_training = cb.check_traning()
 
@@ -100,7 +101,7 @@ def track_loop(cb): #cb is an object that has a do() function in the calling scr
     # exit while loop:
     id_out = 0
     for fishy in fish:
-        print("fish_id:{}".format(id_out))
+        #print("fish_id:{}".format(id_out))
         cb.end_training(id_out)
         id_out += 1
         sleep(0.5)

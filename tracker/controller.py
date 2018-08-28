@@ -87,7 +87,7 @@ class Controller:
 
         self.logger[fish_id].add_tracked_point(x, y)
         if time_now - self.time_last_feed > FEED_EVERY:     # feed every..
-            feed_side = self.tank[fish_id].decide(x)
+            feed_side = self.tank[fish_id].decide(x, y)
         else:
             feed_side = None
 

@@ -122,7 +122,7 @@ def onRunTraining():
     controller = Controller(Fish_traningGUI, log_name)
     _tmp1 = type(controller)
     print("type:{}".format(_tmp1))
-    thread_track_fish = threading.Thread(target=track_fish.track_loop, args=(controller,))
+    thread_track_fish = threading.Thread(target=track_fish.track_loop, args=(controller, 'mid', ))
 
     thread_track_fish.daemon = True
     thread_track_fish.start()
