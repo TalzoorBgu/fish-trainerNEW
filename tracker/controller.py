@@ -82,7 +82,6 @@ class Controller:
 
     def do(self, x, y, fish_id, _version):
         global total_feed
-        print("do__version:{}".format(_version))
 
         time_now = int(round(time.time()))
 
