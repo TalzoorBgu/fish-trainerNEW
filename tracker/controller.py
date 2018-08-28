@@ -81,8 +81,10 @@ class Controller:
         plotter.run(log_filename)
         sleep(0.5)
 
-    def do(self, x, y, fish_id):
+    def do(self, x, y, fish_id, _version):
         global total_feed
+        print("do__version:{}".format(_version))
+
         time_now = int(round(time.time()))
 
         self.logger[fish_id].add_tracked_point(x, y)
