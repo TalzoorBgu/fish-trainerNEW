@@ -1,10 +1,12 @@
 
-import matplotlib.pylab as plt
+import matplotlib.pylab
 import numpy as np
 from pathlib import Path
 from datetime import datetime
 import os
 from time import sleep
+import pp
+import sys
 
 
 def find_nth_overlapping(haystack, needle, n):
@@ -124,7 +126,7 @@ class PlotTraj:
 
     def __init__(self, properties, _xlabel='X', _ylabel='Y'):
 
-        self.plt = plt
+        self.plt = matplotlib.pylab
         self.ax = self.plt.figure(figsize=(6, 6))
         self.data = []
         self.line = []
@@ -146,7 +148,19 @@ class PlotTraj:
                   format(info[0], info[1], info[2], info[3]))
         self.plt.draw()
         # self.plt.show()
-        self.save()
+
+        ppservers = ()
+        if len(sys.argv) > 1:
+            ncpus = int(sys.argv[1])
+            job_server = pp.Server(ncpus, ppservers=ppservers)
+        else:
+            job_server = pp.Server(ppservers=ppservers)
+
+        print "Starting Parallel Python v2 with", job_server.get_ncpus(), "workers"
+        job = job_server.submit(self.save, (), (), "matplotlib.pylab")
+        job()
+        job_server.print_stats()
+        print("fin")
 
     def save(self, project_wd=''):
         if not project_wd:
@@ -169,6 +183,7 @@ class PlotTraj:
         file_name_to_save = "{}.png".format(time_info)
         full_name = os.path.join(folder_name, file_name_to_save)
         print("full_name:{}".format(full_name))
+
         self.ax.savefig(full_name, dpi=600)
 
 
