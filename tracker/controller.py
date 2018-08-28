@@ -62,13 +62,14 @@ class Controller:
             #print (time_str)
             self.cb_obj.update_time(time_str)
 
-
     def check_traning(self):
         _int_tmp = self.cb_obj.stop_traning
         return _int_tmp
 
     def end_training(self, fish_id):
-        plotter.run(self.logger[fish_id].filename)
+        log_filename = self.logger[fish_id].filename
+        print("fish_id:{}, filename:{}".format(fish_id, log_filename))
+        plotter.run(log_filename)
 
     def do(self, x, y, fish_id):
         global total_feed
