@@ -7,6 +7,7 @@ import os
 import pp
 import sys
 import webbrowser
+import argparse
 
 
 def find_nth_overlapping(haystack, needle, n):
@@ -34,7 +35,10 @@ class ReadFile:
                 file_h = open(_file_name, 'r')
                 text_lines = file_h.read().split('\n')
 
-                self.fish_no, self.t_date, self.train_day = self.file_prop(_file_name)
+                self.fish_no, \
+                self.t_date, \
+                self.train_day = self.file_prop(_file_name)
+
                 training_end = training_start = self.extract_time(text_lines[0], self.t_date)
 
                 for num, word in enumerate(text_lines):
@@ -74,13 +78,14 @@ class ReadFile:
     def file_prop(_file_name):
         log_place = _file_name.find("log")
         date_end_place = _file_name.find(" ", log_place)
-        _F_place = _file_name.find("_F")
+        _F_place = _file_name.find("_F", log_place)
         DAY_place = _file_name.find("DAY")
         DAY_end_place = _file_name.find(".", DAY_place)
 
         traning_date = _file_name[log_place+4:date_end_place]
         traning_day = _file_name[DAY_place+3:DAY_end_place]
         fish_no = _file_name[_F_place+2:DAY_place]
+
         return fish_no, traning_date, traning_day
 
     @staticmethod
@@ -106,54 +111,68 @@ class ReadFile:
     @staticmethod
     def extract_time(_str, _date):
         time_timeformat = ''
-        if _str:
-            time_start_place = find_nth_overlapping(_str, " ", 2)
-            time_end_place = _str.find('.')
-            time_str = _str[time_start_place+1:time_end_place]
-            time_date_str = "{} {}".format(_date, time_str)
-            t_format = '%Y-%m-%d %H:%M:%S'
-            time_timeformat = datetime.strptime(time_date_str, t_format)
-
+        try:
+            if _str:
+                time_start_place = find_nth_overlapping(_str, " ", 2)
+                time_end_place = _str.find('.')
+                time_str = _str[time_start_place+1:time_end_place]
+                time_date_str = "{} {}".format(_date, time_str)
+                t_format = '%Y-%m-%d %H:%M:%S'
+                time_timeformat = datetime.strptime(time_date_str, t_format)
+        except ValueError:
+            time_timeformat = ''
+            pass
         return time_timeformat
 
     def file_data(self):
         return [self.data_x, self.data_y]
 
 
-def save_plot(_info, _ax, _project_wd=''):
+def save_plot(_info, _ax, open_png, overwrite, _project_wd=''):
+
     if not _project_wd:
         runing_dw = os.getcwd()
         fish_trainerNEW_end_place = runing_dw.find("fish-trainerNEW") + len("fish-trainerNEW")
         project_wd = runing_dw[:fish_trainerNEW_end_place]
 
     info = _info
-    folder_name = os.path.join(project_wd, "data\log-img", info[0])
-
-    dir_ex = os.path.exists(folder_name)
-    print("folder_name:{}, exists:{}".format(folder_name, dir_ex))
-
-    if dir_ex:
-        pass
-    else:
-        os.makedirs(folder_name)
+    folder_name = os.path.join(project_wd, "data/log-img", info[0])
 
     time_info = str(info[2]).replace(':', '')
     file_name_to_save = "{}.png".format(time_info)
     full_name = os.path.join(folder_name, file_name_to_save)
     print("full fig name:{}".format(full_name))
 
-    _ax.savefig(full_name, dpi=600)
-    webbrowser.open(full_name)
+    fig_already_exsits = os.path.isfile(full_name)
+
+    if (fig_already_exsits and overwrite) or (not fig_already_exsits):
+
+        print("here")
+        dir_ex = os.path.exists(folder_name)
+        print("folder_name:{}, exists:{}".format(folder_name, dir_ex))
+
+        if dir_ex:
+            pass
+        else:
+            os.makedirs(folder_name)
+
+        _ax.savefig(full_name, dpi=600)
+        if open_png:
+            webbrowser.open(full_name)
+    else:
+        print("figure already exists, skipping")
 
 
 class PlotTraj:
 
-    def __init__(self, properties, _xlabel='X', _ylabel='Y'):
+    def __init__(self, properties, _open_png, _overwrite, _xlabel='X', _ylabel='Y'):
 
         self.plt = matplotlib.pylab
         self.ax = self.plt.figure(figsize=(6, 6))
         self.data = []
         self.line = []
+        self.open_png = _open_png
+        self.overwrite = _overwrite
         self.info = properties
 
         self.plt.xlabel(_xlabel)
@@ -175,14 +194,12 @@ class PlotTraj:
         # self.plt.show()
 
         ppservers = ()
-        if len(sys.argv) > 1:
-            ncpus = int(sys.argv[1])
-            job_server = pp.Server(ncpus, ppservers=ppservers)
-        else:
-            job_server = pp.Server(ppservers=ppservers)
+
+        job_server = pp.Server(ppservers=ppservers)
 
         print "Starting Parallel Python v2 with", job_server.get_ncpus(), "workers"
-        job = job_server.submit(save_plot, (self.info, self.ax), (), ("webbrowser", "matplotlib.pylab"))
+        job = job_server.submit(save_plot, (self.info, self.ax, self.open_png, self.overwrite),
+                                (), ("matplotlib", "os", "webbrowser", "matplotlib.pylab"))
         job()
         job_server.print_stats()
 
@@ -213,7 +230,7 @@ class PlotTraj:
 
 
 
-def run(_file_to_plot):
+def run(_file_to_plot, _open, _overwrite):
     #Check line:
     #_file_to_plot = r"C:\Users\Owner\PycharmProjects\fish-trainerNEW\data\log\2018-08-28 082806_F444DAY15.(0).txt"
 
@@ -227,11 +244,48 @@ def run(_file_to_plot):
         plot_fig = PlotTraj([read_f.fish_no,
                              read_f.train_day,
                              read_f.traning_start_str,
-                             read_f.total_training_time])
+                             read_f.total_training_time], _open, _overwrite)
         plot_fig.plot_it(file_data)
+
+def folder_to_file_list():
+    parser = argparse.ArgumentParser()
+    parser.add_argument('-path', help= 'paste path to log files')
+    args = parser.parse_args()
+
+    if args.path == 'auto':
+        full_script_path = os.path.dirname(os.path.realpath(__file__))
+        trainerNEW_end_place = full_script_path.find(r"fish-trainerNEW") + len("fish-trainerNEW/")
+        full_root_script_path = full_script_path[:trainerNEW_end_place]
+        folder = os.path.join(full_root_script_path, r"data/log")
+    else:
+        print("type:{}".format(type(args.path)))
+        print("args.path:#{}#".format(args.path))
+        folder = args.path
+
+    my_dir = Path(folder)
+    print("my_dir:{}".format(my_dir))
+    dir_ex = my_dir.is_dir()
+
+    files = []
+    sorted_files = []
+
+    if dir_ex:
+        files = [f for f in os.listdir(folder) if
+                 os.path.isfile(os.path.join(folder, f))]
+        for item in files:
+            if item.find("FDAY") is -1:
+                sorted_files.append(item)
+    else:
+        print("dir dose'nt exist")
+
+    return folder, sorted_files
 
 if __name__ == '__main__':
     #1280x1024
-    file_to_check = "../data/log/2018-08-12 062039_F145DAY2.(0).txt"       # for example
-    run(file_to_check)
+    #file_to_check = "../data/log/2018-08-12 062039_F145DAY2.(0).txt"       # for example
+    #run(file_to_check)
+    folder, file_list = folder_to_file_list()
+    for file_item in file_list:
+        file_name = os.path.join(folder, file_item)
 
+        run(file_name, False, False)
