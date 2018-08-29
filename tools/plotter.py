@@ -246,8 +246,8 @@ def run(_file_to_plot, **kwargs):
     read_f = ReadFile(_file_to_plot)
 
     file_data = read_f.file_data()
-    if not file_data[0] and not file_data[1]:
-        print("No data!")
+    if len(file_data[0]) < 10 and len(file_data[1]) < 10:
+        print("Not enough data!")
     else:
         print("file_data[0]:{}, file_data[1]:{}".format(file_data[0], file_data[1]))
         plot_fig = PlotTraj([read_f.fish_no,
