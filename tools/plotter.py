@@ -298,4 +298,4 @@ if __name__ == '__main__':
         file_name = os.path.join(folder, file_item)
 
         run(file_name, show=False, overwrite=False)
-        os.close()
+
