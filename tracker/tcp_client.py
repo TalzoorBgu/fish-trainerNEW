@@ -26,8 +26,8 @@ class FishClient:
 
     def send(self, id_num, side, steps=None, velocity=None, accl=None, new_feeder=None):
 
-
-
+        if side is 'center':
+            side = 'left'
 
         if velocity is None:
             data = json.dumps({'id': id_num, 'side': side})

@@ -91,9 +91,10 @@ class Controller:
         else:
             feed_side = None
 
-        if feed_side is 'mid':
-            feed_side = 'left'
-        if feed_side is 'out_mid':
+        if feed_side is 'center':
+            #feed_side = 'left'     # only send 'left' (socket)
+            pass
+        if feed_side is 'out_center':
             feed_side = None
 
         if feed_side is not None:

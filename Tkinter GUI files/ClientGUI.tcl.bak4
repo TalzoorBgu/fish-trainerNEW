@@ -22,13 +22,9 @@ set vTcl(active_menu_fg) #000000
 # vTcl Code to Load User Fonts
 
 vTcl:font:add_font \
-    "-family {Segoe UI} -size 10 -weight normal -slant roman -underline 0 -overstrike 0" \
-    user \
-    vTcl:font10
-vTcl:font:add_font \
     "-family {Abadi MT Condensed Extra Bold} -size 20 -weight bold -slant roman -underline 0 -overstrike 0" \
     user \
-    vTcl:font9
+    vTcl:font10
 #################################
 #LIBRARY PROCEDURES
 #
@@ -472,8 +468,8 @@ proc vTclWindow.top37 {base} {
         -activebackground {#d9d9d9} -activeforeground {#000000} \
         -background {#d9d9d9} -disabledforeground {#a3a3a3} \
         -foreground {#000000} -highlightbackground {#d9d9d9} \
-        -highlightcolor black -justify left -offvalue 0 -onvalue 1 \
-        -text {Red Feeder} -variable chb_Var -wraplength 35 
+        -highlightcolor black -justify left -text {Red Feeder} \
+        -variable chb_Var -wraplength 35 
     vTcl:DefineAlias "$site_3_0.che41" "chb_NewMotor" vTcl:WidgetProc "MainGUI" 1
     place $site_3_0.lab58 \
         -in $site_3_0 -x 8 -y 8 -anchor nw -bordermode ignore 
@@ -552,7 +548,7 @@ proc vTclWindow.top37 {base} {
     label $site_3_0.lab39 \
         -activebackground {#f9f9f9} -activeforeground black \
         -background {#d9d9d9} -disabledforeground {#a3a3a3} \
-        -font $::vTcl(fonts,vTcl:font9,object) -foreground {#0000fe} \
+        -font $::vTcl(fonts,vTcl:font10,object) -foreground {#0000fe} \
         -highlightbackground {#d9d9d9} -highlightcolor black -text 00:00 
     vTcl:DefineAlias "$site_3_0.lab39" "Label15" vTcl:WidgetProc "MainGUI" 1
     place $site_3_0.lab73 \

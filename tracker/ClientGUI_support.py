@@ -31,16 +31,38 @@ except ImportError:
 
 
 def set_Tk_var():
-    global FeedVar
-    FeedVar = StringVar()
-
+    global FeedVar1
+    FeedVar1 = StringVar()
+    global FeedVar2
+    FeedVar2 = StringVar()
+    global TraningVar
+    TraningVar = StringVar()
     global chb_Var
     chb_Var = StringVar()
 
-    # chb_Var = '1'
+def R1Sel():
+    global FeedVar1
+    print('ClientGUI_support.R1Sel')
+    print("FeedVar1.get():{}".format(FeedVar1.get()))
+    sys.stdout.flush()
 
+def R2Sel():
+    global FeedVar2
+    print('ClientGUI_support.R2Sel')
+    print("FeedVar2.get():{}".format(FeedVar2.get()))
+    sys.stdout.flush()
 
-
+def R3Sel():
+    global TraningVar, Fish_traningGUI
+    print('ClientGUI_support.R3Sel')
+    r_button_val = TraningVar.get()
+    print("TraningVar.get():{}".format(r_button_val))
+    if r_button_val is 'E':
+        train_type = 'Edge'
+    elif r_button_val is 'C':
+        train_type = 'Center'
+    Fish_traningGUI.print_and_update_main_log("Seleced traning type : {}".format(train_type))
+    sys.stdout.flush()
 
 def onLogClear():
     sys.stdout.flush()
@@ -106,7 +128,7 @@ def onExit():
     sys.exit(1)
 
 def onRunTraining():
-    global stop_traning
+    global stop_traning, TraningVar
     sys.stdout.flush()
 
     Fish_traningGUI.stop_traning = False
@@ -122,7 +144,8 @@ def onRunTraining():
     controller = Controller(Fish_traningGUI, log_name)
     _tmp1 = type(controller)
     print("type:{}".format(_tmp1))
-    thread_track_fish = threading.Thread(target=track_fish.track_loop, args=(controller, 'mid', ))
+    training_type = "edge" if TraningVar.get() is 'E' else "center"
+    thread_track_fish = threading.Thread(target=track_fish.track_loop, args=(controller, training_type, ))
 
     thread_track_fish.daemon = True
     thread_track_fish.start()

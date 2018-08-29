@@ -24,10 +24,6 @@ set vTcl(active_menu_fg) #000000
 vTcl:font:add_font \
     "-family {Abadi MT Condensed Extra Bold} -size 20 -weight bold -slant roman -underline 0 -overstrike 0" \
     user \
-    vTcl:font10
-vTcl:font:add_font \
-    "-family {Segoe UI} -size 10 -weight normal -slant roman -underline 0 -overstrike 0" \
-    user \
     vTcl:font9
 #################################
 #LIBRARY PROCEDURES
@@ -116,15 +112,17 @@ proc vTclWindow.top37 {base} {
     vTcl:DefineAlias "$site_3_0.lab46" "Label2" vTcl:WidgetProc "MainGUI" 1
     radiobutton $site_3_0.rad48 \
         -activebackground {#d9d9d9} -activeforeground {#000000} \
-        -background {#d9d9d9} -disabledforeground {#a3a3a3} \
+        -background {#d9d9d9} -command R1Sel -disabledforeground {#a3a3a3} \
         -foreground {#000000} -highlightbackground {#d9d9d9} \
-        -highlightcolor black -justify left -text Feed -variable FeedVar 
+        -highlightcolor black -justify left -text Feed -value F \
+        -variable FeedVar1 
     vTcl:DefineAlias "$site_3_0.rad48" "radF1" vTcl:WidgetProc "MainGUI" 1
     radiobutton $site_3_0.rad49 \
         -activebackground {#d9d9d9} -activeforeground {#000000} \
-        -background {#d9d9d9} -disabledforeground {#a3a3a3} \
+        -background {#d9d9d9} -command R1Sel -disabledforeground {#a3a3a3} \
         -foreground {#000000} -highlightbackground {#d9d9d9} \
-        -highlightcolor black -justify left -text {No feed} -variable FeedVar 
+        -highlightcolor black -justify left -text {No feed} -value NF \
+        -variable FeedVar1 
     vTcl:DefineAlias "$site_3_0.rad49" "radN1" vTcl:WidgetProc "MainGUI" 1
     label $site_3_0.lab50 \
         -activebackground {#f9f9f9} -activeforeground black \
@@ -192,16 +190,32 @@ proc vTclWindow.top37 {base} {
     vTcl:DefineAlias "$site_3_0.tex43" "txtTrainingDay2" vTcl:WidgetProc "MainGUI" 1
     radiobutton $site_3_0.rad44 \
         -activebackground {#d9d9d9} -activeforeground {#000000} \
-        -background {#d9d9d9} -disabledforeground {#a3a3a3} \
+        -background {#d9d9d9} -command R2Sel -disabledforeground {#a3a3a3} \
         -foreground {#000000} -highlightbackground {#d9d9d9} \
-        -highlightcolor black -justify left -text Feed -variable {} 
+        -highlightcolor black -justify left -text Feed -value F \
+        -variable FeedVar2 
     vTcl:DefineAlias "$site_3_0.rad44" "radF2" vTcl:WidgetProc "MainGUI" 1
     radiobutton $site_3_0.rad45 \
         -activebackground {#d9d9d9} -activeforeground {#000000} \
-        -background {#d9d9d9} -disabledforeground {#a3a3a3} \
+        -background {#d9d9d9} -command R2Sel -disabledforeground {#a3a3a3} \
         -foreground {#000000} -highlightbackground {#d9d9d9} \
-        -highlightcolor black -justify left -text {No feed} -variable {} 
+        -highlightcolor black -justify left -text {No feed} -value NF \
+        -variable FeedVar2 
     vTcl:DefineAlias "$site_3_0.rad45" "radN2" vTcl:WidgetProc "MainGUI" 1
+    radiobutton $site_3_0.rad38 \
+        -activebackground {#d9d9d9} -activeforeground {#000000} \
+        -background {#d9d9d9} -command R3Sel -disabledforeground {#a3a3a3} \
+        -foreground {#000000} -highlightbackground {#d9d9d9} \
+        -highlightcolor black -justify left -text Edge -value E \
+        -variable TraningVar 
+    vTcl:DefineAlias "$site_3_0.rad38" "radF1_1" vTcl:WidgetProc "MainGUI" 1
+    radiobutton $site_3_0.rad39 \
+        -activebackground {#d9d9d9} -activeforeground {#000000} \
+        -background {#d9d9d9} -command R3Sel -disabledforeground {#a3a3a3} \
+        -foreground {#000000} -highlightbackground {#d9d9d9} \
+        -highlightcolor black -justify left -text Center -value C \
+        -variable TraningVar 
+    vTcl:DefineAlias "$site_3_0.rad39" "radF1_2" vTcl:WidgetProc "MainGUI" 1
     place $site_3_0.but39 \
         -in $site_3_0 -x 672 -y 66 -width 90 -relwidth 0 -height 50 \
         -relheight 0 -anchor nw -bordermode ignore 
@@ -241,6 +255,12 @@ proc vTclWindow.top37 {base} {
         -in $site_3_0 -x 208 -y 64 -anchor nw -bordermode ignore 
     place $site_3_0.rad45 \
         -in $site_3_0 -x 208 -y 88 -anchor nw -bordermode ignore 
+    place $site_3_0.rad38 \
+        -in $site_3_0 -x 710 -y 10 -width 80 -height 22 -anchor nw \
+        -bordermode ignore 
+    place $site_3_0.rad39 \
+        -in $site_3_0 -x 780 -y 10 -width 70 -relwidth 0 -height 22 \
+        -relheight 0 -anchor nw -bordermode ignore 
     button $top.but41 \
         -activebackground {#d9d9d9} -activeforeground {#000000} \
         -background {#d9d9d9} -command onExit -disabledforeground {#a3a3a3} \
@@ -580,7 +600,7 @@ proc vTclWindow.top37 {base} {
     label $site_3_0.lab39 \
         -activebackground {#f9f9f9} -activeforeground black \
         -background {#d9d9d9} -disabledforeground {#a3a3a3} \
-        -font $::vTcl(fonts,vTcl:font10,object) -foreground {#0000fe} \
+        -font $::vTcl(fonts,vTcl:font9,object) -foreground {#0000fe} \
         -highlightbackground {#d9d9d9} -highlightcolor black -text 00:00 
     vTcl:DefineAlias "$site_3_0.lab39" "Label15" vTcl:WidgetProc "MainGUI" 1
     place $site_3_0.lab73 \

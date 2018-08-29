@@ -472,8 +472,8 @@ proc vTclWindow.top37 {base} {
         -activebackground {#d9d9d9} -activeforeground {#000000} \
         -background {#d9d9d9} -disabledforeground {#a3a3a3} \
         -foreground {#000000} -highlightbackground {#d9d9d9} \
-        -highlightcolor black -justify left -onvalue 1 -text {Red Feeder} \
-        -variable chb_Var -wraplength 35 
+        -highlightcolor black -justify left -offvalue 0 -onvalue 1 \
+        -text {Red Feeder} -variable chb_Var -wraplength 35 
     vTcl:DefineAlias "$site_3_0.che41" "chb_NewMotor" vTcl:WidgetProc "MainGUI" 1
     place $site_3_0.lab58 \
         -in $site_3_0 -x 8 -y 8 -anchor nw -bordermode ignore 

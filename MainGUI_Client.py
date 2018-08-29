@@ -82,7 +82,7 @@ class Fish_traning_GUI___Client:
         _compcolor = '#d9d9d9' # X11 color: 'gray85'
         _ana1color = '#d9d9d9' # X11 color: 'gray85'
         _ana2color = '#d9d9d9' # X11 color: 'gray85'
-        font10 = "-family {Abadi MT Condensed Extra Bold} -size 10 "  \
+        font9 = "-family {Abadi MT Condensed Extra Bold} -size 10 "  \
             "-weight bold -slant roman -underline 0 -overstrike 0"
 
         top.geometry("891x800+57+75")
@@ -91,11 +91,9 @@ class Fish_traning_GUI___Client:
         top.configure(highlightbackground="#d9d9d9")
         top.configure(highlightcolor="black")
 
-
-
         self.frmTraining = Frame(top)
         self.frmTraining.place(relx=0.01, rely=0.47, relheight=0.16
-                , relwidth=0.97)
+                               , relwidth=0.97)
         self.frmTraining.configure(relief=GROOVE)
         self.frmTraining.configure(borderwidth="2")
         self.frmTraining.configure(relief=GROOVE)
@@ -116,7 +114,6 @@ class Fish_traning_GUI___Client:
         self.btnRunTraining.configure(highlightcolor="black")
         self.btnRunTraining.configure(pady="0")
         self.btnRunTraining.configure(text='''Run traning''')
-        self.btnRunTraining.configure(width=89)
 
         self.Label2 = Label(self.frmTraining)
         self.Label2.place(relx=0.12, rely=0.06, height=24, width=85)
@@ -134,26 +131,30 @@ class Fish_traning_GUI___Client:
         self.radF1.configure(activebackground="#d9d9d9")
         self.radF1.configure(activeforeground="#000000")
         self.radF1.configure(background="#d9d9d9")
+        self.radF1.configure(command=ClientGUI_support.R1Sel)
         self.radF1.configure(disabledforeground="#a3a3a3")
         self.radF1.configure(foreground="#000000")
         self.radF1.configure(highlightbackground="#d9d9d9")
         self.radF1.configure(highlightcolor="black")
         self.radF1.configure(justify=LEFT)
         self.radF1.configure(text='''Feed''')
-        self.radF1.configure(variable=ClientGUI_support.FeedVar)
+        self.radF1.configure(value="F")
+        self.radF1.configure(variable=ClientGUI_support.FeedVar1)
 
         self.radN1 = Radiobutton(self.frmTraining)
         self.radN1.place(relx=0.24, rely=0.31, relheight=0.17, relwidth=0.11)
         self.radN1.configure(activebackground="#d9d9d9")
         self.radN1.configure(activeforeground="#000000")
         self.radN1.configure(background="#d9d9d9")
+        self.radN1.configure(command=ClientGUI_support.R1Sel)
         self.radN1.configure(disabledforeground="#a3a3a3")
         self.radN1.configure(foreground="#000000")
         self.radN1.configure(highlightbackground="#d9d9d9")
         self.radN1.configure(highlightcolor="black")
         self.radN1.configure(justify=LEFT)
         self.radN1.configure(text='''No feed''')
-        self.radN1.configure(variable=ClientGUI_support.FeedVar)
+        self.radN1.configure(value="NF")
+        self.radN1.configure(variable=ClientGUI_support.FeedVar1)
 
         self.Label1 = Label(self.frmTraining)
         self.Label1.place(relx=0.01, rely=0.06, height=24, width=57)
@@ -169,7 +170,7 @@ class Fish_traning_GUI___Client:
         self.txtArgs = Text(self.frmTraining)
         self.txtArgs.place(relx=0.52, rely=0.67, relheight=0.24, relwidth=0.25)
         self.txtArgs.configure(background="white")
-        self.txtArgs.configure(font=font10)
+        self.txtArgs.configure(font=font9)
         self.txtArgs.configure(foreground="black")
         self.txtArgs.configure(highlightbackground="#d9d9d9")
         self.txtArgs.configure(highlightcolor="black")
@@ -203,13 +204,12 @@ class Fish_traning_GUI___Client:
         self.btnStopTraning.configure(highlightcolor="black")
         self.btnStopTraning.configure(pady="0")
         self.btnStopTraning.configure(text='''Stop traning''')
-        self.btnStopTraning.configure(width=87)
 
         self.txtFishNo1 = Text(self.frmTraining)
         self.txtFishNo1.place(relx=0.02, rely=0.24, relheight=0.24, relwidth=0.1)
 
         self.txtFishNo1.configure(background="white")
-        self.txtFishNo1.configure(font=font10)
+        self.txtFishNo1.configure(font=font9)
         self.txtFishNo1.configure(foreground="black")
         self.txtFishNo1.configure(highlightbackground="#d9d9d9")
         self.txtFishNo1.configure(highlightcolor="black")
@@ -222,9 +222,9 @@ class Fish_traning_GUI___Client:
 
         self.txtTrainingDay1 = Text(self.frmTraining)
         self.txtTrainingDay1.place(relx=0.14, rely=0.24, relheight=0.24
-                , relwidth=0.09)
+                                   , relwidth=0.09)
         self.txtTrainingDay1.configure(background="white")
-        self.txtTrainingDay1.configure(font=font10)
+        self.txtTrainingDay1.configure(font=font9)
         self.txtTrainingDay1.configure(foreground="black")
         self.txtTrainingDay1.configure(highlightbackground="#d9d9d9")
         self.txtTrainingDay1.configure(highlightcolor="black")
@@ -239,7 +239,7 @@ class Fish_traning_GUI___Client:
         self.txtFishNo2.place(relx=0.02, rely=0.55, relheight=0.24, relwidth=0.1)
 
         self.txtFishNo2.configure(background="white")
-        self.txtFishNo2.configure(font=font10)
+        self.txtFishNo2.configure(font=font9)
         self.txtFishNo2.configure(foreground="black")
         self.txtFishNo2.configure(highlightbackground="#d9d9d9")
         self.txtFishNo2.configure(highlightcolor="black")
@@ -252,9 +252,9 @@ class Fish_traning_GUI___Client:
 
         self.txtTrainingDay2 = Text(self.frmTraining)
         self.txtTrainingDay2.place(relx=0.14, rely=0.55, relheight=0.24
-                , relwidth=0.09)
+                                   , relwidth=0.09)
         self.txtTrainingDay2.configure(background="white")
-        self.txtTrainingDay2.configure(font=font10)
+        self.txtTrainingDay2.configure(font=font9)
         self.txtTrainingDay2.configure(foreground="black")
         self.txtTrainingDay2.configure(highlightbackground="#d9d9d9")
         self.txtTrainingDay2.configure(highlightcolor="black")
@@ -270,24 +270,61 @@ class Fish_traning_GUI___Client:
         self.radF2.configure(activebackground="#d9d9d9")
         self.radF2.configure(activeforeground="#000000")
         self.radF2.configure(background="#d9d9d9")
+        self.radF2.configure(command=ClientGUI_support.R2Sel)
         self.radF2.configure(disabledforeground="#a3a3a3")
         self.radF2.configure(foreground="#000000")
         self.radF2.configure(highlightbackground="#d9d9d9")
         self.radF2.configure(highlightcolor="black")
         self.radF2.configure(justify=LEFT)
         self.radF2.configure(text='''Feed''')
+        self.radF2.configure(value="F")
+        self.radF2.configure(variable=ClientGUI_support.FeedVar2)
 
         self.radN2 = Radiobutton(self.frmTraining)
         self.radN2.place(relx=0.24, rely=0.67, relheight=0.19, relwidth=0.08)
         self.radN2.configure(activebackground="#d9d9d9")
         self.radN2.configure(activeforeground="#000000")
         self.radN2.configure(background="#d9d9d9")
+        self.radN2.configure(command=ClientGUI_support.R2Sel)
         self.radN2.configure(disabledforeground="#a3a3a3")
         self.radN2.configure(foreground="#000000")
         self.radN2.configure(highlightbackground="#d9d9d9")
         self.radN2.configure(highlightcolor="black")
         self.radN2.configure(justify=LEFT)
         self.radN2.configure(text='''No feed''')
+        self.radN2.configure(value="NF")
+        self.radN2.configure(variable=ClientGUI_support.FeedVar2)
+
+        self.radF1_1 = Radiobutton(self.frmTraining)
+        self.radF1_1.place(relx=0.82, rely=0.08, relheight=0.17, relwidth=0.09)
+        self.radF1_1.configure(activebackground="#d9d9d9")
+        self.radF1_1.configure(activeforeground="#000000")
+        self.radF1_1.configure(background="#d9d9d9")
+        self.radF1_1.configure(command=ClientGUI_support.R3Sel)
+        self.radF1_1.configure(disabledforeground="#a3a3a3")
+        self.radF1_1.configure(foreground="#000000")
+        self.radF1_1.configure(highlightbackground="#d9d9d9")
+        self.radF1_1.configure(highlightcolor="black")
+        self.radF1_1.configure(justify=LEFT)
+        self.radF1_1.configure(text='''Edge''')
+        self.radF1_1.configure(value="E")
+        self.radF1_1.configure(variable=ClientGUI_support.TraningVar)
+
+        self.radF1_2 = Radiobutton(self.frmTraining)
+        self.radF1_2.place(relx=0.9, rely=0.08, relheight=0.17, relwidth=0.08)
+        self.radF1_2.configure(activebackground="#d9d9d9")
+        self.radF1_2.configure(activeforeground="#000000")
+        self.radF1_2.configure(background="#d9d9d9")
+        self.radF1_2.configure(command=ClientGUI_support.R3Sel)
+        self.radF1_2.configure(disabledforeground="#a3a3a3")
+        self.radF1_2.configure(foreground="#000000")
+        self.radF1_2.configure(highlightbackground="#d9d9d9")
+        self.radF1_2.configure(highlightcolor="black")
+        self.radF1_2.configure(justify=LEFT)
+        self.radF1_2.configure(text='''Center''')
+        self.radF1_2.configure(value="C")
+        self.radF1_2.configure(variable=ClientGUI_support.TraningVar)
+        self.radF1_2.configure(width=70)
 
         self.btnExit = Button(top)
         self.btnExit.place(relx=0.78, rely=0.94, height=40, width=177)
@@ -301,7 +338,6 @@ class Fish_traning_GUI___Client:
         self.btnExit.configure(highlightcolor="black")
         self.btnExit.configure(pady="0")
         self.btnExit.configure(text='''Exit''')
-
 
         self.frmStat = Frame(top)
         self.frmStat.place(relx=0.02, rely=0.01, relheight=0.33, relwidth=0.97)
@@ -363,7 +399,7 @@ class Fish_traning_GUI___Client:
 
         self.txtStatLog = Text(self.frmStat)
         self.txtStatLog.place(relx=0.01, rely=0.15, relheight=0.63
-                , relwidth=0.97)
+                              , relwidth=0.97)
         self.txtStatLog.configure(background="white")
         self.txtStatLog.configure(font="TkTextFont")
         self.txtStatLog.configure(foreground="black")
@@ -389,9 +425,9 @@ class Fish_traning_GUI___Client:
 
         self.txtStatDaysBack = Text(self.frmStat)
         self.txtStatDaysBack.place(relx=0.19, rely=0.81, relheight=0.09
-                , relwidth=0.08)
+                                   , relwidth=0.08)
         self.txtStatDaysBack.configure(background="white")
-        self.txtStatDaysBack.configure(font=font10)
+        self.txtStatDaysBack.configure(font=font9)
         self.txtStatDaysBack.configure(foreground="black")
         self.txtStatDaysBack.configure(highlightbackground="#d9d9d9")
         self.txtStatDaysBack.configure(highlightcolor="black")
@@ -415,9 +451,9 @@ class Fish_traning_GUI___Client:
 
         self.txtStatArgs = Text(self.frmStat)
         self.txtStatArgs.place(relx=0.33, rely=0.81, relheight=0.09
-                , relwidth=0.09)
+                               , relwidth=0.09)
         self.txtStatArgs.configure(background="white")
-        self.txtStatArgs.configure(font=font10)
+        self.txtStatArgs.configure(font=font9)
         self.txtStatArgs.configure(foreground="black")
         self.txtStatArgs.configure(highlightbackground="#d9d9d9")
         self.txtStatArgs.configure(highlightcolor="black")
@@ -441,9 +477,9 @@ class Fish_traning_GUI___Client:
 
         self.txtStatRunArgs = Text(self.frmStat)
         self.txtStatRunArgs.place(relx=0.19, rely=0.9, relheight=0.09
-                , relwidth=0.44)
+                                  , relwidth=0.44)
         self.txtStatRunArgs.configure(background="white")
-        self.txtStatRunArgs.configure(font=font10)
+        self.txtStatRunArgs.configure(font=font9)
         self.txtStatRunArgs.configure(foreground="black")
         self.txtStatRunArgs.configure(highlightbackground="#d9d9d9")
         self.txtStatRunArgs.configure(highlightcolor="black")
@@ -456,9 +492,9 @@ class Fish_traning_GUI___Client:
 
         self.txtLogFolder = Text(self.frmStat)
         self.txtLogFolder.place(relx=0.46, rely=0.03, relheight=0.09
-                , relwidth=0.51)
+                                , relwidth=0.51)
         self.txtLogFolder.configure(background="white")
-        self.txtLogFolder.configure(font=font10)
+        self.txtLogFolder.configure(font=font9)
         self.txtLogFolder.configure(foreground="black")
         self.txtLogFolder.configure(highlightbackground="#d9d9d9")
         self.txtLogFolder.configure(highlightcolor="black")
@@ -491,7 +527,7 @@ class Fish_traning_GUI___Client:
         self.Label4.configure(text='''Communication''')
 
         self.txtServerIP = Entry(self.frmCom)
-        self.txtServerIP.place(relx=0.02, rely=0.62,height=20, relwidth=0.19)
+        self.txtServerIP.place(relx=0.02, rely=0.62, height=20, relwidth=0.19)
         self.txtServerIP.configure(background="white")
         self.txtServerIP.configure(disabledforeground="#a3a3a3")
         self.txtServerIP.configure(font="TkFixedFont")
@@ -601,7 +637,7 @@ class Fish_traning_GUI___Client:
         self.Label7.configure(text='''Steps number''')
 
         self.txtStepNum = Entry(self.frmCom)
-        self.txtStepNum.place(relx=0.63, rely=0.66,height=27, relwidth=0.09)
+        self.txtStepNum.place(relx=0.63, rely=0.66, height=27, relwidth=0.09)
         self.txtStepNum.configure(background="white")
         self.txtStepNum.configure(disabledforeground="#a3a3a3")
         self.txtStepNum.configure(font="TkFixedFont")
@@ -626,7 +662,7 @@ class Fish_traning_GUI___Client:
         self.btnTankConf.configure(text='''Tank conf.''')
 
         self.txtVelocity = Entry(self.frmCom)
-        self.txtVelocity.place(relx=0.51, rely=0.33,height=27, relwidth=0.09)
+        self.txtVelocity.place(relx=0.51, rely=0.33, height=27, relwidth=0.09)
         self.txtVelocity.configure(background="white")
         self.txtVelocity.configure(disabledforeground="#a3a3a3")
         self.txtVelocity.configure(font="TkFixedFont")
@@ -638,7 +674,7 @@ class Fish_traning_GUI___Client:
         self.txtVelocity.configure(selectforeground="black")
 
         self.txtAccl = Entry(self.frmCom)
-        self.txtAccl.place(relx=0.51, rely=0.66,height=27, relwidth=0.09)
+        self.txtAccl.place(relx=0.51, rely=0.66, height=27, relwidth=0.09)
         self.txtAccl.configure(background="white")
         self.txtAccl.configure(disabledforeground="#a3a3a3")
         self.txtAccl.configure(font="TkFixedFont")
@@ -650,10 +686,8 @@ class Fish_traning_GUI___Client:
         self.txtAccl.configure(selectforeground="black")
 
         self.chb_NewMotor = Checkbutton(self.frmCom)
-        self.chb_NewMotor.place(relx=0.89,
-                                rely=0.11,
-                                relheight=0.38,
-                                relwidth=0.08)
+        self.chb_NewMotor.place(relx=0.89, rely=0.11, relheight=0.38
+                                , relwidth=0.08)
         self.chb_NewMotor.configure(activebackground="#d9d9d9")
         self.chb_NewMotor.configure(activeforeground="#000000")
         self.chb_NewMotor.configure(background="#d9d9d9")
@@ -664,7 +698,6 @@ class Fish_traning_GUI___Client:
         self.chb_NewMotor.configure(justify=LEFT)
         self.chb_NewMotor.configure(text='''Red Feeder''')
         self.chb_NewMotor.configure(variable=ClientGUI_support.chb_Var)
-        self.chb_NewMotor.configure(width=71)
         self.chb_NewMotor.configure(wraplength="35")
 
         self.btnSetZero = Button(self.frmCom)
@@ -679,7 +712,6 @@ class Fish_traning_GUI___Client:
         self.btnSetZero.configure(highlightcolor="black")
         self.btnSetZero.configure(pady="0")
         self.btnSetZero.configure(text='''Set ZERO pos.''')
-        self.btnSetZero.configure(width=87)
 
         self.Label7_3 = Label(self.frmCom)
         self.Label7_3.place(relx=0.46, rely=0.38, height=21, width=39)
@@ -691,7 +723,6 @@ class Fish_traning_GUI___Client:
         self.Label7_3.configure(highlightbackground="#d9d9d9")
         self.Label7_3.configure(highlightcolor="black")
         self.Label7_3.configure(text='''Vel''')
-        self.Label7_3.configure(width=39)
 
         self.Label7_4 = Label(self.frmCom)
         self.Label7_4.place(relx=0.46, rely=0.66, height=21, width=39)
@@ -727,7 +758,7 @@ class Fish_traning_GUI___Client:
 
         self.txtMainLog = Text(self.frmLog)
         self.txtMainLog.place(relx=0.01, rely=0.14, relheight=0.75
-                , relwidth=0.98)
+                              , relwidth=0.98)
         self.txtMainLog.configure(background="white")
         self.txtMainLog.configure(font="TkTextFont")
         self.txtMainLog.configure(foreground="black")
@@ -770,7 +801,7 @@ class Fish_traning_GUI___Client:
         self.Label15.configure(activeforeground="black")
         self.Label15.configure(background="#d9d9d9")
         self.Label15.configure(disabledforeground="#a3a3a3")
-        self.Label15.configure(font=font10)
+        self.Label15.configure(font=font9)
         self.Label15.configure(foreground="#0000fe")
         self.Label15.configure(highlightbackground="#d9d9d9")
         self.Label15.configure(highlightcolor="black")
@@ -801,6 +832,9 @@ class Fish_traning_GUI___Client:
         temp_run_arg = "{} {} {} {}".format('fish_stat.py', self.LogFolderName, self.Stat_days, self.Stat_arg)
         self.txtStatRunArgs.insert('0.0', temp_run_arg)
         ClientGUI_support.chb_Var.set('1') # NEW feeder
+        ClientGUI_support.FeedVar1.set('F')
+        ClientGUI_support.FeedVar2.set('F')
+        ClientGUI_support.TraningVar.set('E')
         # self.chb_NewMotor.setvar(ClientGUI_support.chb_Var, '1')
         #check = True
         #print('self.chb_NewMotor:{}'.format(self.chb_NewMotor.getboolean(check)))

@@ -9,7 +9,7 @@ class FishLog:
         '''file name- fish_name+date+time, open new file, init counters to 0'''
         self.line_number = 0
         self.track_count = 0
-        self.feed_count = {'left': 0, 'right': 0, 'mid': 0}
+        self.feed_count = {'left': 0, 'right': 0, 'center': 0}
         self.fish_name = fish_name
         print 'start logging data'
         # Open a file

@@ -41,7 +41,7 @@ def init_tracking(tank_config='tracker/tank_config.txt',video=None):
     return width
 
 
-def track_loop(cb, _version='reg'): #cb is an object that has a do() function in the calling script
+def track_loop(cb, _version='edge'): #cb is an object that has a do() function in the calling script
     global stop_training
 
     print("_version:{}".format(_version))
@@ -109,10 +109,10 @@ def track_loop(cb, _version='reg'): #cb is an object that has a do() function in
 
 def paint_lines(_cv_obj, _tank_width, _tank_height, _frame, _ver):
 
-    if _ver is 'reg':
+    if _ver is 'edge':
         low_boundry = 1.0/4.0
         hige_boundry = 3.0/4.0
-    elif _ver is 'mid':
+    elif _ver is 'center':
         low_boundry = 3.0/8.0
         hige_boundry = 5.0/8.0
 
@@ -125,10 +125,10 @@ def paint_lines(_cv_obj, _tank_width, _tank_height, _frame, _ver):
     #      format(_ver, _tank_height, left_up, left_down))
     #print("low_boundry:{}".format(low_boundry))
 
-    if _ver is 'reg':
-        _cv_obj.line(_frame, (0, up), (_tank_height, up), (255, 255, 255), 1)
-        _cv_obj.line(_frame, (0, down), (_tank_height, down), (255, 255, 255), 1)
-    elif _ver is 'mid':
+    if _ver is 'edge':
+        _cv_obj.line(_frame, (left, 0), (left, _tank_width), (255, 255, 255), 1)
+        _cv_obj.line(_frame, (right, 0), (right, _tank_width), (255, 255, 255), 1)
+    elif _ver is 'center':
         _cv_obj.rectangle(_frame, (left, down), (right, up), (255, 255, 255), 1)
 
 def paint_single_line(_cv_obj, (x0, y0), (x1, y1), _frame, gap = 0):
