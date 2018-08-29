@@ -68,6 +68,7 @@ class ReadFile:
             raise
         finally:
             if file_ex: file_h.close()
+            print("File closed")
 
     def add(self, _data):
         self.data_x.append(_data[0])
