@@ -228,7 +228,6 @@ class PlotTraj:
         self.ax.savefig(full_name, dpi=600)
 
 
-
 def run(_file_to_plot, **kwargs):
 
     show_at_end = True

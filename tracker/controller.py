@@ -78,8 +78,8 @@ class Controller:
         self.logger[fish_id].fo.close()
         sleep(0.2)  # 200mS wait
         print("fish_id:{}, filename:{}".format(fish_id, log_filename))
-        plotter.run(log_filename)
-        sleep(0.5)
+        plotter.run(log_filename, show=True, overwrite=True)
+        sleep(1.5)
 
     def do(self, x, y, fish_id, _version):
         global total_feed
