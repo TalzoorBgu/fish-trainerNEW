@@ -54,6 +54,7 @@ class ReadFile:
 
                 if num > 10:
                     ttl_training_time = training_end - training_start
+                    print("training_start:{}".format(training_start))
                     self.traning_start_str = str(training_start)
                     self.total_training_time = ttl_training_time
                 else:
