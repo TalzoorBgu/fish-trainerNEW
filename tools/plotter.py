@@ -249,6 +249,7 @@ def run(_file_to_plot, **kwargs):
     if not file_data[0] and not file_data[1]:
         print("No data!")
     else:
+        print("file_data[0]:{}, file_data[1]:{}".format(file_data[0], file_data[1]))
         plot_fig = PlotTraj([read_f.fish_no,
                              read_f.train_day,
                              read_f.traning_start_str,
