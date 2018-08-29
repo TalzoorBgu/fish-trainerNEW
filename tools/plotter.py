@@ -147,7 +147,6 @@ def save_plot(_info, _ax, open_png, overwrite, _project_wd=''):
 
     if (fig_already_exsits and overwrite) or (not fig_already_exsits):
 
-        print("here")
         dir_ex = os.path.exists(folder_name)
         print("folder_name:{}, exists:{}".format(folder_name, dir_ex))
 
@@ -230,7 +229,16 @@ class PlotTraj:
 
 
 
-def run(_file_to_plot, _open, _overwrite):
+def run(_file_to_plot, **kwargs):
+
+    show_at_end = True
+    overwrite = True
+
+    if "show" in kwargs:
+        show_at_end = kwargs["show"]
+    if "overwrite" in kwargs:
+        overwrite = kwargs["overwrite"]
+
     #Check line:
     #_file_to_plot = r"C:\Users\Owner\PycharmProjects\fish-trainerNEW\data\log\2018-08-28 082806_F444DAY15.(0).txt"
 
@@ -244,7 +252,7 @@ def run(_file_to_plot, _open, _overwrite):
         plot_fig = PlotTraj([read_f.fish_no,
                              read_f.train_day,
                              read_f.traning_start_str,
-                             read_f.total_training_time], _open, _overwrite)
+                             read_f.total_training_time], show_at_end, overwrite)
         plot_fig.plot_it(file_data)
 
 def folder_to_file_list():
@@ -288,4 +296,4 @@ if __name__ == '__main__':
     for file_item in file_list:
         file_name = os.path.join(folder, file_item)
 
-        run(file_name, False, False)
+        run(file_name, show=False, overwrite=False)

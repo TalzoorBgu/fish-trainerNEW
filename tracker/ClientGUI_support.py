@@ -153,8 +153,9 @@ def onRunTraining():
 def onStopTraining():
     global stop_traning, Fish_traningGUI
     sys.stdout.flush()
-    Fish_traningGUI.stop_traning = True
-    Fish_traningGUI.print_and_update_main_log("Stopped!")
+    onExit()
+    #Fish_traningGUI.stop_traning = True
+    #Fish_traningGUI.print_and_update_main_log("Stopped!")
 
 def onSendtest():
     print('ClientGUI_support.onSendtest')
