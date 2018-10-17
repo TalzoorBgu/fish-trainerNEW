@@ -54,7 +54,7 @@ def click_and_crop(event, x, y, flags, param):
                       (random.randint(0, 255), random.randint(0, 255), random.randint(0, 255)), 2)
         cv2.imshow("image", image)
 
-def SP_Main():
+def SP_Main(_camera=0):
     global image, fish, refPt
     refPt = []
     fish = []
@@ -68,7 +68,7 @@ def SP_Main():
     # if a video path was not supplied, grab the reference
     # to the webcam
     if not args.get("video", False):
-        video_capture = cv2.VideoCapture(0)
+        video_capture = cv2.VideoCapture(int(_camera))
 
     # otherwise, grab a reference to the video file
     else:

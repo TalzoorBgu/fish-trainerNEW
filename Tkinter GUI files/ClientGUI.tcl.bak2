@@ -477,9 +477,10 @@ proc vTclWindow.top37 {base} {
     vTcl:DefineAlias "$site_3_0.che41" "chb_NewMotor" vTcl:WidgetProc "MainGUI" 1
     button $site_3_0.but41 \
         -activebackground {#d9d9d9} -activeforeground {#000000} \
-        -background {#d9d9d9} -command on2L -disabledforeground {#a3a3a3} \
-        -foreground {#000000} -highlightbackground {#d9d9d9} \
-        -highlightcolor black -pady 0 -text {Set ZERO pos.} 
+        -background {#d9d9d9} -command onSetZero \
+        -disabledforeground {#a3a3a3} -foreground {#000000} \
+        -highlightbackground {#d9d9d9} -highlightcolor black -pady 0 \
+        -text {Set ZERO pos.} 
     vTcl:DefineAlias "$site_3_0.but41" "btnSetZero" vTcl:WidgetProc "MainGUI" 1
     label $site_3_0.lab42 \
         -activebackground {#f9f9f9} -activeforeground black \

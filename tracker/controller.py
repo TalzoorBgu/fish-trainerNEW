@@ -22,7 +22,7 @@ FEED_EVERY = 3          # feed every 3 sec
 
 
 class Controller:
-    def __init__(self, cb_obj=None, name=['test']):
+    def __init__(self, cb_obj=None, name=['test'], _camera=0):
         global total_feed
         global time_counter
         total_feed = 0
@@ -34,7 +34,7 @@ class Controller:
         print("chb_Var_cont:{}".format(self.chb_Var.get()))
         self.time_last_feed = int(round(time.time()))
 
-        width = track_fish.init_tracking()
+        width = track_fish.init_tracking(int(_camera))
 
         # init logger
         #   full_script_path = '{}{}'.format(os.path.dirname(os.path.realpath(__file__)), '/')

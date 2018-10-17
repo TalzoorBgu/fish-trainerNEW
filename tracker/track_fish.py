@@ -12,7 +12,7 @@ video_capture = None
 stop_training=False
 
 #tank_config='../tracker/tank_config.txt'
-def init_tracking(tank_config='tracker/tank_config.txt',video=None):
+def init_tracking(_camera=0, tank_config='tracker/tank_config.txt',video=None):
     global video_capture
 
     with open(tank_config) as f:
@@ -23,7 +23,7 @@ def init_tracking(tank_config='tracker/tank_config.txt',video=None):
 
     # if a video path was not supplied, grab the reference to the webcam
     if video is None:
-        video_capture = cv2.VideoCapture(0)
+        video_capture = cv2.VideoCapture(int(_camera))
     # otherwise, grab a reference to the video file
     else:
         video_capture = cv2.VideoCapture(video)

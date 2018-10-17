@@ -39,6 +39,14 @@ def set_Tk_var():
     TraningVar = StringVar()
     global chb_Var
     chb_Var = StringVar()
+    global CamVar1
+    CamVar1 = StringVar()
+
+def R_Cam1Sel():
+    global CamVar1
+    print('ClientGUI_support.R_Cam1Sel')
+    print("CamVar1.get():{}".format(CamVar1.get()))
+    sys.stdout.flush()
 
 def R1Sel():
     global FeedVar1
@@ -141,7 +149,9 @@ def onRunTraining():
     except UnboundLocalError:
         print("there is not Controller instance")
 
-    controller = Controller(Fish_traningGUI, log_name)
+    camera = CamVar1.get()
+
+    controller = Controller(Fish_traningGUI, log_name, camera)
     _tmp1 = type(controller)
     print("type:{}".format(_tmp1))
     training_type = "edge" if TraningVar.get() is 'E' else "center"
@@ -170,9 +180,10 @@ def onStatClear():
 
 
 def onTankConfig():
+    global CamVar1
     print('ClientGUI_support.onTankConfig')
     sys.stdout.flush()
-    thread_track_fish = threading.Thread(target=scene_planner.SP_Main, args=())
+    thread_track_fish = threading.Thread(target=scene_planner.SP_Main, args=(CamVar1.get()))
     thread_track_fish.start()
 
 

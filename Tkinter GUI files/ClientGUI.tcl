@@ -76,10 +76,10 @@ proc vTclWindow.top37 {base} {
     # CREATING WIDGETS
     ###################
     vTcl::widgets::core::toplevel::createCmd $top -class Toplevel \
-        -background {#d9d9d9} -highlightbackground {#d9d9d9} \
+        -menu "$top.m45" -background {#d9d9d9} -highlightbackground {#d9d9d9} \
         -highlightcolor black 
     wm focusmodel $top passive
-    wm geometry $top 891x800+57+75
+    wm geometry $top 891x800+77+57
     update
     # set in toplevel.wgt.
     global vTcl
@@ -202,20 +202,39 @@ proc vTclWindow.top37 {base} {
         -highlightcolor black -justify left -text {No feed} -value NF \
         -variable FeedVar2 
     vTcl:DefineAlias "$site_3_0.rad45" "radN2" vTcl:WidgetProc "MainGUI" 1
-    radiobutton $site_3_0.rad38 \
+    radiobutton $site_3_0.rad40 \
         -activebackground {#d9d9d9} -activeforeground {#000000} \
-        -background {#d9d9d9} -command R3Sel -disabledforeground {#a3a3a3} \
+        -background {#d9d9d9} -command R1Sel -disabledforeground {#a3a3a3} \
         -foreground {#000000} -highlightbackground {#d9d9d9} \
-        -highlightcolor black -justify left -text Edge -value E \
-        -variable TraningVar 
-    vTcl:DefineAlias "$site_3_0.rad38" "radF1_1" vTcl:WidgetProc "MainGUI" 1
-    radiobutton $site_3_0.rad39 \
+        -highlightcolor black -justify left -text {Camera 1} -value F \
+        -variable CamVar1 
+    vTcl:DefineAlias "$site_3_0.rad40" "radCam1" vTcl:WidgetProc "MainGUI" 1
+    radiobutton $site_3_0.rad41 \
         -activebackground {#d9d9d9} -activeforeground {#000000} \
-        -background {#d9d9d9} -command R3Sel -disabledforeground {#a3a3a3} \
+        -background {#d9d9d9} -command R1Sel -disabledforeground {#a3a3a3} \
         -foreground {#000000} -highlightbackground {#d9d9d9} \
-        -highlightcolor black -justify left -text Center -value C \
-        -variable TraningVar 
-    vTcl:DefineAlias "$site_3_0.rad39" "radF1_2" vTcl:WidgetProc "MainGUI" 1
+        -highlightcolor black -justify left -text Feed -value F \
+        -variable FeedVar1 
+    radiobutton $site_3_0.rad42 \
+        -activebackground {#d9d9d9} -activeforeground {#000000} \
+        -background {#d9d9d9} -command R1Sel -disabledforeground {#a3a3a3} \
+        -foreground {#000000} -highlightbackground {#d9d9d9} \
+        -highlightcolor black -justify left -text Feed -value F \
+        -variable FeedVar1 
+    radiobutton $site_3_0.rad43 \
+        -activebackground {#d9d9d9} -activeforeground {#000000} \
+        -background {#d9d9d9} -command R1Sel -disabledforeground {#a3a3a3} \
+        -foreground {#000000} -highlightbackground {#d9d9d9} \
+        -highlightcolor black -justify left -text {Camera 2} -value F \
+        -variable CamVar1 
+    vTcl:DefineAlias "$site_3_0.rad43" "radCam2" vTcl:WidgetProc "MainGUI" 1
+    button $site_3_0.but44 \
+        -activebackground {#d9d9d9} -activeforeground {#000000} \
+        -background {#d9d9d9} -command onTankConfig \
+        -disabledforeground {#a3a3a3} -foreground {#000000} \
+        -highlightbackground {#d9d9d9} -highlightcolor black -pady 0 \
+        -text {Tank conf.} 
+    vTcl:DefineAlias "$site_3_0.but44" "btnTankConf" vTcl:WidgetProc "MainGUI" 1
     place $site_3_0.but39 \
         -in $site_3_0 -x 672 -y 66 -width 90 -relwidth 0 -height 50 \
         -relheight 0 -anchor nw -bordermode ignore 
@@ -223,13 +242,11 @@ proc vTclWindow.top37 {base} {
         -in $site_3_0 -x 104 -y 8 -width 85 -relwidth 0 -height 24 \
         -relheight 0 -anchor nw -bordermode ignore 
     place $site_3_0.rad48 \
-        -in $site_3_0 -x 208 -y 16 -width 80 -relwidth 0 -height 22 \
-        -relheight 0 -anchor nw -bordermode ignore 
+        -in $site_3_0 -x 200 -y 25 -anchor nw -bordermode ignore 
     place $site_3_0.rad49 \
-        -in $site_3_0 -x 208 -y 40 -width 99 -relwidth 0 -height 22 \
-        -relheight 0 -anchor nw -bordermode ignore 
+        -in $site_3_0 -x 200 -y 45 -anchor nw -bordermode ignore 
     place $site_3_0.lab50 \
-        -in $site_3_0 -x 8 -y 8 -width 57 -height 24 -anchor nw \
+        -in $site_3_0 -x 10 -y 8 -width 57 -height 24 -anchor nw \
         -bordermode ignore 
     place $site_3_0.tex79 \
         -in $site_3_0 -x 448 -y 88 -width 218 -relwidth 0 -height 32 \
@@ -240,7 +257,7 @@ proc vTclWindow.top37 {base} {
         -in $site_3_0 -x 768 -y 66 -width 90 -relwidth 0 -height 50 \
         -relheight 0 -anchor nw -bordermode ignore 
     place $site_3_0.tex45 \
-        -in $site_3_0 -x 16 -y 32 -width 90 -relwidth 0 -height 32 \
+        -in $site_3_0 -x 20 -y 30 -width 90 -relwidth 0 -height 32 \
         -relheight 0 -anchor nw -bordermode ignore 
     place $site_3_0.tex46 \
         -in $site_3_0 -x 120 -y 32 -width 82 -relwidth 0 -height 32 \
@@ -252,14 +269,15 @@ proc vTclWindow.top37 {base} {
         -in $site_3_0 -x 120 -y 72 -width 82 -relwidth 0 -height 32 \
         -relheight 0 -anchor nw -bordermode ignore 
     place $site_3_0.rad44 \
-        -in $site_3_0 -x 208 -y 64 -anchor nw -bordermode ignore 
+        -in $site_3_0 -x 200 -y 65 -anchor nw -bordermode ignore 
     place $site_3_0.rad45 \
-        -in $site_3_0 -x 208 -y 88 -anchor nw -bordermode ignore 
-    place $site_3_0.rad38 \
-        -in $site_3_0 -x 710 -y 10 -width 80 -height 22 -anchor nw \
-        -bordermode ignore 
-    place $site_3_0.rad39 \
-        -in $site_3_0 -x 780 -y 10 -width 70 -relwidth 0 -height 22 \
+        -in $site_3_0 -x 200 -y 85 -anchor nw -bordermode ignore 
+    place $site_3_0.rad40 \
+        -in $site_3_0 -x 280 -y 25 -anchor nw -bordermode ignore 
+    place $site_3_0.rad43 \
+        -in $site_3_0 -x 280 -y 45 -anchor nw -bordermode ignore 
+    place $site_3_0.but44 \
+        -in $site_3_0 -x 360 -y 10 -width 73 -relwidth 0 -height 112 \
         -relheight 0 -anchor nw -bordermode ignore 
     button $top.but41 \
         -activebackground {#d9d9d9} -activeforeground {#000000} \
@@ -469,13 +487,6 @@ proc vTclWindow.top37 {base} {
         -highlightcolor black -insertbackground black \
         -selectbackground {#c4c4c4} -selectforeground black 
     vTcl:DefineAlias "$site_3_0.ent70" "txtStepNum" vTcl:WidgetProc "MainGUI" 1
-    button $site_3_0.but38 \
-        -activebackground {#d9d9d9} -activeforeground {#000000} \
-        -background {#d9d9d9} -command onTankConfig \
-        -disabledforeground {#a3a3a3} -foreground {#000000} \
-        -highlightbackground {#d9d9d9} -highlightcolor black -pady 0 \
-        -text {Tank conf.} 
-    vTcl:DefineAlias "$site_3_0.but38" "btnTankConf" vTcl:WidgetProc "MainGUI" 1
     entry $site_3_0.ent38 \
         -background white -disabledforeground {#a3a3a3} -font TkFixedFont \
         -foreground {#000000} -highlightbackground {#d9d9d9} \
@@ -543,9 +554,6 @@ proc vTclWindow.top37 {base} {
         -bordermode ignore 
     place $site_3_0.ent70 \
         -in $site_3_0 -x 540 -y 60 -width 80 -relwidth 0 -height 27 \
-        -relheight 0 -anchor nw -bordermode ignore 
-    place $site_3_0.but38 \
-        -in $site_3_0 -x 296 -y 16 -width 103 -relwidth 0 -height 62 \
         -relheight 0 -anchor nw -bordermode ignore 
     place $site_3_0.ent38 \
         -in $site_3_0 -x 440 -y 30 -width 80 -height 27 -anchor nw \
@@ -616,11 +624,16 @@ proc vTclWindow.top37 {base} {
     place $site_3_0.lab39 \
         -in $site_3_0 -x 208 -y 8 -width 121 -relwidth 0 -height 24 \
         -relheight 0 -anchor nw -bordermode ignore 
+    set site_3_0 $top.m45
+    menu $site_3_0 \
+        -activebackground {#d8d8d8} -activeforeground {#000000} \
+        -background {#d9d9d9} -font TkMenuFont -foreground {#000000} \
+        -tearoff 0 
     ###################
     # SETTING GEOMETRY
     ###################
     place $top.fra38 \
-        -in $top -x 12 -y 376 -width 864 -relwidth 0 -height 131 -relheight 0 \
+        -in $top -x 13 -y 376 -width 864 -relwidth 0 -height 131 -relheight 0 \
         -anchor nw -bordermode ignore 
     place $top.but41 \
         -in $top -x 696 -y 752 -width 177 -relwidth 0 -height 40 -relheight 0 \

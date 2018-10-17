@@ -22,13 +22,9 @@ set vTcl(active_menu_fg) #000000
 # vTcl Code to Load User Fonts
 
 vTcl:font:add_font \
-    "-family {Segoe UI} -size 10 -weight normal -slant roman -underline 0 -overstrike 0" \
-    user \
-    vTcl:font10
-vTcl:font:add_font \
     "-family {Abadi MT Condensed Extra Bold} -size 20 -weight bold -slant roman -underline 0 -overstrike 0" \
     user \
-    vTcl:font9
+    vTcl:font10
 #################################
 #LIBRARY PROCEDURES
 #
@@ -203,7 +199,7 @@ proc vTclWindow.top37 {base} {
         -highlightcolor black -justify left -text {No feed} -variable {} 
     vTcl:DefineAlias "$site_3_0.rad45" "radN2" vTcl:WidgetProc "MainGUI" 1
     place $site_3_0.but39 \
-        -in $site_3_0 -x 672 -y 56 -width 89 -relwidth 0 -height 64 \
+        -in $site_3_0 -x 672 -y 66 -width 90 -relwidth 0 -height 50 \
         -relheight 0 -anchor nw -bordermode ignore 
     place $site_3_0.lab46 \
         -in $site_3_0 -x 104 -y 8 -width 85 -relwidth 0 -height 24 \
@@ -223,7 +219,7 @@ proc vTclWindow.top37 {base} {
     place $site_3_0.lab80 \
         -in $site_3_0 -x 448 -y 56 -anchor nw -bordermode ignore 
     place $site_3_0.but38 \
-        -in $site_3_0 -x 768 -y 56 -width 87 -relwidth 0 -height 62 \
+        -in $site_3_0 -x 768 -y 66 -width 90 -relwidth 0 -height 50 \
         -relheight 0 -anchor nw -bordermode ignore 
     place $site_3_0.tex45 \
         -in $site_3_0 -x 16 -y 32 -width 90 -relwidth 0 -height 32 \
@@ -472,9 +468,27 @@ proc vTclWindow.top37 {base} {
         -activebackground {#d9d9d9} -activeforeground {#000000} \
         -background {#d9d9d9} -disabledforeground {#a3a3a3} \
         -foreground {#000000} -highlightbackground {#d9d9d9} \
-        -highlightcolor black -justify left -offvalue 0 -onvalue 1 \
-        -text {Red Feeder} -variable chb_Var -wraplength 35 
+        -highlightcolor black -justify left -text {Red Feeder} \
+        -variable chb_Var -wraplength 35 
     vTcl:DefineAlias "$site_3_0.che41" "chb_NewMotor" vTcl:WidgetProc "MainGUI" 1
+    button $site_3_0.but41 \
+        -activebackground {#d9d9d9} -activeforeground {#000000} \
+        -background {#d9d9d9} -command on2L -disabledforeground {#a3a3a3} \
+        -foreground {#000000} -highlightbackground {#d9d9d9} \
+        -highlightcolor black -pady 0 -text {Set ZERO pos.} 
+    vTcl:DefineAlias "$site_3_0.but41" "btnSetZero" vTcl:WidgetProc "MainGUI" 1
+    label $site_3_0.lab42 \
+        -activebackground {#f9f9f9} -activeforeground black \
+        -background {#d9d9d9} -disabledforeground {#a3a3a3} \
+        -foreground {#000000} -highlightbackground {#d9d9d9} \
+        -highlightcolor black -text Vel 
+    vTcl:DefineAlias "$site_3_0.lab42" "Label7_3" vTcl:WidgetProc "MainGUI" 1
+    label $site_3_0.lab43 \
+        -activebackground {#f9f9f9} -activeforeground black \
+        -background {#d9d9d9} -disabledforeground {#a3a3a3} \
+        -foreground {#000000} -highlightbackground {#d9d9d9} \
+        -highlightcolor black -text Accl 
+    vTcl:DefineAlias "$site_3_0.lab43" "Label7_4" vTcl:WidgetProc "MainGUI" 1
     place $site_3_0.lab58 \
         -in $site_3_0 -x 8 -y 8 -anchor nw -bordermode ignore 
     place $site_3_0.ent59 \
@@ -485,38 +499,47 @@ proc vTclWindow.top37 {base} {
         -in $site_3_0 -x 184 -y 16 -width 103 -relwidth 0 -height 62 \
         -relheight 0 -anchor nw -bordermode ignore 
     place $site_3_0.lab62 \
-        -in $site_3_0 -x 561 -y 11 -width 61 -height 21 -anchor nw \
+        -in $site_3_0 -x 540 -y 20 -width 61 -height 21 -anchor nw \
         -bordermode ignore 
     place $site_3_0.but65 \
-        -in $site_3_0 -x 668 -y 8 -width 57 -relwidth 0 -height 38 \
+        -in $site_3_0 -x 630 -y 10 -width 57 -relwidth 0 -height 38 \
         -relheight 0 -anchor nw -bordermode ignore 
     place $site_3_0.but66 \
-        -in $site_3_0 -x 668 -y 48 -width 57 -relwidth 0 -height 38 \
+        -in $site_3_0 -x 630 -y 50 -width 57 -relwidth 0 -height 38 \
         -relheight 0 -anchor nw -bordermode ignore 
     place $site_3_0.but67 \
-        -in $site_3_0 -x 730 -y 48 -width 57 -relwidth 0 -height 38 \
+        -in $site_3_0 -x 690 -y 50 -width 57 -relwidth 0 -height 38 \
         -relheight 0 -anchor nw -bordermode ignore 
     place $site_3_0.but68 \
-        -in $site_3_0 -x 730 -y 8 -width 57 -relwidth 0 -height 38 \
+        -in $site_3_0 -x 690 -y 10 -width 57 -relwidth 0 -height 38 \
         -relheight 0 -anchor nw -bordermode ignore 
     place $site_3_0.lab69 \
-        -in $site_3_0 -x 567 -y 30 -width 79 -height 21 -anchor nw \
+        -in $site_3_0 -x 550 -y 40 -width 79 -height 21 -anchor nw \
         -bordermode ignore 
     place $site_3_0.ent70 \
-        -in $site_3_0 -x 576 -y 56 -width 80 -relwidth 0 -height 27 \
+        -in $site_3_0 -x 540 -y 60 -width 80 -relwidth 0 -height 27 \
         -relheight 0 -anchor nw -bordermode ignore 
     place $site_3_0.but38 \
         -in $site_3_0 -x 296 -y 16 -width 103 -relwidth 0 -height 62 \
         -relheight 0 -anchor nw -bordermode ignore 
     place $site_3_0.ent38 \
-        -in $site_3_0 -x 470 -y 28 -width 80 -height 27 -anchor nw \
+        -in $site_3_0 -x 440 -y 30 -width 80 -height 27 -anchor nw \
         -bordermode ignore 
     place $site_3_0.ent39 \
-        -in $site_3_0 -x 470 -y 57 -width 80 -height 27 -anchor nw \
+        -in $site_3_0 -x 440 -y 60 -width 80 -height 27 -anchor nw \
         -bordermode ignore 
     place $site_3_0.che41 \
-        -in $site_3_0 -x 790 -y 20 -width 71 -relwidth 0 -height 55 \
+        -in $site_3_0 -x 770 -y 10 -width 71 -relwidth 0 -height 35 \
         -relheight 0 -anchor nw -bordermode ignore 
+    place $site_3_0.but41 \
+        -in $site_3_0 -x 770 -y 50 -width 87 -relwidth 0 -height 38 \
+        -relheight 0 -anchor nw -bordermode ignore 
+    place $site_3_0.lab42 \
+        -in $site_3_0 -x 399 -y 35 -width 39 -relwidth 0 -height 21 \
+        -relheight 0 -anchor nw -bordermode ignore 
+    place $site_3_0.lab43 \
+        -in $site_3_0 -x 400 -y 60 -width 39 -height 21 -anchor nw \
+        -bordermode ignore 
     frame $top.fra71 \
         -borderwidth 2 -relief groove -background {#d9d9d9} -height 235 \
         -highlightbackground {#d9d9d9} -highlightcolor black -width 861 
@@ -552,7 +575,7 @@ proc vTclWindow.top37 {base} {
     label $site_3_0.lab39 \
         -activebackground {#f9f9f9} -activeforeground black \
         -background {#d9d9d9} -disabledforeground {#a3a3a3} \
-        -font $::vTcl(fonts,vTcl:font9,object) -foreground {#0000fe} \
+        -font $::vTcl(fonts,vTcl:font10,object) -foreground {#0000fe} \
         -highlightbackground {#d9d9d9} -highlightcolor black -text 00:00 
     vTcl:DefineAlias "$site_3_0.lab39" "Label15" vTcl:WidgetProc "MainGUI" 1
     place $site_3_0.lab73 \
@@ -572,7 +595,7 @@ proc vTclWindow.top37 {base} {
     # SETTING GEOMETRY
     ###################
     place $top.fra38 \
-        -in $top -x 8 -y 376 -width 864 -relwidth 0 -height 131 -relheight 0 \
+        -in $top -x 12 -y 376 -width 864 -relwidth 0 -height 131 -relheight 0 \
         -anchor nw -bordermode ignore 
     place $top.but41 \
         -in $top -x 696 -y 752 -width 177 -relwidth 0 -height 40 -relheight 0 \
@@ -581,10 +604,10 @@ proc vTclWindow.top37 {base} {
         -in $top -x 16 -y 8 -width 864 -relwidth 0 -height 267 -relheight 0 \
         -anchor nw -bordermode ignore 
     place $top.fra57 \
-        -in $top -x 10 -y 280 -width 864 -relwidth 0 -height 91 -relheight 0 \
+        -in $top -x 14 -y 280 -width 864 -relwidth 0 -height 91 -relheight 0 \
         -anchor nw -bordermode ignore 
     place $top.fra71 \
-        -in $top -x 16 -y 512 -width 861 -relwidth 0 -height 235 -relheight 0 \
+        -in $top -x 15 -y 512 -width 861 -relwidth 0 -height 235 -relheight 0 \
         -anchor nw -bordermode ignore 
 
     vTcl:FireEvent $base <<Ready>>
