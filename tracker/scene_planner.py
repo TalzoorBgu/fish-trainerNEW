@@ -22,9 +22,22 @@ fish = []
 cropping = False
 
 
+def draw_current(_img):
+    full_root_script_path = os.getcwd()
+    file_path = '{}\\tracker\{}'.format(full_root_script_path, 'tank_config.txt')
+
+    fish_draw = []
+    with open(file_path) as f:
+        lines = f.read().splitlines()
+    for line in lines:
+        fish_draw.append(eval(line))
+    for fishy in fish_draw:
+        cv2.rectangle(_img, (fishy['left'], fishy['upper']), (fishy['right'], fishy['lower']),
+                  (255, 255, 255), 1)
+
 
 def click_and_crop(event, x, y, flags, param):
-    global image, fish ,refPt
+    global image, fish ,refPt, camera
 
     # grab references to the global variables
     global refPt, cropping
@@ -47,7 +60,7 @@ def click_and_crop(event, x, y, flags, param):
         ordered=[(min(refPt[0][0],refPt[1][0]),min(refPt[0][1],refPt[1][1]))]
         ordered.append((max(refPt[0][0],refPt[1][0]),max(refPt[0][1],refPt[1][1])))
 
-        fish.append({'upper': ordered[0][1], 'lower': ordered[1][1], 'left': ordered[0][0], 'right': ordered[1][0]})
+        fish.append({'camera:': camera, 'upper': ordered[0][1], 'lower': ordered[1][1], 'left': ordered[0][0], 'right': ordered[1][0]})
 
         # draw a rectangle around the region of interest
         cv2.rectangle(image, ordered[0], ordered[1],
@@ -55,7 +68,8 @@ def click_and_crop(event, x, y, flags, param):
         cv2.imshow("image", image)
 
 def SP_Main(_camera=0):
-    global image, fish, refPt
+    global image, fish, refPt, camera
+    camera = _camera
     refPt = []
     fish = []
     # construct the argument parser and parse the arguments
@@ -79,6 +93,8 @@ def SP_Main(_camera=0):
     if(image is None):#check for empty frames
         print 'No Image'
 
+    # draw current configuration
+    draw_current(image)
 
     # image = cv2.imread(args["image"])
     clone = image.copy()

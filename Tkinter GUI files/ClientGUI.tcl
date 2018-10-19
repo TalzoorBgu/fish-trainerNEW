@@ -79,7 +79,7 @@ proc vTclWindow.top37 {base} {
         -menu "$top.m45" -background {#d9d9d9} -highlightbackground {#d9d9d9} \
         -highlightcolor black 
     wm focusmodel $top passive
-    wm geometry $top 891x800+77+57
+    wm geometry $top 891x800+67+79
     update
     # set in toplevel.wgt.
     global vTcl
@@ -206,7 +206,7 @@ proc vTclWindow.top37 {base} {
         -activebackground {#d9d9d9} -activeforeground {#000000} \
         -background {#d9d9d9} -command R1Sel -disabledforeground {#a3a3a3} \
         -foreground {#000000} -highlightbackground {#d9d9d9} \
-        -highlightcolor black -justify left -text {Camera 1} -value F \
+        -highlightcolor black -justify left -text {Camera 1} -value 0 \
         -variable CamVar1 
     vTcl:DefineAlias "$site_3_0.rad40" "radCam1" vTcl:WidgetProc "MainGUI" 1
     radiobutton $site_3_0.rad41 \
@@ -225,7 +225,7 @@ proc vTclWindow.top37 {base} {
         -activebackground {#d9d9d9} -activeforeground {#000000} \
         -background {#d9d9d9} -command R1Sel -disabledforeground {#a3a3a3} \
         -foreground {#000000} -highlightbackground {#d9d9d9} \
-        -highlightcolor black -justify left -text {Camera 2} -value F \
+        -highlightcolor black -justify left -text {Camera 2} -value 1 \
         -variable CamVar1 
     vTcl:DefineAlias "$site_3_0.rad43" "radCam2" vTcl:WidgetProc "MainGUI" 1
     button $site_3_0.but44 \
@@ -235,6 +235,20 @@ proc vTclWindow.top37 {base} {
         -highlightbackground {#d9d9d9} -highlightcolor black -pady 0 \
         -text {Tank conf.} 
     vTcl:DefineAlias "$site_3_0.but44" "btnTankConf" vTcl:WidgetProc "MainGUI" 1
+    radiobutton $site_3_0.rad38 \
+        -activebackground {#d9d9d9} -activeforeground {#000000} \
+        -background {#d9d9d9} -command R3Sel -disabledforeground {#a3a3a3} \
+        -foreground {#000000} -highlightbackground {#d9d9d9} \
+        -highlightcolor black -justify left -text Center -value C \
+        -variable TraningVar 
+    vTcl:DefineAlias "$site_3_0.rad38" "radF1_2" vTcl:WidgetProc "MainGUI" 1
+    radiobutton $site_3_0.rad39 \
+        -activebackground {#d9d9d9} -activeforeground {#000000} \
+        -background {#d9d9d9} -command R3Sel -disabledforeground {#a3a3a3} \
+        -foreground {#000000} -highlightbackground {#d9d9d9} \
+        -highlightcolor black -justify left -text Edge -value E \
+        -variable TraningVar 
+    vTcl:DefineAlias "$site_3_0.rad39" "radF1_1" vTcl:WidgetProc "MainGUI" 1
     place $site_3_0.but39 \
         -in $site_3_0 -x 672 -y 66 -width 90 -relwidth 0 -height 50 \
         -relheight 0 -anchor nw -bordermode ignore 
@@ -279,6 +293,12 @@ proc vTclWindow.top37 {base} {
     place $site_3_0.but44 \
         -in $site_3_0 -x 360 -y 10 -width 73 -relwidth 0 -height 112 \
         -relheight 0 -anchor nw -bordermode ignore 
+    place $site_3_0.rad38 \
+        -in $site_3_0 -x 780 -y 20 -width 70 -relwidth 0 -height 22 \
+        -relheight 0 -anchor nw -bordermode ignore 
+    place $site_3_0.rad39 \
+        -in $site_3_0 -x 710 -y 20 -width 70 -height 22 -anchor nw \
+        -bordermode ignore 
     button $top.but41 \
         -activebackground {#d9d9d9} -activeforeground {#000000} \
         -background {#d9d9d9} -command onExit -disabledforeground {#a3a3a3} \
