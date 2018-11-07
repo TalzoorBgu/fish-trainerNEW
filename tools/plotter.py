@@ -291,11 +291,12 @@ def folder_to_file_list():
 
 if __name__ == '__main__':
     #1280x1024
-    #file_to_check = "../data/log/2018-08-12 062039_F145DAY2.(0).txt"       # for example
+    #file_to_check = "../data/log/2018-08-09 085628_F146DAY1.(0).txt"       # for example
     #run(file_to_check)
+    #exit(1)
     folder, file_list = folder_to_file_list()
     for file_item in file_list:
         file_name = os.path.join(folder, file_item)
 
         run(file_name, show=False, overwrite=False)
-
+        os.close()
