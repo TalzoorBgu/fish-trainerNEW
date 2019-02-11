@@ -53,6 +53,7 @@ class Controller:
         #init tank
         self.tank = []
         id = 0
+        #print ('Tank(1, 1):' + str(Tank(1, 1)))
         for size in width:
             self.tank.append(Tank(id, size))
             self.logger.append(fishlog.FishLog(log_folder, "{}.({})".format(name[id], str(id))))
