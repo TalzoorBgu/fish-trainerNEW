@@ -19,7 +19,7 @@ def init_tracking(_camera=0, tank_config='tracker/tank_config.txt',video=None):
         lines = f.read().splitlines()
     for line in lines:
         fish.append(eval(line))
-    print fish
+    print (fish)
 
     # if a video path was not supplied, grab the reference to the webcam
     if video is None:
@@ -34,8 +34,8 @@ def init_tracking(_camera=0, tank_config='tracker/tank_config.txt',video=None):
         width.append(fishy['right'] - fishy['left'])
         height.append(fishy['lower'] - fishy['upper'])
         tmp_str = 'width: {0}, height: {1}'.format(width[id], height[id])
-        print tmp_str
-
+        print (tmp_str)
+    ## CHECK12345
         id = id + 1
 
     return width

@@ -12,7 +12,7 @@ except ImportError:
     import tkinter.ttk as ttk
     py3 = 1
 
-import ConfigParser
+import configparser
 
 #import sys
 #import time
@@ -25,7 +25,7 @@ import ConfigParser
 
 from tracker import ClientGUI_support
 
-Config = ConfigParser.ConfigParser()
+Config = configparser.ConfigParser()
 
 #Global vars
 exit_var = False
