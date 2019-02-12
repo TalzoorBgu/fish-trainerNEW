@@ -2,6 +2,7 @@
 
 import cv2
 from time import sleep
+import os
 
 width = []
 height = []
@@ -15,7 +16,10 @@ stop_training=False
 def init_tracking(_camera=0, tank_config='tracker/tank_config.txt',video=None):
     global video_capture
 
-    with open(tank_config) as f:
+    tank_config = full_root_script_path = os.getcwd()
+    file_path = '{}\\tracker\\tank_config_cam_{}.txt'.format(full_root_script_path, _camera)
+
+    with open(file_path) as f:
         lines = f.read().splitlines()
     for line in lines:
         fish.append(eval(line))

@@ -1,5 +1,8 @@
 
 import matplotlib.pylab
+import matplotlib.pyplot as plt
+import matplotlib.gridspec as gridspec
+
 import numpy
 from pathlib import Path
 from datetime import datetime
@@ -28,6 +31,8 @@ class ReadFile:
 
             self.data_x = []
             self.data_y = []
+            self.max_x = 0
+            self.max_y = 0
 
             my_file = Path(_file_name)
             file_ex = my_file.is_file()
@@ -43,6 +48,9 @@ class ReadFile:
 
                 for num, word in enumerate(text_lines):
                     data = self.extract_x_y(word)
+                    self.max_x = data[1][0] if data[1][0] > self.max_x else self.max_x
+                    self.max_y = data[1][1] if data[1][1] > self.max_y else self.max_y
+
                     timeformat_time = self.extract_time(word, self.t_date)
                     if type(timeformat_time) == type(training_end):
                         bool_later = True if timeformat_time > training_end else False
@@ -52,6 +60,7 @@ class ReadFile:
                     if data[0] is True:
                         self.add(data[1])
 
+                # print(" self.max_x:",  self.max_x, "  self.max_y:",  self.max_y)
                 if num > 10:
                     ttl_training_time = training_end - training_start
                     print("training_start:{}".format(training_start))
@@ -157,7 +166,7 @@ def save_plot(_info, _ax, open_png, overwrite, _project_wd=''):
         else:
             os.makedirs(folder_name)
 
-        _ax.savefig(full_name, dpi=600)
+        _ax.figure.savefig(full_name, dpi=600)
         if open_png:
             webbrowser.open(full_name)
     else:
@@ -168,31 +177,69 @@ class PlotTraj:
 
     def __init__(self, properties, _open_png, _overwrite, _xlabel='X', _ylabel='Y'):
 
-        self.plt = matplotlib.pylab
-        self.ax = self.plt.figure(figsize=(6, 6))
         self.data = []
         self.line = []
         self.open_png = _open_png
         self.overwrite = _overwrite
         self.info = properties
+        self.max_x = properties[4][0]
+        self.max_y = properties[4][1]
+        print("properties:", properties)
 
-        self.plt.xlabel(_xlabel)
-        self.plt.ylabel(_ylabel)
-
-        self.plt.grid(True)
         pass
 
     def plot_it(self, _data):
-        plt = matplotlib.pylab
+        # self.plt = matplotlib.pylab
         self.data = _data
         hte = numpy.array(_data[0])
         hre = numpy.array(_data[1])
-        self.line, = plt.plot(hte, hre, linewidth=0.5, color='black')
         info = self.info
-        plt.title('$Fish-{}$ \nTraining day:{}\nDate:{}, Total time:{}'.
-                  format(info[0], info[1], info[2], info[3]))
-        self.plt.draw()
-        # self.plt.show()
+
+        # print("x,y_max:", self.max_x, self.max_y)
+
+        # fig = plt.figure(figsize=(5+ self.max_x/100, 5+ self.max_y/100))
+        fig = plt.figure()
+        gs1 = gridspec.GridSpec(1, 1)
+
+        self.ax = fig.add_subplot(gs1[0])
+
+        _title = '$Fish-{}$ \nTraining day:{}\nDate:{}, Total time:{}'.\
+            format(info[0], info[1], info[2], info[3])
+
+        # self.plt.title('$Fish-{}$ \nTraining day:{}\nDate:{}, Total time:{}'.
+        #                format(info[0], info[1], info[2], info[3]))
+        # plt.tight_layout()
+        # gs1.tight_layout(fig)
+        self.ax.set_aspect('equal', adjustable="box")
+
+        plt.subplots_adjust(top=0.8)
+        # self.ax = plt.gca()
+        # self.ax.axis('equal')
+        self.ax.set_title(_title)
+        x_ticks = self.ax.xaxis.get_major_ticks()
+        y_ticks = self.ax.yaxis.get_major_ticks()
+        for tick in x_ticks:
+            tick.label.set_fontsize(6)
+        for tick in y_ticks:
+            tick.label.set_fontsize(6)
+
+        # self.ax.title.set_y(1.05)
+        # self.ax.autoscale()
+
+        # self.ax.set_ylim([0, 100])
+        # self.ax.set_xlim([0, 700])
+
+        # self.ax.annotate(_title,
+        #              xy=(0, 0),
+        #              xytext=(0.5, 1.04),
+        #              xycoords='axes fraction',
+        #              textcoords='axes fraction',
+        #              fontsize=20,
+        #              horizontalalignment='center')
+
+        self.line, = self.ax.plot(hte, hre, linewidth=0.5, color='black')
+
+        # plt.show()
 
         ppservers = ()
 
@@ -227,7 +274,7 @@ class PlotTraj:
         full_name = os.path.join(folder_name, file_name_to_save)
         print("full_name:{}".format(full_name))
 
-        self.ax.savefig(full_name, dpi=600)
+        self.ax.figure.savefig(full_name, dpi=600)
 
 
 def run(_file_to_plot, **kwargs):
@@ -241,7 +288,7 @@ def run(_file_to_plot, **kwargs):
         overwrite = kwargs["overwrite"]
 
     #Check line:
-    #_file_to_plot = r"C:\Users\Owner\PycharmProjects\fish-trainerNEW\data\log\2018-08-28 082806_F444DAY15.(0).txt"
+    # _file_to_plot = r"C:\Users\Owner\PycharmProjects\fish-trainerNEW\data\log\2019-02-10 175510_F315DAY3.(0).txt"
 
     print("Checking file-{}".format(_file_to_plot))
     read_f = ReadFile(_file_to_plot)
@@ -250,10 +297,12 @@ def run(_file_to_plot, **kwargs):
     if len(file_data[0]) < 10 and len(file_data[1]) < 10:
         print("Not enough data!")
     else:
-        plot_fig = PlotTraj([read_f.fish_no,
-                             read_f.train_day,
-                             read_f.traning_start_str,
-                             read_f.total_training_time], show_at_end, overwrite)
+        properties = [read_f.fish_no,
+                         read_f.train_day,
+                         read_f.traning_start_str,
+                         read_f.total_training_time, [read_f.max_x, read_f.max_y]]
+
+        plot_fig = PlotTraj(properties, show_at_end, overwrite)
         plot_fig.plot_it(file_data)
 
 def folder_to_file_list():
@@ -291,12 +340,18 @@ def folder_to_file_list():
 
 if __name__ == '__main__':
     #1280x1024
-    #file_to_check = "../data/log/2018-08-09 085628_F146DAY1.(0).txt"       # for example
-    #run(file_to_check)
-    #exit(1)
-    folder, file_list = folder_to_file_list()
-    for file_item in file_list:
-        file_name = os.path.join(folder, file_item)
 
-        run(file_name, show=False, overwrite=False)
-        os.close()
+    # for example
+    # long one
+    # file_to_check =   r"..\data\log\2019-02-10 175510_F315DAY3.(0).txt"
+    # box one
+    file_to_check = "../data/log/2019-01-11 073701_F573DAY1.(0).txt"       # for example
+
+    run(file_to_check)
+    exit(1)
+    # folder, file_list = folder_to_file_list()
+    # for file_item in file_list:
+    #     file_name = os.path.join(folder, file_item)
+    #
+    #     run(file_name, show=False, overwrite=False)
+    #     os.close()

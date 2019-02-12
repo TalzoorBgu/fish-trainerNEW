@@ -23,17 +23,20 @@ cropping = False
 
 
 def draw_current(_img):
-    full_root_script_path = os.getcwd()
-    file_path = '{}\\tracker\{}'.format(full_root_script_path, 'tank_config.txt')
+    try:
+        full_root_script_path = os.getcwd()
+        file_path = '{}\\tracker\\tank_config_cam_{}.txt'.format(full_root_script_path, camera)
 
-    fish_draw = []
-    with open(file_path) as f:
-        lines = f.read().splitlines()
-    for line in lines:
-        fish_draw.append(eval(line))
-    for fishy in fish_draw:
-        cv2.rectangle(_img, (fishy['left'], fishy['upper']), (fishy['right'], fishy['lower']),
-                  (255, 255, 255), 1)
+        fish_draw = []
+        with open(file_path) as f:
+            lines = f.read().splitlines()
+        for line in lines:
+            fish_draw.append(eval(line))
+        for fishy in fish_draw:
+            cv2.rectangle(_img, (fishy['left'], fishy['upper']), (fishy['right'], fishy['lower']),
+                      (255, 255, 255), 1)
+    except IOError:
+        print ('file dosent exsit - cannot draw')
 
 
 def click_and_crop(event, x, y, flags, param):
@@ -137,7 +140,7 @@ def SP_Main(_camera=0):
         #full_script_path = '{}{}'.format(os.path.dirname(os.path.realpath(__file__)), '/')
         #full_root_script_path = full_script_path[:12+full_script_path.find('fish-trainer')]
         full_root_script_path = os.getcwd()
-        file_path='{}\\tracker\{}'.format(full_root_script_path,'tank_config.txt')
+        file_path='{}\\tracker\\tank_config_cam_{}.txt'.format(full_root_script_path, camera)
 
         print("script: __file__ is {}".format(repr(__file__)))
         print("script: cwd is {}".format(repr(os.getcwd())))

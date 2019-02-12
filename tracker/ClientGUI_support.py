@@ -136,7 +136,7 @@ def onExit():
     sys.exit(1)
 
 def onRunTraining():
-    global stop_traning, TraningVar
+    global stop_traning, TraningVar, thread_track_fish
     sys.stdout.flush()
 
     Fish_traningGUI.stop_traning = False
@@ -157,8 +157,9 @@ def onRunTraining():
     training_type = "edge" if TraningVar.get() is 'E' else "center"
     thread_track_fish = threading.Thread(target=track_fish.track_loop, args=(controller, training_type, ))
 
-    thread_track_fish.daemon = True
+    # thread_track_fish.daemon = True
     thread_track_fish.start()
+
 
 def onStopTraining():
     global stop_traning, Fish_traningGUI
