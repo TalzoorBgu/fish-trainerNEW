@@ -89,6 +89,7 @@ class MySerial:
                                     stopbits=serial.STOPBITS_ONE,
                                     bytesize=serial.EIGHTBITS,
                                     timeout=1)
+        self.serial.open()
 
     def write(self, cmd):
         try:
