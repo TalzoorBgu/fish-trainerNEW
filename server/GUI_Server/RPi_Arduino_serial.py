@@ -321,7 +321,12 @@ def send_default_program():
     #ser.write(res)
 
 if __name__ == '__main__':
-    ser = MySerial("/dev/ttyS0", 9600)
+    ser = MySerial(port="/dev/ttyS0",
+                   baudrate=9600,
+                   parity=serial.PARITY_NONE,
+                   stopbits=serial.STOPBITS_ONE,
+                   bytesize=serial.EIGHTBITS,
+                   timeout=1)
     command = SendCommand(0, 0, 0, 1, 1, 1, FULL_CYCLE)
     try:
         print('---Start---')
