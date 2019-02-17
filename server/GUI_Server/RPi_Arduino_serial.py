@@ -321,7 +321,7 @@ def send_default_program():
     #ser.write(res)
 
 if __name__ == '__main__':
-    ser = MySerial("/dev/ttyS0", 4800)
+    ser = MySerial("/dev/ttyS0", 19200)
     command = SendCommand(0, 0, 0, 1, 1, 1, FULL_CYCLE)
     try:
         print('---Start---')
