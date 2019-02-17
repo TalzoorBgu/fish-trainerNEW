@@ -83,7 +83,12 @@ class SendCommand:
 
 class MySerial:
     def __init__(self, port, baudrate):
-        self.serial = serial.Serial(port, baudrate)
+        self.serial = serial.Serial(port=port,
+                                    baudrate=baudrate,
+                                    parity=serial.PARITY_NONE,
+                                    stopbits=serial.STOPBITS_ONE,
+                                    bytesize=serial.EIGHTBITS,
+                                    timeout=1)
 
     def write(self, cmd):
         try:
@@ -321,12 +326,7 @@ def send_default_program():
     #ser.write(res)
 
 if __name__ == '__main__':
-    ser = MySerial(port="/dev/ttyS0",
-                   baudrate=9600,
-                   parity=serial.PARITY_NONE,
-                   stopbits=serial.STOPBITS_ONE,
-                   bytesize=serial.EIGHTBITS,
-                   timeout=1)
+    ser = MySerial("/dev/ttyS0", 9600)
     command = SendCommand(0, 0, 0, 1, 1, 1, FULL_CYCLE)
     try:
         print('---Start---')
