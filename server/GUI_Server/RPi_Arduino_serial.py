@@ -319,6 +319,7 @@ def send_default_program():
         result = ''
         while result == '':     # wait for respond before sending next command
             result = ser.read()
+            print("result:", result)
         if "p_end" in result:
             print('Program write --> OK')
         #print('res:#{}#, result==_str_var:{}'.format(result, result == _str_to_send))
