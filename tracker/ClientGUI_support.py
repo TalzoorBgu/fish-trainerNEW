@@ -130,6 +130,7 @@ def onExit():
     sys.stdout.flush()
 
     exit_var = True
+
     Fish_traningGUI.stop_traning = True
 
     sleep(1)
