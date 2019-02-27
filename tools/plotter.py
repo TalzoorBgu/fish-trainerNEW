@@ -4,7 +4,6 @@ import numpy
 from pathlib import Path
 from datetime import datetime
 import os
-import pp
 import sys
 import webbrowser
 import argparse
@@ -194,15 +193,14 @@ class PlotTraj:
         self.plt.draw()
         # self.plt.show()
 
-        ppservers = ()
 
-        job_server = pp.Server(ppservers=ppservers)
+        # job_server = pp.Server(ppservers=ppservers)
 
-        print "Starting Parallel Python v2 with", job_server.get_ncpus(), "workers"
-        job = job_server.submit(save_plot, (self.info, self.ax, self.open_png, self.overwrite),
-                                (), ("matplotlib", "os", "webbrowser", "matplotlib.pylab"))
-        job()
-        job_server.print_stats()
+        # print ("Starting Parallel Python v2 with", job_server.get_ncpus(), "workers")
+        # job = job_server.submit(save_plot, (self.info, self.ax, self.open_png, self.overwrite),
+        #                         (), ("matplotlib", "os", "webbrowser", "matplotlib.pylab"))
+        # job()
+        # job_server.print_stats()
 
     def save(self, project_wd=''):
         #NOT USED ANYMORE

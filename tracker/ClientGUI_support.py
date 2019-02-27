@@ -246,7 +246,7 @@ class ThreadingProcess(object):
             output, error_output = process.communicate()
             print(process.stdout.readline())
         except:
-            print 'Err - Check (.py) call file'
+            print ('Err - Check (.py) call file')
             if output=='': output=error_output
 
         #return output
@@ -261,7 +261,7 @@ class ThreadingProcess(object):
             output, error_output = process.communicate()
 
         except:
-            print 'Err - Check (fish_stat.py) call file'
+            print ('Err - Check (fish_stat.py) call file')
 
         if output=='': output=error_output
         return output

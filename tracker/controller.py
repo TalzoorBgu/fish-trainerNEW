@@ -1,10 +1,10 @@
 #!/usr/bin/env python
 
-import track_fish
+from tracker import track_fish
 from tracker.tcp_client import FishClient
 from tracker.fish_tank import Tank
 from tools import fishlog
-from time_counter import TimeCounter
+from tracker.time_counter import TimeCounter
 import argparse
 import os
 import time

@@ -11,7 +11,7 @@ class FishLog:
         self.track_count = 0
         self.feed_count = {'left': 0, 'right': 0, 'center': 0}
         self.fish_name = fish_name
-        print 'start logging data'
+        print ('start logging data')
         # Open a file
 
         self.filename='{}\{}{}{}'.format(log_folder, strftime("%Y-%m-%d %H%M%S", gmtime()), '_'+fish_name, ".txt") # time+name

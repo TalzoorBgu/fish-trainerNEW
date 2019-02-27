@@ -35,7 +35,6 @@ def init_tracking(_camera=0, tank_config='tracker/tank_config.txt',video=None):
         height.append(fishy['lower'] - fishy['upper'])
         tmp_str = 'width: {0}, height: {1}'.format(width[id], height[id])
         print (tmp_str)
-    ## CHECK12345
         id = id + 1
 
     return width
@@ -52,7 +51,7 @@ def track_loop(cb, _version='edge'): #cb is an object that has a do() function i
         # Capture frame-by-frame
         ret, frame = video_capture.read()
         if frame is None:
-            print 'No Image'
+            print ('No Image')
             break  # check for empty frames
 
         id = 0
@@ -131,7 +130,9 @@ def paint_lines(_cv_obj, _tank_width, _tank_height, _frame, _ver):
     elif _ver is 'center':
         _cv_obj.rectangle(_frame, (left, down), (right, up), (255, 255, 255), 1)
 
-def paint_single_line(_cv_obj, (x0, y0), (x1, y1), _frame, gap = 0):
+def paint_single_line(_cv_obj, r0, r1, _frame, gap = 0):
+    (x0, y0) = r0
+    (x1, y1) = r1
     if gap == 0:
         _cv_obj.line(_frame, (x0, y0), (x1, y1), (255, 255, 255), 1)
     else:

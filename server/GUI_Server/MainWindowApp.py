@@ -1,5 +1,4 @@
 # $Id: MainWindowApp.py,v 1.3 2004/04/12 04:46:16 prof Exp $
-import Tkinter
 import logging
 import CumulativeLogger
 import gettext
@@ -10,6 +9,11 @@ import sys
 import ConfigParser
 import ast
 import feeder
+
+try:
+    import Tkinter
+except ModuleNotFoundError:
+    import tkinter
 
 def ConfigSectionMap(section):
     dict1 = {}

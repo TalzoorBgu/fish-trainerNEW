@@ -91,7 +91,7 @@ def SP_Main(_camera=0):
     ret, image = video_capture.read()
 
     if(image is None):#check for empty frames
-        print 'No Image'
+        print ('No Image')
 
     # draw current configuration
     draw_current(image)
