@@ -221,6 +221,7 @@ def init(top, gui, *args, **kwargs):
 
 def destroy_window():
     # Function which closes the window.
+    print "closing!!!"
     global top_level
     top_level.destroy()
     top_level = None
