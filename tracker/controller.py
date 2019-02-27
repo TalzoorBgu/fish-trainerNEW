@@ -53,6 +53,7 @@ class Controller:
         #init tank
         self.tank = []
         id = 0
+        #print ('Tank(1, 1):' + str(Tank(1, 1)))
         for size in width:
             self.tank.append(Tank(id, size))
             self.logger.append(fishlog.FishLog(log_folder, "{}.({})".format(name[id], str(id))))
@@ -78,6 +79,7 @@ class Controller:
         self.logger[fish_id].fo.close()
         sleep(0.2)  # 200mS wait
         print("fish_id:{}, filename:{}".format(fish_id, log_filename))
+
         plotter.run(log_filename, show=True, overwrite=True)
         sleep(1.5)
 

@@ -1,1 +1,1 @@
-{'upper': 215, 'camera:': '1', 'right': 302, 'lower': 472, 'left': 38}
+{'upper': 216, 'camera:': '0', 'right': 605, 'lower': 282, 'left': 32}

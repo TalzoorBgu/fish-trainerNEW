@@ -83,7 +83,13 @@ class SendCommand:
 
 class MySerial:
     def __init__(self, port, baudrate):
-        self.serial = serial.Serial(port, baudrate)
+        self.serial = serial.Serial(port=port,
+                                    baudrate=baudrate,
+                                    parity=serial.PARITY_NONE,
+                                    stopbits=serial.STOPBITS_ONE,
+                                    bytesize=serial.EIGHTBITS,
+                                    timeout=1)
+        self.serial.open()
 
     def write(self, cmd):
         try:
@@ -313,6 +319,7 @@ def send_default_program():
         result = ''
         while result == '':     # wait for respond before sending next command
             result = ser.read()
+            print("result:", result)
         if "p_end" in result:
             print('Program write --> OK')
         #print('res:#{}#, result==_str_var:{}'.format(result, result == _str_to_send))
