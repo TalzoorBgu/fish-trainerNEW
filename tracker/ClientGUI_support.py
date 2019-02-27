@@ -218,13 +218,12 @@ def init(top, gui, *args, **kwargs):
     Fish_traningGUI = gui
     top_level = top
     root = top
-    root.protocol("WM_DELETE_WINDOW", destroy_window)
-    root.bind("<Destroy>", destroy_window)
+    root.protocol("WM_DELETE_WINDOW", onStopTraining)
+    root.bind("<Destroy>", onStopTraining)
 
 def destroy_window():
     # Function which closes the window.
-    print("closing!!!")
-    sleep(1)
+    print("Quiting.")
     global top_level
     top_level.destroy()
     top_level = None
