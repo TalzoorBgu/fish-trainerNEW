@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 from tracker import track_fish
-from tracker.tcp_client import FishClient
+from tracker.old_tcp_client import FishClient
 from tracker.fish_tank import Tank
 from tools import fishlog
 from tracker.time_counter import TimeCounter
@@ -10,7 +10,9 @@ import os
 import time
 from tools import plotter
 from time import sleep
+from tracker.track_feeder import tracker_Feeder
 
+feed = tracker_Feeder()
 
 FEED_EVERY = 3          # feed every 3 sec
 
@@ -109,10 +111,13 @@ class Controller:
                 self.cb_obj.print_and_update_main_log(str_to_print)
             fish_client = FishClient()
             if self.chb_Var.get() == '1':
-                fish_client.send(fish_id + 11, feed_side)
+                print("FEED NOW")
+                feeder.new_feeder_run(0, feed_side)
+                # fish_client.send(fish_id + 11, feed_side)
             else:
-                fish_client.send(fish_id + 1, feed_side)
-            fish_client.kill()
+                print("FEED NOW")
+                # fish_client.send(fish_id + 1, feed_side)
+            # fish_client.kill()
 
             #fish_client.send(fish_id, feed_side)
             self.logger[fish_id].add_feed(feed_side)

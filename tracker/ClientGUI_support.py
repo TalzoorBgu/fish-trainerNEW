@@ -12,7 +12,7 @@ import threading
 from tracker import scene_planner
 from tracker.controller import Controller
 from tracker import track_fish
-from tracker.tcp_client import FishClient
+from tracker.old_tcp_client import FishClient
 from time import sleep
 
 stop_traning = False
@@ -129,7 +129,7 @@ def onExit():
     print('ClientGUI_support.onExit')
     sys.stdout.flush()
 
-    exit_var = True
+    # exit_var = True
 
     Fish_traningGUI.stop_traning = True
 
@@ -158,7 +158,7 @@ def onRunTraining():
     training_type = "edge" if TraningVar.get() is 'E' else "center"
     thread_track_fish = threading.Thread(target=track_fish.track_loop, args=(controller, training_type, ))
 
-    # thread_track_fish.daemon = True
+    thread_track_fish.daemon = True
     thread_track_fish.start()
 
 
@@ -185,8 +185,10 @@ def onTankConfig():
     global CamVar1
     print('ClientGUI_support.onTankConfig')
     sys.stdout.flush()
-    thread_track_fish = threading.Thread(target=scene_planner.SP_Main, args=(CamVar1.get()))
-    thread_track_fish.start()
+    relvant_camera = CamVar1.get()
+    scene_planner.SP_Main(relvant_camera)
+    # thread_track_fish = threading.Thread(target=scene_planner.SP_Main, args=(CamVar1.get()))
+    # thread_track_fish.start()
 
 
 def onSetZero():

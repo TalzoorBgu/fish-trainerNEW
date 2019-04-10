@@ -10,7 +10,7 @@ tank = []
 fgbg = []
 fish = []
 video_capture = None
-stop_training=False
+# stop_training=False
 
 #tank_config='../tracker/tank_config.txt'
 def init_tracking(_camera=0, tank_config='tracker/tank_config.txt',video=None):
@@ -46,11 +46,11 @@ def init_tracking(_camera=0, tank_config='tracker/tank_config.txt',video=None):
 
 def track_loop(cb, _version='edge'): #cb is an object that has a do() function in the calling script
     global stop_training
+    stop_training = False
 
     print("_version:{}".format(_version))
     while stop_training is False:
         stop_training = cb.check_traning()
-
         cb.time()
         # Capture frame-by-frame
         ret, frame = video_capture.read()
@@ -102,9 +102,10 @@ def track_loop(cb, _version='edge'): #cb is an object that has a do() function i
         # if cv2.waitKey(1) & 0xFF == ord('q'): break #Exit when Q is pressed
 
     # exit while loop:
+    print("stop_training=", stop_training)
     id_out = 0
     for fishy in fish:
-        #print("fish_id:{}".format(id_out))
+        print("OUT:fish_id:{}".format(id_out))
         cb.end_training(id_out)
         id_out += 1
         sleep(0.5)
