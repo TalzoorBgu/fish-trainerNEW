@@ -14,8 +14,11 @@ from tracker.controller import Controller
 from tracker import track_fish
 from tracker.old_tcp_client import FishClient
 from time import sleep
+from tracker.track_feeder import tracker_Feeder
 
 stop_traning = False
+
+feed_object = tracker_Feeder()
 
 try:
     from Tkinter import *
@@ -87,20 +90,27 @@ def on1L():
 
     try:
         print('ClientGUI_support.on1L')
-        fish_client = FishClient(Fish_traningGUI)
+        Fish_traningGUI.print_and_update_main_log("Test motor - 1L")
+
+        program = 0;  motor = 1
+        feed_object.new_feeder_run(program, motor)
+        # fish_client = FishClient(Fish_traningGUI)
         #print('chb_Var:{}'.format(chb_Var.get()))
 
-        fish_client.send('test_1L', Fish_traningGUI.txtStepNum.get())
-        fish_client.kill()
+        # fish_client.send('test_1L', Fish_traningGUI.txtStepNum.get())
+        # fish_client.kill()
         sys.stdout.flush()
     except TypeError:
         pass
 
 def on1R():
     print('ClientGUI_support.on1R')
-    fish_client = FishClient(Fish_traningGUI)
-    fish_client.send('test_1R', Fish_traningGUI.txtStepNum.get())
-    fish_client.kill()
+    Fish_traningGUI.print_and_update_main_log("Test motor - 1R")
+    program = 0; motor = 0
+    feed_object.new_feeder_run(program, motor)
+    # fish_client = FishClient(Fish_traningGUI)
+    # fish_client.send('test_1R', Fish_traningGUI.txtStepNum.get())
+    # fish_client.kill()
     sys.stdout.flush()
 
 def on2L():
@@ -152,7 +162,7 @@ def onRunTraining():
 
     camera = CamVar1.get()
 
-    controller = Controller(Fish_traningGUI, log_name, camera)
+    controller = Controller(feed_object, Fish_traningGUI, log_name, camera)
     _tmp1 = type(controller)
     print("type:{}".format(_tmp1))
     training_type = "edge" if TraningVar.get() is 'E' else "center"

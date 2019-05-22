@@ -10,9 +10,8 @@ import os
 import time
 from tools import plotter
 from time import sleep
-from tracker.track_feeder import tracker_Feeder
 
-feed = tracker_Feeder()
+
 
 FEED_EVERY = 3          # feed every 3 sec
 
@@ -24,11 +23,13 @@ FEED_EVERY = 3          # feed every 3 sec
 
 
 class Controller:
-    def __init__(self, cb_obj=None, name=['test'], _camera=0):
+    def __init__(self, feed, cb_obj=None, log_name=['test'], _camera=0):
         global total_feed
         global time_counter
         total_feed = 0
         time_counter = 0
+
+        self.feed = feed
 
         self.time_count = TimeCounter()
         self.cb_obj = cb_obj
@@ -58,7 +59,7 @@ class Controller:
         #print ('Tank(1, 1):' + str(Tank(1, 1)))
         for size in width:
             self.tank.append(Tank(id, size))
-            self.logger.append(fishlog.FishLog(log_folder, "{}.({})".format(name[id], str(id))))
+            self.logger.append(fishlog.FishLog(log_folder, "{}.({})".format(log_name[id], str(id))))
             id = id + 1
 
 
@@ -112,10 +113,12 @@ class Controller:
             fish_client = FishClient()
             if self.chb_Var.get() == '1':
                 print("FEED NOW")
-                feeder.new_feeder_run(0, feed_side)
+
+                self.feed.new_feeder_run(0, feed_side)
                 # fish_client.send(fish_id + 11, feed_side)
             else:
-                print("FEED NOW")
+                pass
+                # print("FEED NOW")
                 # fish_client.send(fish_id + 1, feed_side)
             # fish_client.kill()
 

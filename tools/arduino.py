@@ -115,9 +115,10 @@ class MySerial:
         ch_r_d = ''
         ch_r = ''
         try:
+            # print("{}, self.serial.in_waiting:{}".format(datetime.now(), self.serial.in_waiting))
             nb_chars = self.serial.in_waiting
             if nb_chars > 0:
-                time.sleep(80.0/1000.0)
+                time.sleep(40.0/1000.0)
                 nb_chars = self.serial.in_waiting
                 ch_r = self.serial.read(nb_chars).decode()
                 real_string = False  # flag to check if all char=0
@@ -170,7 +171,6 @@ class Arduino_Functions:
     def __enter__(self):
         return self
 
-
     def check_arduino_connection(self):
         # ser = MySerial("/dev/ttyS0", 9600)
         _bool_flag = False
@@ -185,9 +185,9 @@ class Arduino_Functions:
             result = self.serial_con.read()
 
         if result == _str_to_send: _bool_flag = True
-        if _bool_flag==False and result != '': print('res:{}'.format(result))
+        if _bool_flag == False and result != '': print('res:#{}#'.format(result))
 
-        self.serial_con.serial.close()
+        # self.serial_con.serial.close()
         return _bool_flag
 
     def main(self):
@@ -464,7 +464,7 @@ if __name__ == '__main__':
         if not ardu.connection == 'OK':
             raise EnvironmentError('No Arduino answer. Check Serial conn.')
         # ---- uncomment if need to send arduino Servo PINs
-        _str_to_send = ardu.send_command.init_seq_motor_1(6, 7, 8)
+        _str_to_send = ardu.send_command.init_seq_motor_1(6, 7, 8)  # (step, dir, en)
         ardu.serial_con.write(_str_to_send)
         time.sleep(500 / 1000)  # ms
         while ardu.serial_con.serial.inWaiting():
@@ -473,7 +473,7 @@ if __name__ == '__main__':
             time.sleep(5 / 1000)  # ms _
 
         time.sleep(3000 / 1000)  # ms
-        _str_to_send = ardu.send_command.init_seq_motor_2(10, 11, 12)
+        _str_to_send = ardu.send_command.init_seq_motor_2(10, 11, 12)   # (step, dir, en)
         ardu.serial_con.write(_str_to_send)
         time.sleep(100 / 1000)  # ms
         while ardu.serial_con.serial.inWaiting():
